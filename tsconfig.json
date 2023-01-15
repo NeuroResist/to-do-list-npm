@@ -1,26 +1,26 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
+    // разрешить импорт js а не только ts tsx
     "allowJs": true,
+    // пропустить проверку библиотек
     "skipLibCheck": true,
+    // устранение проблем с импортами модулей
     "esModuleInterop": true,
+    // упрощение синтаксиса импортирования
     "allowSyntheticDefaultImports": true,
+    // useStrict
     "strict": true,
+    //учет регистра
     "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
+    // модульная система для проекта
     "module": "esnext",
+    // Node.js CommonJS
     "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
+    // упрощение компилирования
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

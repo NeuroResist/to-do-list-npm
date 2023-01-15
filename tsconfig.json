@@ -12,6 +12,7 @@
     "allowSyntheticDefaultImports": true,
     // useStrict
     "strict": true,
+    "useUnknownInCatchVariables": false,
     //учет регистра
     "forceConsistentCasingInFileNames": true,
     // модульная система для проекта

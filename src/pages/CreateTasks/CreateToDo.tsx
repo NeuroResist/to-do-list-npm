@@ -3,9 +3,8 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import Select from "react-select";
 import OneTask from "../../components/OneTask";
-import useTasks from "../../hooks/useTasks";
-import UseCategories from "../../hooks/useCategories";
 import { useState } from "react";
+import { useOutletContext } from "react-router-dom";
 
 function CreateToDo() {
   const { register, handleSubmit, control, setValue, reset } = useForm<Inputs>({
@@ -17,8 +16,7 @@ function CreateToDo() {
     },
   });
 
-  const { tasks, setTasks } = useTasks();
-  const { categories } = UseCategories();
+  const [tasks, setTasks, categories]: any = useOutletContext();
 
   let id = tasks.length;
 
@@ -100,7 +98,10 @@ function CreateToDo() {
           name="Select"
           defaultValue={new Date()}
           render={({ field: { value, onChange } }) => (
-            <Select options={categories.map((category) => category.select)} onChange={onChange} />
+            <Select
+              options={categories.map((category: any) => category.select)}
+              onChange={onChange}
+            />
           )}
         />
 

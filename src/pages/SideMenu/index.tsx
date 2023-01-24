@@ -1,9 +1,13 @@
 import { Outlet } from "react-router";
-import React from "react";
+import React, { createContext, useState } from "react";
 import SideMenuAction from "./SideMenuAction";
 import { icons } from "../../constants";
+import { OPTIONS, TASKS } from "../../MOCK";
 
 function SideMenu() {
+  const [tasks, setTasks] = useState(TASKS);
+  const [categories, setCategories] = useState(OPTIONS);
+
   return (
     <div className="flex">
       <div className="min-w-[300px] bg-blue h-[100vh] p-3">
@@ -24,7 +28,7 @@ function SideMenu() {
         </article>
       </div>
       <div className="w-full">
-        <Outlet />
+        <Outlet context={[tasks, setTasks, categories, setCategories]} />
       </div>
     </div>
   );

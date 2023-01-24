@@ -1,10 +1,8 @@
 import OneTask from "../../components/OneTask";
-import useTasks from "../../hooks/useTasks";
-import UseCategories from "../../hooks/useCategories";
+import { useOutletContext } from "react-router-dom";
 
 function TasksRegistry() {
-  const { tasks } = useTasks();
-  const { categories } = UseCategories();
+  const [tasks, setTasks, categories, setCategories]: any = useOutletContext();
 
   return (
     <div>

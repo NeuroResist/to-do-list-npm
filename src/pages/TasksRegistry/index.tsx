@@ -1,21 +1,15 @@
-import OneTask from "../../components/OneTask";
 import { useOutletContext } from "react-router-dom";
+import TasksList from "../../components/TasksList";
 
 function TasksRegistry() {
-  const { tasks, categories }: any = useOutletContext();
+  const { tasks, categories, changeTask }: any = useOutletContext();
 
   return (
     <div>
       {categories.map((category: any) => (
         <div>
           {category.select.value}
-
-          {tasks.map(
-            ({ add, description, Calendar, Select }: any) =>
-              category.select.value === Select.value && (
-                <OneTask add={add} Calendar={Calendar} Select={Select} description={description} />
-              ),
-          )}
+          <TasksList category={category} changeTask={changeTask} tasks={tasks} />
         </div>
       ))}
     </div>

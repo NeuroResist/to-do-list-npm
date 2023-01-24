@@ -3,7 +3,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import Select from "react-select";
 import useControl from "../useControl";
-import Tasks from "./Tasks";
+import TasksRegistry from "../../../components/TasksList";
 
 function CreateToDo() {
   const { tasks, changeTask, handleSubmit, register, control, categories, onSubmit } = useControl();
@@ -11,7 +11,7 @@ function CreateToDo() {
   return (
     <div className="w-4/5">
       <div className="flex flex-col items-center mb-20">
-        <Tasks tasks={tasks} changeTask={changeTask} />
+        <TasksRegistry tasks={tasks} changeTask={changeTask} isChanging />
       </div>
 
       <form className="border-2 border-pink" onSubmit={handleSubmit(onSubmit)}>
@@ -32,7 +32,7 @@ function CreateToDo() {
           control={control}
           name="Select"
           defaultValue={new Date()}
-          render={({ field: { value, onChange } }) => (
+          render={({ field: { onChange } }) => (
             <Select
               options={categories.map((category: any) => category.select)}
               onChange={onChange}

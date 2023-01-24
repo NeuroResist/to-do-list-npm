@@ -1,14 +1,9 @@
 import { Outlet } from "react-router";
 import React from "react";
-import SideMenuAction from "../SideMenuAction";
-import Brightness5Icon from "@mui/icons-material/Brightness5";
-import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
+import SideMenuAction from "./SideMenuAction";
+import { icons } from "../../constants";
 
-const icons = [
-  { icon: <Brightness5Icon />, text: "Создание Задач" },
-  { icon: <MonetizationOnIcon />, text: "Все Задачи" },
-];
-function MainPage() {
+function SideMenu() {
   return (
     <div className="flex">
       <div className="min-w-[300px] bg-blue h-[100vh] p-3">
@@ -23,8 +18,8 @@ function MainPage() {
         </figure>
 
         <article className="flex flex-col relative">
-          {icons.map((item) => (
-            <SideMenuAction icon={item.icon} text={item.text} className="mr-2" />
+          {icons.map((item: any) => (
+            <SideMenuAction icon={item.icon} text={item.text} path={item.path} className="mr-2" />
           ))}
         </article>
       </div>
@@ -35,4 +30,4 @@ function MainPage() {
   );
 }
 
-export default MainPage;
+export default SideMenu;

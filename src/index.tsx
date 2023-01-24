@@ -1,28 +1,39 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
+import CreateTasks from "./pages/CreateTasks";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import ErrorPage from "./components/NotFound404";
-import MainPage from "./components/MainPage";
+import NotFound from "./pages/NotFound";
+import SideMenu from "./pages/SideMenu";
+import TasksRegistry from "./pages/TasksRegistry";
+import CreateCategories from "./pages/CreateCategories";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainPage />,
-    errorElement: <ErrorPage />,
+    element: <SideMenu />,
+    errorElement: <NotFound />,
     children: [
+      { path: "/", element: <p>Нажмите на один из пунктов слева</p> },
       {
-        path: "create",
-        element: <App />,
+        path: "create-tasks",
+        element: <CreateTasks />,
+      },
+      {
+        path: "create-categories",
+        element: <CreateCategories />,
+      },
+      {
+        path: "tasks-registry",
+        element: <TasksRegistry />,
+      },
+      {
+        path: "/qwe",
+        element: <p className="text-blue text-3xl font-bold underline">qwe</p>,
       },
     ],
-  },
-  {
-    path: "/qwe",
-    element: <p className="text-blue text-3xl font-bold underline">qwe</p>,
   },
 ]);
 

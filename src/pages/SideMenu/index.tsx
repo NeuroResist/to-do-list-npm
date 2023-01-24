@@ -23,12 +23,19 @@ function SideMenu() {
 
         <article className="flex flex-col relative">
           {icons.map((item: any) => (
-            <SideMenuAction icon={item.icon} text={item.text} path={item.path} className="mr-2" />
+            <SideMenuAction
+              key={item.path}
+              icon={item.icon}
+              text={item.text}
+              path={item.path}
+              className="mr-2"
+            />
           ))}
         </article>
       </div>
+
       <div className="w-full">
-        <Outlet context={[tasks, setTasks, categories, setCategories]} />
+        <Outlet context={{ tasks, setTasks, categories, setCategories }} />
       </div>
     </div>
   );

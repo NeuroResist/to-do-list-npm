@@ -6,7 +6,7 @@ import { useOutletContext } from "react-router-dom";
 type Value = { value: string };
 
 function useControl() {
-  const [tasks, setTasks, categories, setCategories]: any = useOutletContext();
+  const { categories, setCategories }: any = useOutletContext();
 
   const { register, handleSubmit, reset, setValue } = useForm<Value>({});
   const [changingCategory, setChangingCategory] = useState({ state: false, id: 0 });

@@ -13,5 +13,9 @@ export const icons = [
     path: "create-categories",
     text: "Создание/редактор Категорий",
   },
-  { icon: <ListAltIcon />, path: "tasks-registry", text: "Реестр категорий" },
+  {
+    icon: <ListAltIcon />,
+    path: "tasks-registry",
+    text: "Реестр Задач",
+  },
 ];

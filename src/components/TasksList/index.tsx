@@ -1,4 +1,5 @@
 import OneTask from "../OneTask";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
 
 function TasksList({ tasks, category, changeTask }: any) {
   let isEmpty = true;
@@ -12,10 +13,7 @@ function TasksList({ tasks, category, changeTask }: any) {
         return (
           <>
             {(category?.select?.value === Select?.value || !category) && (
-              <div
-                key={id}
-                className="border-2 border-r-0 border-l-0 border-t-0 border-t-0 border-b-blue w-4/5 h-12 pl-10 flex items-center"
-              >
+              <div key={id} className="relative">
                 <OneTask
                   id={id}
                   add={add}
@@ -26,7 +24,7 @@ function TasksList({ tasks, category, changeTask }: any) {
 
                 {!category && (
                   <button
-                    className="bg-green"
+                    className="bg-green absolute top-1 right-1"
                     onClick={() =>
                       changeTask({
                         add,
@@ -37,7 +35,7 @@ function TasksList({ tasks, category, changeTask }: any) {
                       })
                     }
                   >
-                    Изменить
+                    <BorderColorIcon />
                   </button>
                 )}
               </div>

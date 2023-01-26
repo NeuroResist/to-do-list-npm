@@ -3,50 +3,57 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import Select from "react-select";
 import useControl from "../useControl";
-import TasksRegistry from "../../../components/TasksList";
+import TasksList from "../../../components/TasksList";
 
 function CreateToDo() {
   const { tasks, changeTask, handleSubmit, register, control, categories, onSubmit } = useControl();
 
   return (
-    <div className="w-4/5">
-      <div className="flex flex-col items-center mb-20">
-        <TasksRegistry tasks={tasks} changeTask={changeTask} isChanging />
+    <div className="w-4/5 flex items-center flex-col">
+      <div className="grid gap-1 grid-cols-1 xl:grid-cols-3 lg:grid-cols-2 mb-20">
+        <TasksList tasks={tasks} changeTask={changeTask} isChanging />
       </div>
 
       <form className="border-2 border-pink" onSubmit={handleSubmit(onSubmit)}>
         <label className="w-full">
-          <input {...register("add")} placeholder="Название задачи" className="w-full" />
+          <input
+            {...register("add", {
+              maxLength: 20,
+              minLength: 3,
+              required: "Введите название задачи",
+            })}
+            placeholder="Название задачи"
+            className="w-full"
+          />
         </label>
 
         <Controller
           control={control}
           name="Calendar"
-          defaultValue={new Date()}
           render={({ field: { value, onChange } }) => (
-            <Calendar minDate={value} value={value} onClickDay={onChange} />
+            <Calendar minDate={new Date()} onClickDay={onChange} />
           )}
         />
 
         <Controller
           control={control}
           name="Select"
-          defaultValue={new Date()}
           render={({ field: { onChange } }) => (
             <Select
               options={categories.map((category: any) => category.select)}
               onChange={onChange}
+              placeholder="Дом"
             />
           )}
         />
 
         <textarea
-          {...register("description")}
+          {...register("description", { maxLength: 200, required: "Введите название задачи" })}
           className="border-2 w-full"
           name="description"
           placeholder="Описание задачи ..."
         />
-        <input type="submit" className="border-2 border-b-green" />
+        <input type="submit" value="Создать" className="border-2 border-b-green" />
       </form>
     </div>
   );

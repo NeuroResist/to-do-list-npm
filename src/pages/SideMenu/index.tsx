@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import React, { createContext, useState } from "react";
+import React, { useState } from "react";
 import SideMenuAction from "./SideMenuAction";
 import { icons } from "../../constants";
 import { OPTIONS, TASKS } from "../../MOCK";
@@ -9,8 +9,8 @@ function SideMenu() {
   const [categories, setCategories] = useState(OPTIONS);
 
   return (
-    <div className="flex">
-      <div className="min-w-[300px] bg-blue h-[100vh] p-3">
+    <div className="flex min-h-screen">
+      <div className="min-w-[300px] bg-blue shrink-0 p-3">
         <figure className="flex mb-2">
           <img className="rounded-full" src="./me.jpg" alt="account" />
           <div className="p-2">

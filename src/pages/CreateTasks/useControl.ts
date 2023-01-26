@@ -7,7 +7,7 @@ function useControl() {
     defaultValues: {
       add: "",
       description: "",
-      Calendar: new Date(),
+      Calendar: undefined,
       Select: { value: "Дом", label: "Дом" },
     },
   });
@@ -25,6 +25,7 @@ function useControl() {
   };
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
+    console.log(tasks);
     if (!changingTask.state) {
       id++;
       setTasks([
@@ -47,9 +48,9 @@ function useControl() {
           task.Select = data.Select;
         }
       });
-      reset();
       setChangingTask({ state: false, id: 0 });
     }
+    reset();
   };
 
   return { tasks, changeTask, handleSubmit, register, control, categories, onSubmit };

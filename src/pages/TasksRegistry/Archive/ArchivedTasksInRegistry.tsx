@@ -10,6 +10,8 @@ function ArchivedTasksInRegistry({
   category,
   changeTask,
 }: any) {
+  console.log("333333333");
+
   return (
     <div key={id} className="relative">
       <OneTask

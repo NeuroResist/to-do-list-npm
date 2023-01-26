@@ -7,6 +7,7 @@ export const TASKS: Inputs[] = [
     description: "11111",
     Calendar: dayjs("01.01.2001").toDate(),
     Select: { value: "Дом", label: "Дом" },
+    isArchived: false,
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ export const TASKS: Inputs[] = [
     description: "22222",
     Calendar: dayjs("02.02.2002").toDate(),
     Select: { value: "Дом", label: "Дом" },
+    isArchived: false,
   },
   {
     id: 3,
@@ -21,6 +23,7 @@ export const TASKS: Inputs[] = [
     description: "33333",
     Calendar: dayjs("03.03.2003").toDate(),
     Select: { value: "Работа", label: "Работа" },
+    isArchived: false,
   },
   {
     id: 4,
@@ -28,6 +31,7 @@ export const TASKS: Inputs[] = [
     description: "44444",
     Calendar: dayjs("04.04.2004").toDate(),
     Select: { value: "Работа", label: "Работа" },
+    isArchived: false,
   },
   {
     id: 5,
@@ -35,6 +39,7 @@ export const TASKS: Inputs[] = [
     description: "55555",
     Calendar: dayjs("05.05.2005").toDate(),
     Select: { value: "Учеба", label: "Учеба" },
+    isArchived: true,
   },
   {
     id: 6,
@@ -42,6 +47,7 @@ export const TASKS: Inputs[] = [
     description: "66666",
     Calendar: dayjs("06.06.2006").toDate(),
     Select: { value: "Учеба", label: "Учеба" },
+    isArchived: true,
   },
   {
     id: 7,
@@ -49,6 +55,7 @@ export const TASKS: Inputs[] = [
     description: "77777",
     Calendar: undefined,
     Select: { value: "Дом", label: "Дом" },
+    isArchived: false,
   },
   {
     id: 8,
@@ -56,6 +63,7 @@ export const TASKS: Inputs[] = [
     description: "88888",
     Calendar: undefined,
     Select: { value: "Дом", label: "Дом" },
+    isArchived: false,
   },
   {
     id: 9,
@@ -63,6 +71,7 @@ export const TASKS: Inputs[] = [
     description: "99999",
     Calendar: undefined,
     Select: { value: "Работа", label: "Работа" },
+    isArchived: true,
   },
   {
     id: 10,
@@ -70,6 +79,7 @@ export const TASKS: Inputs[] = [
     description: "101010",
     Calendar: undefined,
     Select: { value: "Работа", label: "Работа" },
+    isArchived: true,
   },
   {
     id: 11,
@@ -77,6 +87,7 @@ export const TASKS: Inputs[] = [
     description: "111111",
     Calendar: undefined,
     Select: { value: "Учеба", label: "Учеба" },
+    isArchived: true,
   },
   {
     id: 12,
@@ -84,6 +95,7 @@ export const TASKS: Inputs[] = [
     description: "121212",
     Calendar: undefined,
     Select: { value: "Учеба", label: "Учеба" },
+    isArchived: true,
   },
 ];
 

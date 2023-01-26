@@ -25,7 +25,6 @@ function useControl() {
   };
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(tasks);
     if (!changingTask.state) {
       id++;
       setTasks([

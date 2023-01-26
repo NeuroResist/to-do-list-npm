@@ -4,6 +4,7 @@ type Inputs = {
   description: string;
   Calendar: any;
   Select: any;
+  isArchived: any;
 };
 
 type registryType = "task" | "taskReminder" | "archive";

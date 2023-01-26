@@ -2,24 +2,19 @@ import OneTask from "../../../components/OneTask";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 
 function TasksReminderInRegistry({
+  id,
   add,
   Calendar,
   Select,
   description,
-  id,
   category,
   changeTask,
 }: any) {
+  console.log("1111111111");
+
   return (
     <div key={id} className="relative">
-      <OneTask
-        id={id}
-        add={add}
-        Calendar={Calendar}
-        Select={Select}
-        description={description}
-        isArchived
-      />
+      <OneTask id={id} add={add} Calendar={Calendar} Select={Select} description={description} />
 
       {!category && (
         <button

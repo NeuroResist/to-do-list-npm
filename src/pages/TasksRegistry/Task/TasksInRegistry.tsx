@@ -1,16 +1,12 @@
 import OneTask from "../../../components/OneTask";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 
-function TasksInRegistry({ add, Calendar, Select, description, id, category, changeTask }: any) {
+function TasksInRegistry({ add, Select, description, id, category, changeTask }: any) {
+  console.log("22222222");
+
   return (
     <div key={id} className="relative">
-      <OneTask
-        id={id}
-        add={add}
-        Select={Select}
-        description={description}
-        isArchived
-      />
+      <OneTask id={id} add={add} Select={Select} description={description} />
 
       {!category && (
         <button
@@ -19,7 +15,7 @@ function TasksInRegistry({ add, Calendar, Select, description, id, category, cha
             changeTask({
               add,
               description,
-              Calendar,
+              Calendar: undefined,
               Select,
               id,
             })

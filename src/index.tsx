@@ -15,6 +15,7 @@ import { ProSidebarProvider } from "react-pro-sidebar";
 import TasksReminderRegistry from "./pages/TasksRegistry/TaskReminder";
 import Archive from "./pages/TasksRegistry/Archive";
 import TasksRegistry from "./pages/TasksRegistry/Task";
+import ArchivedTasksInRegistry from "./pages/TasksRegistry/Archive/ArchivedTasksInRegistry";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 

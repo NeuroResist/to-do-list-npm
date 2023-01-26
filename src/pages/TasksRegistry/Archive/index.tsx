@@ -15,6 +15,7 @@ function Archive() {
               category={category}
               changeTask={changeTask}
               tasks={tasks}
+              isArchived
               registryType="archive"
             />
           </div>

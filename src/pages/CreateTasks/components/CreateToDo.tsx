@@ -11,7 +11,7 @@ function CreateToDo() {
   return (
     <div className="w-4/5 flex items-center flex-col">
       <div className="grid gap-1 grid-cols-1 xl:grid-cols-3 lg:grid-cols-2 mb-20">
-        <TasksList tasks={tasks} changeTask={changeTask} isChanging />
+        <TasksList tasks={tasks} changeTask={changeTask} />
       </div>
 
       <form className="border-2 border-pink" onSubmit={handleSubmit(onSubmit)}>

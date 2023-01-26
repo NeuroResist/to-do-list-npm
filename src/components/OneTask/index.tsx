@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 
-function OneTask({ add, description, Calendar, Select }: any) {
+function OneTask({ add, description, Calendar, Select, isArchived }: any) {
   return (
     <section className="flex flex-col min-h-[100px] min-w-[250px] bg-green border-4 border-pink box-border p-2">
       <p className="text-center">{add}✏️</p>

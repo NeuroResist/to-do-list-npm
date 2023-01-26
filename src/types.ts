@@ -5,3 +5,5 @@ type Inputs = {
   Calendar: any;
   Select: any;
 };
+
+type registryType = "task" | "taskReminder" | "archive";

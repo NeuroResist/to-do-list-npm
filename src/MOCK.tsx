@@ -43,6 +43,48 @@ export const TASKS: Inputs[] = [
     Calendar: dayjs("06.06.2006").toDate(),
     Select: { value: "Учеба", label: "Учеба" },
   },
+  {
+    id: 7,
+    add: "77777",
+    description: "77777",
+    Calendar: undefined,
+    Select: { value: "Дом", label: "Дом" },
+  },
+  {
+    id: 8,
+    add: "88888",
+    description: "88888",
+    Calendar: undefined,
+    Select: { value: "Дом", label: "Дом" },
+  },
+  {
+    id: 9,
+    add: "99999",
+    description: "99999",
+    Calendar: undefined,
+    Select: { value: "Работа", label: "Работа" },
+  },
+  {
+    id: 10,
+    add: "101010",
+    description: "101010",
+    Calendar: undefined,
+    Select: { value: "Работа", label: "Работа" },
+  },
+  {
+    id: 11,
+    add: "111111",
+    description: "111111",
+    Calendar: undefined,
+    Select: { value: "Учеба", label: "Учеба" },
+  },
+  {
+    id: 12,
+    add: "121212",
+    description: "121212",
+    Calendar: undefined,
+    Select: { value: "Учеба", label: "Учеба" },
+  },
 ];
 
 export const OPTIONS = [

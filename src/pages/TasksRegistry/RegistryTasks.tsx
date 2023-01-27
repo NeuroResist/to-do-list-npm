@@ -1,17 +1,15 @@
-import OneTask from "../../../components/OneTask";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
+import OneTask from "../../components/OneTask";
 
-function ArchivedTasksInRegistry({
+function RegistryTasks({
+  id,
   add,
   Calendar,
   Select,
   description,
-  id,
-  category,
   changeTask,
+  registryType,
 }: any) {
-  console.log("333333333");
-
   return (
     <div key={id} className="relative">
       <OneTask
@@ -20,10 +18,10 @@ function ArchivedTasksInRegistry({
         Calendar={Calendar}
         Select={Select}
         description={description}
-        isArchived
+        isArchived={}
       />
 
-      {!category && (
+      {registryType !== "archive" && (
         <button
           className="bg-green absolute top-1 right-1"
           onClick={() =>
@@ -43,4 +41,4 @@ function ArchivedTasksInRegistry({
   );
 }
 
-export default ArchivedTasksInRegistry;
+export default RegistryTasks;

@@ -1,9 +1,10 @@
-import TasksReminderInRegistry from "../../pages/TasksRegistry/TaskReminder/TasksReminderInRegistry";
-import TasksInRegistry from "../../pages/TasksRegistry/Task/TasksInRegistry";
-import ArchivedTasksInRegistry from "../../pages/TasksRegistry/Archive/ArchivedTasksInRegistry";
+import TasksReminderInRegistry from "../../pages/TasksRegistry/TasksReminderInRegistry";
+import TasksInRegistry from "../../pages/TasksRegistry/TasksInRegistry";
+import ArchivedTasksInRegistry from "../../pages/TasksRegistry/ArchivedTasksInRegistry";
 
 function TasksList({ tasks, category, changeTask, registryType }: any) {
   let isEmpty = true;
+
   return (
     <>
       {tasks.map(({ add, description, Calendar, Select, id, isArchived }: any, i: any) => {
@@ -11,7 +12,6 @@ function TasksList({ tasks, category, changeTask, registryType }: any) {
 
         if (condition) isEmpty = false;
         if (i + 1 === tasks.length && isEmpty) return <p>Нет тасков</p>;
-        console.log(isArchived, registryType);
 
         if (condition && Calendar && !isArchived && registryType === "taskReminder") {
           return (
@@ -21,7 +21,6 @@ function TasksList({ tasks, category, changeTask, registryType }: any) {
               Calendar={Calendar}
               Select={Select}
               description={description}
-              category={category}
               changeTask={changeTask}
             />
           );
@@ -34,7 +33,6 @@ function TasksList({ tasks, category, changeTask, registryType }: any) {
               add={add}
               Select={Select}
               description={description}
-              category={category}
               changeTask={changeTask}
             />
           );
@@ -48,7 +46,6 @@ function TasksList({ tasks, category, changeTask, registryType }: any) {
               Calendar={Calendar}
               Select={Select}
               description={description}
-              category={category}
               changeTask={changeTask}
             />
           );

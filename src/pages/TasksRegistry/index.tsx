@@ -7,6 +7,7 @@ function TasksRegistry({ registryType }: any) {
   return (
     <div className="flex flex-col items-center">
       {categories.map((category: any) => {
+        console.log(tasks);
         // Фильтрация только нужных Заметок/Напоминаний
         const filteredTasks = tasks.filter(({ Calendar, isArchived, Select }: any) => {
           if (

@@ -3,7 +3,7 @@ import clsx from "clsx";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import CreateToDo from "../../pages/CreateTasks/CreateToDo";
 import { useState } from "react";
-import useControlChangeTask from "../../pages/CreateTasks/useControlChangeTask";
+import useControlChangeTask from "../../pages/TasksRegistry/useControlChangeTask";
 
 function OneTask({ add, description, Calendar, Select, registryType, id }: any) {
   const [isHide, setIsHide] = useState(true);

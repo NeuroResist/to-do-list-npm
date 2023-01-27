@@ -11,13 +11,15 @@ function useControl() {
   const { register, handleSubmit, reset, setValue } = useForm<Value>({});
   const [changingCategory, setChangingCategory] = useState({ state: false, id: 0 });
 
-  let id = categories.length;
+  let id = categories.length; // Вынести в helpers getNextId функцию
 
   const onSubmit = (data: IValue) => {
     if (!changingCategory.state) {
       id++;
+      // getNextId
       setCategories([...categories, { id: id, select: { value: data.value, label: data.value } }]);
     } else {
+      // TODO сделать как в тасках
       categories.map((category: any) => {
         if (category.id === changingCategory.id) {
           category.id = changingCategory.id;

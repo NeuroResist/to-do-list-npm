@@ -16,21 +16,23 @@ function useControlChangeTask({ id }: any) {
     setValue("description", description);
   };
 
-  const { tasks, categories }: any = useOutletContext();
+  const { tasks, categories, setTasks }: any = useOutletContext();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
-    tasks.map((task: any) => {
-      if (task.id === id) {
-        task.id = id;
-        task.add = data.add;
-        task.description = data.description;
-        task.Calendar = data.Calendar;
-        task.Select = data.Select;
-      }
-    });
-  };
-  console.log(tasks);
+  const onSubmit: SubmitHandler<Inputs> = (data) =>
+    setTasks((tasks: any) =>
+      tasks.map((task: any) =>
+        task.id === id
+          ? {
+              id: id,
+              add: data.add,
+              description: data.description,
+              Calendar: data.Calendar,
+              Select: data.Select,
+            }
+          : task,
+      ),
+    );
+
   return { tasks, changeTask, handleSubmit, register, control, categories, onSubmit };
 }
 

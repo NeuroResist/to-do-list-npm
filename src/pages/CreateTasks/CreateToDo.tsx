@@ -2,12 +2,9 @@ import { Controller } from "react-hook-form";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import Select from "react-select";
-import useControl from "./useControl";
 import clsx from "clsx";
 
-function CreateToDo({ className }: any) {
-  const { handleSubmit, register, control, categories, onSubmit } = useControl();
-
+function CreateToDo({ handleSubmit, register, control, categories, onSubmit, className }: any) {
   return (
     <form className={clsx("border-2 border-pink", className)} onSubmit={handleSubmit(onSubmit)}>
       <label className="w-full">
@@ -37,6 +34,7 @@ function CreateToDo({ className }: any) {
           <Select
             options={categories.map((category: any) => category.select)}
             onChange={onChange}
+            defaultValue={{ label: "Дом", value: "Дом" }}
             placeholder="Дом"
           />
         )}

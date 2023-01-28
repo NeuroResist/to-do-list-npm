@@ -14,6 +14,21 @@ function Categories({ categories, changeCategory }: ICategories) {
           >
             Изменить
           </button>
+
+          <button
+            className="bg-orange"
+            onClick={() =>
+              changeCategory(
+                categories.map((category: any, i: any) => {
+                  if (category.id === id) {
+                    return categories.splice(i, 1);
+                  }
+                }),
+              )
+            }
+          >
+            Удалить
+          </button>
         </div>
       ))}
     </>

@@ -2,30 +2,33 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { IValue } from "./interface";
 import { useOutletContext } from "react-router-dom";
+import { useGetNextId } from "../../helpers";
 
 type Value = { value: string };
 
 function useControl() {
   const { categories, setCategories }: any = useOutletContext();
+  const { categoriesId, setCategoriesId }: any = useGetNextId({ newId: categories.length });
 
   const { register, handleSubmit, reset, setValue } = useForm<Value>({});
   const [changingCategory, setChangingCategory] = useState({ state: false, id: 0 });
 
-  let id = categories.length; // Вынести в helpers getNextId функцию
-
   const onSubmit = (data: IValue) => {
     if (!changingCategory.state) {
-      id++;
-      // getNextId
-      setCategories([...categories, { id: id, select: { value: data.value, label: data.value } }]);
+      setCategoriesId(categoriesId + 1);
+
+      setCategories([
+        ...categories,
+        { id: categoriesId, select: { value: data.value, label: data.value } },
+      ]);
     } else {
-      // TODO сделать как в тасках
-      categories.map((category: any) => {
-        if (category.id === changingCategory.id) {
-          category.id = changingCategory.id;
-          category.select = { value: data.value, label: data.value };
-        }
-      });
+      setCategories((categories: any) =>
+        categories.map((category: any) =>
+          category.id === changingCategory.id
+            ? { id: changingCategory.id, select: { value: data.value, label: data.value } }
+            : category,
+        ),
+      );
 
       reset();
       setChangingCategory({ state: false, id: 0 });

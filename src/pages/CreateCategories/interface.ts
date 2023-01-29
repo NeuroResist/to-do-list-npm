@@ -9,6 +9,7 @@ export interface ICategory {
 
 export interface ICategories {
   categories: any;
+  deleteCategory: any;
   changeCategory: ({ value, id }: IChangeCategory) => void;
 }
 

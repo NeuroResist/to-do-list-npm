@@ -1,7 +1,8 @@
 import { ICategory } from "./interface";
 import { ICategories } from "./interface";
 
-function Categories({ categories, changeCategory }: ICategories) {
+function Categories({ categories, changeCategory, deleteCategory }: ICategories) {
+  console.log(categories);
   return (
     <>
       {categories.map(({ id, select }: ICategory) => (
@@ -15,18 +16,7 @@ function Categories({ categories, changeCategory }: ICategories) {
             Изменить
           </button>
 
-          <button
-            className="bg-orange"
-            onClick={() =>
-              changeCategory(
-                categories.map((category: any, i: any) => {
-                  if (category.id === id) {
-                    return categories.splice(i, 1);
-                  }
-                }),
-              )
-            }
-          >
+          <button className="bg-orange" onClick={() => deleteCategory({ id })}>
             Удалить
           </button>
         </div>

@@ -40,7 +40,15 @@ function useControl() {
     setValue("value", value);
   };
 
-  return { categories, changeCategory, handleSubmit, register, onSubmit };
+  const deleteCategory = ({ id }: any) => {
+    setCategories((categories: any) =>
+      categories
+        .map((category: any) => (category.id === id ? undefined : category))
+        .filter(Boolean),
+    );
+  };
+
+  return { categories, changeCategory, handleSubmit, register, onSubmit, deleteCategory };
 }
 
 export default useControl;

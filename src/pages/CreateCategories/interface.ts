@@ -1,19 +1,15 @@
-export interface IValue {
-  value: string;
-}
-
 export interface ICategory {
   id: number;
-  select: any;
+  select: { value: string; label: string };
 }
 
 export interface ICategories {
-  categories: any;
-  deleteCategory: any;
+  categories: ICategory[];
+  deleteCategory: ({ id }: { id: number }) => void;
   changeCategory: ({ value, id }: IChangeCategory) => void;
 }
 
-interface IChangeCategory {
+export interface IChangeCategory {
   value: any;
-  id: any;
+  id: number;
 }

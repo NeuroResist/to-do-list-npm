@@ -1,10 +1,11 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { IValue } from "./interface";
 import { useOutletContext } from "react-router-dom";
+
 import { useGetNextId } from "../../helpers";
 
-type Value = { value: string };
+import { Value } from "./types";
+import { IChangeCategory } from "./interface";
 
 function useControl() {
   const { categories, setCategories }: any = useOutletContext();
@@ -13,7 +14,7 @@ function useControl() {
   const { register, handleSubmit, reset, setValue } = useForm<Value>({});
   const [changingCategory, setChangingCategory] = useState({ state: false, id: 0 });
 
-  const onSubmit = (data: IValue) => {
+  const onSubmit = (data: { value: string }) => {
     // Исправить на сообщение об ошибке, повторяющийся элемент
     if (categories.find((category: any) => category.select.value === data.value)) return null;
 
@@ -38,7 +39,7 @@ function useControl() {
     reset();
   };
 
-  const changeCategory = ({ value, id }: any) => {
+  const changeCategory = ({ value, id }: IChangeCategory) => {
     setChangingCategory({ state: true, id: id });
     setValue("value", value);
   };

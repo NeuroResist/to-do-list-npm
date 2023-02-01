@@ -8,6 +8,7 @@ function CreateCategories() {
   return (
     <section className="flex justify-center flex-col items-center mt-10">
       <h2 className="font-semibold text-3xl mb-5">Все категории:</h2>
+
       <Categories
         categories={categories}
         changeCategory={changeCategory}

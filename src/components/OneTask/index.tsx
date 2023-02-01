@@ -1,11 +1,13 @@
 import dayjs from "dayjs";
 import clsx from "clsx";
+import HelpCenterIcon from "@mui/icons-material/HelpCenter";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import CreateToDo from "../../pages/CreateTasks/CreateToDo";
 import { useState } from "react";
 import useControlChangeTask from "../../pages/TasksRegistry/useControlChangeTask";
+import { Link } from "react-router-dom";
 
-function OneTask({ add, description, Calendar, Select, registryType, id }: any) {
+function OneTask({ add, description, Calendar, Select, registryType, id, isView }: any) {
   const [isHide, setIsHide] = useState(true);
 
   const { changeTask, handleSubmit, register, control, categories, onSubmit } =
@@ -20,6 +22,7 @@ function OneTask({ add, description, Calendar, Select, registryType, id }: any) 
     >
       <p className="text-center">{add}✏️</p>
       <p className="min-h-[100px] break-all">{description}🌟</p>
+
       <div className="flex justify-between">
         <p>{Select.value}📋</p>
         <p>
@@ -27,17 +30,24 @@ function OneTask({ add, description, Calendar, Select, registryType, id }: any) 
         </p>
       </div>
 
-      {registryType !== "archive" && (
-        <button
-          className="bg-green absolute top-1 right-1"
-          onClick={() => {
-            changeTask({ add: add, description: description });
-            setIsHide(!isHide);
-          }}
-        >
-          <BorderColorIcon />
-        </button>
-      )}
+      <div className="flex absolute top-1 right-1">
+        {registryType !== "archive" && (
+          <button
+            onClick={() => {
+              changeTask({ add: add, description: description });
+              setIsHide(!isHide);
+            }}
+          >
+            <BorderColorIcon />
+          </button>
+        )}
+
+        {!isView && (
+          <Link to={`../tasks-registry/${id}`}>
+            <HelpCenterIcon />
+          </Link>
+        )}
+      </div>
 
       {registryType !== "archive" && !isHide && (
         <CreateToDo
@@ -46,7 +56,7 @@ function OneTask({ add, description, Calendar, Select, registryType, id }: any) 
           control={control}
           categories={categories}
           onSubmit={onSubmit}
-          className="absolute top-1 right-7 z-10"
+          className="absolute top-1 right-14 z-10"
         />
       )}
     </section>

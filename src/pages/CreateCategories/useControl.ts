@@ -14,6 +14,9 @@ function useControl() {
   const [changingCategory, setChangingCategory] = useState({ state: false, id: 0 });
 
   const onSubmit = (data: IValue) => {
+    // Исправить на сообщение об ошибке, повторяющийся элемент
+    if (categories.find((category: any) => category.select.value === data.value)) return null;
+
     if (!changingCategory.state) {
       setCategoriesId(categoriesId + 1);
 
@@ -30,9 +33,9 @@ function useControl() {
         ),
       );
 
-      reset();
       setChangingCategory({ state: false, id: 0 });
     }
+    reset();
   };
 
   const changeCategory = ({ value, id }: any) => {

@@ -32,7 +32,7 @@ function SideMenu() {
                 className="border-b-2 border-b-green"
                 component={<Link to="/create-tasks" />}
               >
-                Создание/редактирование Заметок
+                Создание Тудушек
               </MenuItem>
               <MenuItem
                 icon={<CategoryIcon />}

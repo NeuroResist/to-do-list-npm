@@ -1,5 +1,6 @@
 import { useOutletContext } from "react-router-dom";
 import TasksList from "../../components/TasksList";
+import React from "react";
 
 function TasksRegistry({ registryType }: any) {
   const { tasks, categories }: any = useOutletContext();
@@ -7,7 +8,6 @@ function TasksRegistry({ registryType }: any) {
   return (
     <div className="flex flex-col items-center">
       {categories.map((category: any) => {
-        console.log(tasks);
         // Фильтрация только нужных Заметок/Напоминаний
         const filteredTasks = tasks.filter(({ Calendar, isArchived, Select }: any) => {
           if (
@@ -27,6 +27,7 @@ function TasksRegistry({ registryType }: any) {
           if (isArchived && category.select.value === Select.value && registryType === "archive")
             return true;
         });
+
         if (!filteredTasks.length) {
           if (registryType === "archive") return <></>;
           return <p className="self-start">Для категории {category.select.value} Нет тасков</p>;
@@ -34,7 +35,7 @@ function TasksRegistry({ registryType }: any) {
 
         return (
           <div className="flex flex-col items-center border-2 border-r-0 border-l-0 border-t-0 border-b-blue w-4/5 min-h-12 flex items-center py-5">
-            <span className="font-bold mb-2">{category.select.value}</span>
+            <span className="font-semibold text-3xl mb-5">{category.select.value}</span>
 
             <div className="grid gap-1 grid-cols-1 xl:grid-cols-3 lg:grid-cols-2 mb-20">
               <TasksList category={category} tasks={filteredTasks} registryType={registryType} />

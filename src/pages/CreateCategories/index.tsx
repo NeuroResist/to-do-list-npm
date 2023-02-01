@@ -6,8 +6,8 @@ function CreateCategories() {
     useControl();
 
   return (
-    <section>
-      <h2>Все категории:</h2>
+    <section className="flex justify-center flex-col items-center mt-10">
+      <h2 className="font-semibold text-3xl mb-5">Все категории:</h2>
       <Categories
         categories={categories}
         changeCategory={changeCategory}
@@ -15,7 +15,10 @@ function CreateCategories() {
       />
 
       <form className="border-2 border-pink" onSubmit={handleSubmit(onSubmit)}>
-        <input type="text" {...register("value", { maxLength: 20, minLength: 3 })} />
+        <input
+          type="text"
+          {...register("value", { maxLength: 20, minLength: 3, required: true })}
+        />
 
         <button className="bg-blue">Добавить</button>
       </form>

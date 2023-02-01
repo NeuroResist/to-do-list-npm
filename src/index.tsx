@@ -13,6 +13,7 @@ import SideMenu from "./pages/SideMenu";
 import CreateCategories from "./pages/CreateCategories";
 import { ProSidebarProvider } from "react-pro-sidebar";
 import TasksRegistry from "./pages/TasksRegistry";
+import ViewTask from "./pages/ViewTask";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
@@ -36,8 +37,7 @@ const router = createBrowserRouter(
         element={<TasksRegistry registryType="taskReminder" />}
       />
       <Route path="tasks-registry/archive" element={<TasksRegistry registryType="archive" />} />
-
-      <Route path="/qwe" element={<p className="text-blue text-3xl font-bold underline">qwe</p>} />
+      <Route path="tasks-registry/:id" element={<ViewTask />} />
     </Route>,
   ),
 );

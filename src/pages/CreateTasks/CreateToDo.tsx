@@ -3,10 +3,16 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import Select from "react-select";
 import clsx from "clsx";
+import React from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function CreateToDo({ handleSubmit, register, control, categories, onSubmit, className }: any) {
+  const notify = () => toast("Создана новая Тудушка!");
+
   return (
-    <form className={clsx("border-2 border-pink", className)} onSubmit={handleSubmit(onSubmit)}>
+    <form className={clsx("border-2 border-black", className)} onSubmit={handleSubmit(onSubmit)}>
+      <ToastContainer />
       <label className="w-full">
         <input
           {...register("add", {
@@ -47,7 +53,7 @@ function CreateToDo({ handleSubmit, register, control, categories, onSubmit, cla
         placeholder="Описание задачи ..."
       />
 
-      <input type="submit" value="Создать" className="border-2 border-b-green" />
+      <input onClick={notify} type="submit" value="Создать" className="border-2" />
     </form>
   );
 }

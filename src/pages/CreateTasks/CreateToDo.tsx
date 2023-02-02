@@ -1,13 +1,24 @@
-import { Controller } from "react-hook-form";
-import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
+import React from "react";
 import Select from "react-select";
 import clsx from "clsx";
-import React from "react";
+import Calendar from "react-calendar";
+import { Controller } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
+
+import "react-calendar/dist/Calendar.css";
 import "react-toastify/dist/ReactToastify.css";
 
-function CreateToDo({ handleSubmit, register, control, categories, onSubmit, className }: any) {
+import { ICreateToDo } from "./interface";
+import { ICategory } from "../../interface";
+
+function CreateToDo({
+  handleSubmit,
+  register,
+  control,
+  categories,
+  onSubmit,
+  className,
+}: ICreateToDo) {
   const notify = () => toast("Создана новая Тудушка!");
 
   return (
@@ -38,7 +49,7 @@ function CreateToDo({ handleSubmit, register, control, categories, onSubmit, cla
         name="Select"
         render={({ field: { onChange } }) => (
           <Select
-            options={categories.map((category: any) => category.select)}
+            options={categories.map((category: ICategory) => category.select)}
             onChange={onChange}
             defaultValue={{ label: "Дом", value: "Дом" }}
             placeholder="Дом"

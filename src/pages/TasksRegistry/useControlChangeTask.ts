@@ -1,8 +1,11 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useOutletContext } from "react-router-dom";
+import { IUseControl } from "../CreateTasks/interface";
+import { IChangeTask } from "./interface";
+import { IOutlet, ITask } from "../../interface";
 
-function useControlChangeTask({ id }: any) {
-  const { register, handleSubmit, control, setValue } = useForm<Inputs>({
+function useControlChangeTask({ id }: { id: number }) {
+  const { register, handleSubmit, control, setValue } = useForm<IUseControl>({
     defaultValues: {
       add: "",
       description: "",
@@ -11,16 +14,16 @@ function useControlChangeTask({ id }: any) {
     },
   });
 
-  const changeTask = ({ add, description }: any) => {
+  const changeTask = ({ add, description }: IChangeTask) => {
     setValue("add", add);
     setValue("description", description);
   };
 
-  const { tasks, categories, setTasks }: any = useOutletContext();
+  const { tasks, categories, setTasks }: IOutlet = useOutletContext();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) =>
-    setTasks((tasks: any) =>
-      tasks.map((task: any) =>
+  const onSubmit: SubmitHandler<IUseControl> = (data) =>
+    setTasks((tasks: ITask[]) =>
+      tasks.map((task: ITask) =>
         task.id === id
           ? {
               id: id,

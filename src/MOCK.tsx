@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
+import { ITask } from "./interface";
 
-export const TASKS: Inputs[] = [
+export const TASKS: ITask[] = [
   {
     id: 1,
     add: "11111",

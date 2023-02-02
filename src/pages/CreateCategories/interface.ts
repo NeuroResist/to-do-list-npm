@@ -1,6 +1,13 @@
-export interface ICategory {
-  id: number;
-  select: { value: string; label: string };
+import { ICategory } from "interface";
+
+export interface IStateCategory {
+  categories: ICategory[];
+  setCategories: (data: any) => void;
+}
+
+export interface INextId {
+  categoriesId: number;
+  setCategoriesId: (data: number) => void;
 }
 
 export interface ICategories {
@@ -10,6 +17,6 @@ export interface ICategories {
 }
 
 export interface IChangeCategory {
-  value: any;
+  value: string;
   id: number;
 }

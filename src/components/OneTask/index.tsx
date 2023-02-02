@@ -1,13 +1,16 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import clsx from "clsx";
 import HelpCenterIcon from "@mui/icons-material/HelpCenter";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
-import CreateToDo from "../../pages/CreateTasks/CreateToDo";
-import { useState } from "react";
-import useControlChangeTask from "../../pages/TasksRegistry/useControlChangeTask";
-import { Link } from "react-router-dom";
 
-function OneTask({ add, description, Calendar, Select, registryType, id, isView }: any) {
+import CreateToDo from "pages/CreateTasks/CreateToDo";
+import useControlChangeTask from "pages/TasksRegistry/useControlChangeTask";
+
+import { IOneTask } from "./interface";
+
+function OneTask({ add, description, Calendar, Select, registryType, id, isView }: IOneTask) {
   const [isHide, setIsHide] = useState(true);
 
   const { changeTask, handleSubmit, register, control, categories, onSubmit } =

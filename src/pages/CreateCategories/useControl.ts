@@ -2,21 +2,22 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 
-import { useGetNextId } from "../../helpers";
+import { useGetNextId } from "helpers";
 
 import { Value } from "./types";
-import { IChangeCategory } from "./interface";
+import { IChangeCategory, INextId, IStateCategory } from "./interface";
+import { ICategory } from "interface";
 
 function useControl() {
-  const { categories, setCategories }: any = useOutletContext();
-  const { categoriesId, setCategoriesId }: any = useGetNextId({ newId: categories.length });
+  const { categories, setCategories }: IStateCategory = useOutletContext();
+  const { categoriesId, setCategoriesId }: INextId = useGetNextId({ newId: categories.length });
+  const [changingCategory, setChangingCategory] = useState({ state: false, id: 0 });
 
   const { register, handleSubmit, reset, setValue } = useForm<Value>({});
-  const [changingCategory, setChangingCategory] = useState({ state: false, id: 0 });
 
   const onSubmit = (data: { value: string }) => {
     // Исправить на сообщение об ошибке, повторяющийся элемент
-    if (categories.find((category: any) => category.select.value === data.value)) return null;
+    if (categories.find((category: ICategory) => category.select.value === data.value)) return null;
 
     if (!changingCategory.state) {
       setCategoriesId(categoriesId + 1);
@@ -26,31 +27,30 @@ function useControl() {
         { id: categoriesId, select: { value: data.value, label: data.value } },
       ]);
     } else {
-      setCategories((categories: any) =>
-        categories.map((category: any) =>
+      setCategories((categories: ICategory[]) =>
+        categories.map((category: ICategory) =>
           category.id === changingCategory.id
             ? { id: changingCategory.id, select: { value: data.value, label: data.value } }
             : category,
         ),
       );
-
       setChangingCategory({ state: false, id: 0 });
     }
     reset();
   };
 
   const changeCategory = ({ value, id }: IChangeCategory) => {
+    console.log(typeof value);
     setChangingCategory({ state: true, id: id });
     setValue("value", value);
   };
 
-  const deleteCategory = ({ id }: any) => {
-    setCategories((categories: any) =>
+  const deleteCategory = ({ id }: { id: number }) =>
+    setCategories((categories: ICategory[]) =>
       categories
-        .map((category: any) => (category.id === id ? undefined : category))
+        .map((category: ICategory) => (category.id === id ? undefined : category))
         .filter(Boolean),
     );
-  };
 
   return { categories, changeCategory, handleSubmit, register, onSubmit, deleteCategory };
 }

@@ -1,8 +1,10 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useOutletContext } from "react-router-dom";
+import { IUseControl } from "./interface";
+import { IOutlet } from "interface";
 
 function useControl() {
-  const { register, handleSubmit, control, reset } = useForm<Inputs>({
+  const { register, handleSubmit, control, reset } = useForm<IUseControl>({
     defaultValues: {
       add: "",
       description: "",
@@ -11,11 +13,11 @@ function useControl() {
     },
   });
 
-  const { tasks, setTasks, categories }: any = useOutletContext();
+  const { tasks, setTasks, categories }: IOutlet = useOutletContext();
 
   let id = tasks.length;
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
+  const onSubmit: SubmitHandler<IUseControl> = (data) => {
     id++;
     setTasks([
       ...tasks,

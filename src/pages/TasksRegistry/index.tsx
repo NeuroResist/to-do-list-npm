@@ -1,15 +1,19 @@
 import { useOutletContext } from "react-router-dom";
-import TasksList from "../../components/TasksList";
-import React from "react";
 
-function TasksRegistry({ registryType }: any) {
-  const { tasks, categories }: any = useOutletContext();
+import TasksList from "components/TasksList";
+
+import { ICategory, IOutlet } from "interface";
+import { IFilteredTasks } from "./interface";
+import { registryTypes } from "types";
+
+function TasksRegistry({ registryType }: { registryType: registryTypes }) {
+  const { tasks, categories }: IOutlet = useOutletContext();
 
   return (
     <div className="flex flex-col items-center">
-      {categories.map((category: any) => {
+      {categories.map((category: ICategory) => {
         // Фильтрация только нужных Заметок/Напоминаний
-        const filteredTasks = tasks.filter(({ Calendar, isArchived, Select }: any) => {
+        const filteredTasks = tasks.filter(({ Calendar, isArchived, Select }: IFilteredTasks) => {
           if (
             Calendar &&
             !isArchived &&
@@ -38,7 +42,7 @@ function TasksRegistry({ registryType }: any) {
             <span className="font-semibold text-3xl mb-5">{category.select.value}</span>
 
             <div className="grid gap-1 grid-cols-1 xl:grid-cols-3 lg:grid-cols-2 mb-20">
-              <TasksList category={category} tasks={filteredTasks} registryType={registryType} />
+              <TasksList tasks={filteredTasks} registryType={registryType} />
             </div>
           </div>
         );

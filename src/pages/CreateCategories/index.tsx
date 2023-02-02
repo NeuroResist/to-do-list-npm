@@ -1,4 +1,5 @@
 import Categories from "./Categories";
+
 import useControl from "./useControl";
 
 function CreateCategories() {

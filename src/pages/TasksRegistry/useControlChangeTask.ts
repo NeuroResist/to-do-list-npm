@@ -1,8 +1,9 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useOutletContext } from "react-router-dom";
-import { IUseControl } from "../CreateTasks/interface";
+
 import { IChangeTask } from "./interface";
-import { IOutlet, ITask } from "../../interface";
+import { IOutlet, ITask } from "interface";
+import { IUseControl } from "../CreateTasks/interface";
 
 function useControlChangeTask({ id }: { id: number }) {
   const { register, handleSubmit, control, setValue } = useForm<IUseControl>({

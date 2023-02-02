@@ -1,12 +1,12 @@
-import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { useOutletContext } from "react-router-dom";
 
 import { useGetNextId } from "helpers";
 
-import { Value } from "./types";
 import { IChangeCategory, INextId, IStateCategory } from "./interface";
 import { ICategory } from "interface";
+import { Value } from "./types";
 
 function useControl() {
   const { categories, setCategories }: IStateCategory = useOutletContext();

@@ -1,5 +1,6 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useOutletContext } from "react-router-dom";
+
 import { IUseControl } from "./interface";
 import { IOutlet } from "interface";
 

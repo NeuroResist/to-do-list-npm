@@ -9,7 +9,7 @@ import "react-calendar/dist/Calendar.css";
 import "react-toastify/dist/ReactToastify.css";
 
 import { ICreateToDo } from "./interface";
-import { ICategory } from "../../interface";
+import { ICategory } from "interface";
 
 function CreateToDo({
   handleSubmit,

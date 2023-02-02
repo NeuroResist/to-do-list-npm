@@ -1,11 +1,12 @@
-import { Outlet } from "react-router";
 import React, { useState } from "react";
-import { OPTIONS, TASKS } from "../../MOCK";
-import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
-import { Link } from "react-router-dom";
+import { Outlet } from "react-router";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import CategoryIcon from "@mui/icons-material/Category";
 import ListAltIcon from "@mui/icons-material/ListAlt";
+import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+import { Link } from "react-router-dom";
+
+import { OPTIONS, TASKS } from "MOCK";
 
 function SideMenu() {
   const [tasks, setTasks] = useState(TASKS);

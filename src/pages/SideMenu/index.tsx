@@ -33,7 +33,7 @@ function SideMenu() {
                 className="border-b-2 border-b-green"
                 component={<Link to="/create-tasks" />}
               >
-                Создание Тудушек
+                Создание Тасков
               </MenuItem>
               <MenuItem
                 icon={<CategoryIcon />}
@@ -67,7 +67,7 @@ function SideMenu() {
         </div>
       </div>
 
-      <div className="w-full">
+      <div className="w-full bg-[#F9F6EE] p-5">
         <Outlet context={{ tasks, setTasks, categories, setCategories }} />
       </div>
     </div>

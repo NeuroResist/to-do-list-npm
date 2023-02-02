@@ -12,7 +12,7 @@ function ViewTask() {
   const currentTask = tasks.filter((task: ITask) => task.id === Number(id))[0];
 
   return (
-    <div>
+    <div className="flex justify-center mt-10">
       <OneTask
         isView
         add={currentTask.add}
@@ -21,6 +21,7 @@ function ViewTask() {
         Select={currentTask.Select}
         registryType={currentTask.registryType}
         id={currentTask.id}
+        className="min-w-[400px]"
       />
     </div>
   );

@@ -9,4 +9,5 @@ export interface ITasksList {
 export interface IOneTask extends ITasksList {
   registryType: any;
   isView?: any;
+  className?: string;
 }

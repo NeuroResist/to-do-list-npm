@@ -28,6 +28,7 @@ function useControl() {
         description: data.description,
         Calendar: data.Calendar,
         Select: data.Select,
+        registryType: data.Calendar ? "taskReminder" : "task",
       },
     ]);
     reset();

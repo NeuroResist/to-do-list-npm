@@ -6,7 +6,7 @@ function TasksList({ tasks, registryType }: { tasks: any; registryType: any }) {
   return (
     <>
       {tasks.map(({ add, description, Calendar, Select, id }: ITasksList) => (
-        <div key={id} className="relative">
+        <div key={id}>
           <OneTask
             id={id}
             add={add}

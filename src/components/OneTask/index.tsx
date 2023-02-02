@@ -10,7 +10,16 @@ import useControlChangeTask from "pages/TasksRegistry/useControlChangeTask";
 
 import { IOneTask } from "./interface";
 
-function OneTask({ add, description, Calendar, Select, registryType, id, isView }: IOneTask) {
+function OneTask({
+  add,
+  description,
+  Calendar,
+  Select,
+  registryType,
+  id,
+  isView,
+  className,
+}: IOneTask) {
   const [isHide, setIsHide] = useState(true);
 
   const { changeTask, handleSubmit, register, control, categories, onSubmit } =
@@ -19,12 +28,13 @@ function OneTask({ add, description, Calendar, Select, registryType, id, isView 
   return (
     <section
       className={clsx(
-        "flex flex-col min-h-[100px] min-w-[250px] bg-green border-4 border-pink box-border p-2",
+        "relative flex flex-col min-h-[100px] min-w-[250px] bg-[#FDE8EE] border-4 border-pink box-border p-2",
+        className,
         { "!bg-gray": registryType === "archive" },
       )}
     >
-      <p className="text-center">{add}✏️</p>
-      <p className="min-h-[100px] break-all">{description}🌟</p>
+      <p className="text-center decoration-2 underline">{add}</p>
+      <p className="min-h-[100px] break-all">{description}</p>
 
       <div className="flex justify-between">
         <p>{Select.value}📋</p>
@@ -34,7 +44,7 @@ function OneTask({ add, description, Calendar, Select, registryType, id, isView 
       </div>
 
       <div className="flex absolute top-1 right-1">
-        {registryType !== "archive" && (
+        {registryType !== "archive" && !isView && (
           <button
             onClick={() => {
               changeTask({ add: add, description: description });

@@ -1,13 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import CreateTasks from "./pages/CreateTasks";
-import "./index.css";
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
 } from "react-router-dom";
+
+import "./index.css";
+
 import NotFound from "./pages/NotFound";
 import SideMenu from "./pages/SideMenu";
 import CreateCategories from "./pages/CreateCategories";

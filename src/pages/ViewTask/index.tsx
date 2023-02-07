@@ -19,7 +19,6 @@ function ViewTask() {
         description={currentTask.description}
         Calendar={currentTask.Calendar}
         Select={currentTask.Select}
-        registryType={currentTask.registryType}
         id={currentTask.id}
         className="min-w-[400px]"
       />

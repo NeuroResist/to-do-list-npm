@@ -5,7 +5,13 @@ import { IUseControl } from "./interface";
 import { IOutlet } from "interface";
 
 function useControl() {
-  const { register, handleSubmit, control, reset } = useForm<IUseControl>({
+  const {
+    register,
+    handleSubmit,
+    control,
+    reset,
+    formState: { isValid },
+  } = useForm<IUseControl>({
     defaultValues: {
       add: "",
       description: "",
@@ -28,13 +34,12 @@ function useControl() {
         description: data.description,
         Calendar: data.Calendar,
         Select: data.Select,
-        registryType: data.Calendar ? "taskReminder" : "task",
       },
     ]);
     reset();
   };
 
-  return { tasks, handleSubmit, register, control, categories, onSubmit };
+  return { tasks, handleSubmit, register, control, categories, onSubmit, isValid };
 }
 
 export default useControl;

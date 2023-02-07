@@ -1,5 +1,3 @@
-import { registryTypes } from "./types";
-
 export interface ITask {
   id: number;
   add: any;
@@ -7,7 +5,6 @@ export interface ITask {
   Calendar: any;
   Select: { value: string; label: string };
   isArchived: boolean;
-  registryType?: registryTypes;
 }
 
 export interface ICategory {

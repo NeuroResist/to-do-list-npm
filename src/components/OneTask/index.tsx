@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import clsx from "clsx";
 import HelpCenterIcon from "@mui/icons-material/HelpCenter";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 
-import CreateToDo from "pages/CreateTasks/CreateToDo";
+import CreateToDo from "components/CreateToDo";
 import useControlChangeTask from "pages/TasksRegistry/useControlChangeTask";
 
 import { IOneTask } from "./interface";
@@ -20,10 +20,11 @@ function OneTask({
   isView,
   className,
 }: IOneTask) {
-  const [isHide, setIsHide] = useState(true);
-
-  const { changeTask, handleSubmit, register, control, categories, onSubmit } =
+  const { changeTask, handleSubmit, register, control, categories, onSubmit, isValid } =
     useControlChangeTask({ id });
+
+  const inputRef = useRef<any>(null);
+  const [isHide, setIsHide] = useState(true);
 
   return (
     <section
@@ -64,12 +65,16 @@ function OneTask({
 
       {registryType !== "archive" && !isHide && (
         <CreateToDo
+          isHide={isHide}
+          setIsHide={setIsHide}
+          isValid={isValid}
           handleSubmit={handleSubmit}
           register={register}
           control={control}
           categories={categories}
           onSubmit={onSubmit}
           className="absolute top-1 right-14 z-10"
+          inputRef={inputRef}
         />
       )}
     </section>

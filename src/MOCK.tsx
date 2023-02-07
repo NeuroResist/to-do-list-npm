@@ -9,7 +9,6 @@ export const TASKS: ITask[] = [
     description: "11111",
     Calendar: dayjs("01.01.2001").toDate(),
     Select: { value: "Дом", label: "Дом" },
-    registryType: "taskReminder",
     isArchived: false,
   },
   {
@@ -18,7 +17,6 @@ export const TASKS: ITask[] = [
     description: "22222",
     Calendar: dayjs("02.02.2002").toDate(),
     Select: { value: "Дом", label: "Дом" },
-    registryType: "taskReminder",
     isArchived: false,
   },
   {
@@ -27,7 +25,6 @@ export const TASKS: ITask[] = [
     description: "33333",
     Calendar: dayjs("03.03.2003").toDate(),
     Select: { value: "Работа", label: "Работа" },
-    registryType: "taskReminder",
     isArchived: false,
   },
   {
@@ -36,7 +33,6 @@ export const TASKS: ITask[] = [
     description: "44444",
     Calendar: dayjs("04.04.2004").toDate(),
     Select: { value: "Работа", label: "Работа" },
-    registryType: "taskReminder",
     isArchived: false,
   },
   {
@@ -45,7 +41,6 @@ export const TASKS: ITask[] = [
     description: "55555",
     Calendar: dayjs("05.05.2005").toDate(),
     Select: { value: "Учеба", label: "Учеба" },
-    registryType: "archive",
     isArchived: true,
   },
   {
@@ -54,7 +49,6 @@ export const TASKS: ITask[] = [
     description: "66666",
     Calendar: dayjs("06.06.2006").toDate(),
     Select: { value: "Учеба", label: "Учеба" },
-    registryType: "archive",
     isArchived: true,
   },
   {
@@ -63,7 +57,6 @@ export const TASKS: ITask[] = [
     description: "77777",
     Calendar: undefined,
     Select: { value: "Дом", label: "Дом" },
-    registryType: "task",
     isArchived: false,
   },
   {
@@ -72,7 +65,6 @@ export const TASKS: ITask[] = [
     description: "88888",
     Calendar: undefined,
     Select: { value: "Дом", label: "Дом" },
-    registryType: "task",
     isArchived: false,
   },
   {
@@ -81,7 +73,6 @@ export const TASKS: ITask[] = [
     description: "99999",
     Calendar: undefined,
     Select: { value: "Работа", label: "Работа" },
-    registryType: "archive",
     isArchived: true,
   },
   {
@@ -90,7 +81,6 @@ export const TASKS: ITask[] = [
     description: "101010",
     Calendar: undefined,
     Select: { value: "Работа", label: "Работа" },
-    registryType: "archive",
     isArchived: true,
   },
   {
@@ -99,7 +89,6 @@ export const TASKS: ITask[] = [
     description: "111111",
     Calendar: undefined,
     Select: { value: "Учеба", label: "Учеба" },
-    registryType: "archive",
     isArchived: true,
   },
   {
@@ -108,7 +97,6 @@ export const TASKS: ITask[] = [
     description: "121212",
     Calendar: undefined,
     Select: { value: "Учеба", label: "Учеба" },
-    registryType: "archive",
     isArchived: true,
   },
 ];

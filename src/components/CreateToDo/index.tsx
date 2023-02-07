@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Select from "react-select";
 import clsx from "clsx";
 import Calendar from "react-calendar";
-import { Controller } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 
 import "react-calendar/dist/Calendar.css";
@@ -17,12 +17,44 @@ function CreateToDo({
   control,
   categories,
   onSubmit,
+  isValid,
   className,
+  setIsHide,
+  isHide,
+  inputRef,
 }: ICreateToDo) {
-  const notify = () => toast("Создана новая Тудушка!");
+  const notify = () =>
+    toast(isHide !== undefined ? "Тудушка была изменена!" : "Создана новая Тудушка!", {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      progress: 0,
+      theme: "light",
+    });
+
+  const checkOutsideClick = (e: any) => {
+    if (isHide !== undefined && inputRef.current && !inputRef.current.contains(e.target))
+      setIsHide && setIsHide(!isHide);
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", checkOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", checkOutsideClick);
+    };
+  }, [isHide]);
 
   return (
-    <form className={clsx("border-2 border-black", className)} onSubmit={handleSubmit(onSubmit)}>
+    <form
+      ref={inputRef}
+      id="modal"
+      className={clsx("border-2 border-black border-2 bg-[#F9F6EE]", className)}
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <ToastContainer />
       <label className="w-full">
         <input
@@ -32,7 +64,7 @@ function CreateToDo({
             required: "Введите название задачи",
           })}
           placeholder="Название задачи"
-          className="w-full"
+          className={clsx("w-full")}
         />
       </label>
 
@@ -64,7 +96,13 @@ function CreateToDo({
         placeholder="Описание задачи ..."
       />
 
-      <input onClick={notify} type="submit" value="Создать" className="border-2" />
+      <input
+        onClick={notify}
+        disabled={!isValid}
+        type="submit"
+        value={isHide ? "Создать" : "Изменить"}
+        className={clsx("border-2 w-full cursor-pointer", { "bg-[#ff0000]/[0.5]": !isValid })}
+      />
     </form>
   );
 }

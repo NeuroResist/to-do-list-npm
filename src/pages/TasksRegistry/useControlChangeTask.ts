@@ -6,7 +6,13 @@ import { IOutlet, ITask } from "interface";
 import { IUseControl } from "../CreateTasks/interface";
 
 function useControlChangeTask({ id }: { id: number }) {
-  const { register, handleSubmit, control, setValue } = useForm<IUseControl>({
+  const {
+    register,
+    handleSubmit,
+    control,
+    setValue,
+    formState: { isValid },
+  } = useForm<IUseControl>({
     defaultValues: {
       add: "",
       description: "",
@@ -37,7 +43,7 @@ function useControlChangeTask({ id }: { id: number }) {
       ),
     );
 
-  return { tasks, changeTask, handleSubmit, register, control, categories, onSubmit };
+  return { tasks, changeTask, handleSubmit, register, control, categories, onSubmit, isValid };
 }
 
 export default useControlChangeTask;

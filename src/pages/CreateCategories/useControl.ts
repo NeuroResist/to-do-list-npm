@@ -2,17 +2,14 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useOutletContext } from "react-router-dom";
 
-import { useGetNextId } from "helpers";
-
-import { IChangeCategory, INextId, IStateCategory } from "./interface";
+import { IChangeCategory, IStateCategory } from "./interface";
 import { ICategory } from "interface";
 import { Value } from "./types";
 
 function useControl() {
-  const { categories, setCategories }: IStateCategory = useOutletContext();
-  const { categoriesId, setCategoriesId }: INextId = useGetNextId({ newId: categories.length });
+  const { categories, setCategories, categoriesId, setCategoriesId }: IStateCategory =
+    useOutletContext();
   const [changingCategory, setChangingCategory] = useState({ state: false, id: 0 });
-
   const { register, handleSubmit, reset, setValue } = useForm<Value>({});
 
   const onSubmit = (data: { value: string }) => {
@@ -40,7 +37,6 @@ function useControl() {
   };
 
   const changeCategory = ({ value, id }: IChangeCategory) => {
-    console.log(typeof value);
     setChangingCategory({ state: true, id: id });
     setValue("value", value);
   };

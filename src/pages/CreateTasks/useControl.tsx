@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useOutletContext } from "react-router-dom";
 
@@ -22,7 +23,7 @@ function useControl() {
 
   const { tasks, setTasks, categories }: IOutlet = useOutletContext();
 
-  let id = tasks.length;
+  let id = useMemo(() => tasks.length, [tasks.length]);
 
   const onSubmit: SubmitHandler<IUseControl> = (data) => {
     id++;

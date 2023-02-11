@@ -3,11 +3,8 @@ import { ICategory } from "interface";
 export interface IStateCategory {
   categories: ICategory[];
   setCategories: (data: any) => void;
-}
-
-export interface INextId {
   categoriesId: number;
-  setCategoriesId: (data: number) => void;
+  setCategoriesId: (id: number) => void;
 }
 
 export interface ICategories {

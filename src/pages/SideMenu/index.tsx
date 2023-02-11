@@ -11,6 +11,7 @@ import { OPTIONS, TASKS } from "MOCK";
 function SideMenu() {
   const [tasks, setTasks] = useState(TASKS);
   const [categories, setCategories] = useState(OPTIONS);
+  const [categoriesId, setCategoriesId] = useState(categories.length + 1);
 
   return (
     <div className="flex min-h-screen">
@@ -68,7 +69,9 @@ function SideMenu() {
       </div>
 
       <div className="w-full bg-[#F9F6EE] p-5">
-        <Outlet context={{ tasks, setTasks, categories, setCategories }} />
+        <Outlet
+          context={{ tasks, setTasks, categories, setCategories, categoriesId, setCategoriesId }}
+        />
       </div>
     </div>
   );

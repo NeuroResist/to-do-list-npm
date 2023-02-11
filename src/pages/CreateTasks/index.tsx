@@ -1,6 +1,6 @@
 import React from "react";
 
-import CreateToDo from "../../components/CreateToDo";
+import CreateToDo from "components/CreateToDo";
 
 import useControl from "./useControl";
 

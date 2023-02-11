@@ -6,13 +6,13 @@ import { ICategories } from "./interface";
 
 function Categories({ categories, changeCategory, deleteCategory }: ICategories) {
   return (
-    <div className="mb-3">
+    <ul className="mb-3">
       {categories.map(({ id, select }: ICategory) => (
-        <section
+        <li
           key={id}
           className="w-[500px] mb-1 h-10 bg-blue mx-10 border-2 rounded flex justify-between items-center px-1"
         >
-          <h3>{select.value}</h3>
+          <p>{select.value}</p>
 
           <div>
             <button
@@ -26,9 +26,9 @@ function Categories({ categories, changeCategory, deleteCategory }: ICategories)
               <ClearIcon />
             </button>
           </div>
-        </section>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
 

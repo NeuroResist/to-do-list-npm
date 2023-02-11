@@ -70,7 +70,7 @@ function SideMenu() {
         </div>
       </div>
 
-      <div className="w-full bg-[#F9F6EE] p-5">
+      <div className="w-full bg-[#F9F6EE] p-5 relative">
         <Outlet
           context={{
             tasks,

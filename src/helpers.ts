@@ -1,28 +1,15 @@
-// import { IFilteredTasks } from "./pages/TasksRegistry/interface";
-// import { IOutlet } from "./interface";
-// import { useOutletContext } from "react-router-dom";
-//
-// const useArt = (category: any, registryType: any) => {
-//   const { tasks }: IOutlet = useOutletContext();
-//
-//   return tasks.filter(({ Calendar, isArchived, Select }: IFilteredTasks) => {
-//     console.log("asdasd");
-//     if (
-//       Calendar &&
-//       !isArchived &&
-//       category.select.value === Select.value &&
-//       registryType === "taskReminder"
-//     )
-//       return true;
-//     if (
-//       !Calendar &&
-//       !isArchived &&
-//       category.select.value === Select.value &&
-//       registryType === "task"
-//     )
-//       return true;
-//     if (isArchived && category.select.value === Select.value && registryType === "archive")
-//       return true;
-//   });
-// };
-// export default useArt;
+// Фильтрация всех Тасков в объект с 3-мя категориями
+export const filteredTask = (tasks: any) => {
+  const filterTasks = (taskType: string) =>
+    tasks.filter(({ isArchived, Calendar }: any) => {
+      if (Calendar && !isArchived && taskType === "taskReminder") return true;
+      if (!Calendar && !isArchived && taskType === "task") return true;
+      if (isArchived && taskType === "archive") return true;
+    });
+
+  return {
+    taskReminder: filterTasks("taskReminder"),
+    task: filterTasks("task"),
+    archive: filterTasks("archive"),
+  };
+};

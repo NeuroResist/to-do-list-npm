@@ -17,4 +17,5 @@ export interface IOutlet {
   setTasks: (data: any) => void;
   categories: ICategory[];
   setCategories: (data: any) => void;
+  filterTasks: any;
 }

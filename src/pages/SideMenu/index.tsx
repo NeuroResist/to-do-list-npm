@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { Outlet } from "react-router";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import CategoryIcon from "@mui/icons-material/Category";
@@ -7,11 +7,13 @@ import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
 
 import { OPTIONS, TASKS } from "MOCK";
+import { filteredTask } from "helpers";
 
 function SideMenu() {
   const [tasks, setTasks] = useState(TASKS);
   const [categories, setCategories] = useState(OPTIONS);
   const [categoriesId, setCategoriesId] = useState(categories.length + 1);
+  const filterTasks = useMemo(() => filteredTask(tasks), [tasks.length]);
 
   return (
     <div className="flex min-h-screen">
@@ -70,7 +72,15 @@ function SideMenu() {
 
       <div className="w-full bg-[#F9F6EE] p-5">
         <Outlet
-          context={{ tasks, setTasks, categories, setCategories, categoriesId, setCategoriesId }}
+          context={{
+            tasks,
+            setTasks,
+            categories,
+            setCategories,
+            categoriesId,
+            setCategoriesId,
+            filterTasks,
+          }}
         />
       </div>
     </div>

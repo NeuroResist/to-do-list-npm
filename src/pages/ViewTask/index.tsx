@@ -21,7 +21,7 @@ function ViewTask() {
   return (
     <div className="flex justify-center mt-10">
       <button
-        className="absolute top-0 left-0 w-[100px] h-[60px] bg-[#ff0000]/[0.5] font-bold"
+        className="absolute top-0 left-0 w-[100px] h-[60px] bg-red font-bold"
         onClick={() => navigate(-1)}
       >
         Назад

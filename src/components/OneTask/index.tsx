@@ -4,11 +4,13 @@ import dayjs from "dayjs";
 import clsx from "clsx";
 import HelpCenterIcon from "@mui/icons-material/HelpCenter";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
+import ArchiveIcon from "@mui/icons-material/Archive";
 
 import CreateToDo from "components/CreateToDo";
 import useControlChangeTask from "pages/TasksRegistry/useControlChangeTask";
 
 import { IOneTask } from "./interface";
+import { toArchive } from "../../helpers";
 
 function OneTask({
   add,
@@ -20,11 +22,11 @@ function OneTask({
   isView,
   className,
 }: IOneTask) {
-  const { changeTask, handleSubmit, register, control, categories, onSubmit, isValid } =
+  const { changeTask, handleSubmit, setTasks, register, control, categories, onSubmit, isValid } =
     useControlChangeTask({ id });
 
-  const inputRef = useRef<any>(null);
-  const [isHide, setIsHide] = useState(true);
+  const refModal = useRef<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <section
@@ -43,17 +45,21 @@ function OneTask({
           <time>{Calendar && dayjs(Calendar).format("DD.MM.YYYY 🕗")}</time>
         </p>
       </div>
-
       <div className="flex absolute top-1 right-1">
         {registryType !== "archive" && !isView && (
-          <button
-            onClick={() => {
-              changeTask({ add: add, description: description });
-              setIsHide(!isHide);
-            }}
-          >
-            <BorderColorIcon />
-          </button>
+          <>
+            <BorderColorIcon
+              className="cursor-pointer"
+              onClick={() => {
+                changeTask({ add: add, description: description });
+                setIsModalOpen(!isModalOpen);
+              }}
+            />
+            <ArchiveIcon
+              onClick={() => toArchive({ id, setTasks })}
+              className="absolute right-12 cursor-pointer"
+            />
+          </>
         )}
 
         {!isView && (
@@ -63,10 +69,10 @@ function OneTask({
         )}
       </div>
 
-      {registryType !== "archive" && !isHide && (
+      {registryType !== "archive" && isModalOpen && (
         <CreateToDo
-          isHide={isHide}
-          setIsHide={setIsHide}
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
           isValid={isValid}
           handleSubmit={handleSubmit}
           register={register}
@@ -74,7 +80,7 @@ function OneTask({
           categories={categories}
           onSubmit={onSubmit}
           className="absolute top-1 right-14 z-10"
-          inputRef={inputRef}
+          refModal={refModal}
         />
       )}
     </section>

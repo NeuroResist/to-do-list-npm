@@ -3,4 +3,5 @@ export interface IUseControl {
   description: string;
   Calendar: Date | undefined;
   Select: { value: "Дом"; label: "Дом" };
+  isArchived: boolean;
 }

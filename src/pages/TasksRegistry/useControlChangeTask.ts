@@ -38,12 +38,23 @@ function useControlChangeTask({ id }: { id: number }) {
               description: data.description,
               Calendar: data.Calendar,
               Select: data.Select,
+              isArchived: data.isArchived,
             }
           : task,
       ),
     );
 
-  return { tasks, changeTask, handleSubmit, register, control, categories, onSubmit, isValid };
+  return {
+    tasks,
+    changeTask,
+    setTasks,
+    handleSubmit,
+    register,
+    control,
+    categories,
+    onSubmit,
+    isValid,
+  };
 }
 
 export default useControlChangeTask;

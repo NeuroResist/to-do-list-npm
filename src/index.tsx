@@ -8,7 +8,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import "./index.css";
+import "./assets/styles/index.css";
 
 import NotFound from "./pages/NotFound";
 import SideMenu from "./pages/SideMenu";

@@ -20,7 +20,12 @@ function TasksRegistry({ registryType }: { registryType: registryTypes }) {
         if (!filteredTasks1.length) {
           return (
             <li className="self-start mt-5 self-center text-3xl border-2 border-r-0 border-l-0 border-t-0 border-b-blue">
-              Для категории <span className="text-pink">{category.select.value}</span> нет тасков
+              Для категории <span className="text-pink">{category.select.value}</span> нет
+              {registryType === "task"
+                ? " Заметок"
+                : registryType === "taskReminder"
+                ? " Напоминаний"
+                : " Тасков"}
             </li>
           );
         }

@@ -8,7 +8,7 @@ export interface ICreateToDo {
   onSubmit: any;
   className?: string;
   isValid?: boolean;
-  setIsHide?: (isHide: boolean) => void;
-  isHide?: boolean;
-  inputRef?: any;
+  setIsModalOpen?: (isHide: boolean) => void;
+  isModalOpen?: boolean;
+  refModal?: any;
 }

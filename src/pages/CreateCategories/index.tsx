@@ -16,13 +16,14 @@ function CreateCategories() {
         deleteCategory={deleteCategory}
       />
 
-      <form className="border-2 border-pink" onSubmit={handleSubmit(onSubmit)}>
+      <form className="min-w-[300px]" onSubmit={handleSubmit(onSubmit)}>
         <input
+          className="h-10 rounded-l-lg border-2 border-blue focus:outline-none pl-2"
           type="text"
           {...register("value", { maxLength: 20, minLength: 3, required: true })}
         />
 
-        <button className="bg-blue">Добавить</button>
+        <button className="bg-blue w-[100px] rounded-r-lg h-10">Добавить</button>
       </form>
     </section>
   );

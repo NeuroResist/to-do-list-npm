@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import clsx from "clsx";
@@ -9,10 +9,13 @@ import ArchiveIcon from "@mui/icons-material/Archive";
 import CreateToDo from "components/CreateToDo";
 import useControlChangeTask from "pages/TasksRegistry/useControlChangeTask";
 
+import { toArchive, toastTasks } from "helpers";
+
 import { IOneTask } from "./interface";
-import { toArchive } from "../../helpers";
+import { ToastContainer } from "react-toastify";
 
 function OneTask({
+  isArchived,
   add,
   description,
   Calendar,
@@ -47,20 +50,23 @@ function OneTask({
       </div>
       <div className="flex absolute top-1 right-1">
         {registryType !== "archive" && !isView && (
-          <>
-            <BorderColorIcon
-              className="cursor-pointer"
-              onClick={() => {
-                changeTask({ add: add, description: description });
-                setIsModalOpen(!isModalOpen);
-              }}
-            />
-            <ArchiveIcon
-              onClick={() => toArchive({ id, setTasks })}
-              className="absolute right-12 cursor-pointer"
-            />
-          </>
+          <BorderColorIcon
+            className="cursor-pointer"
+            onClick={() => {
+              changeTask({ add: add, description: description });
+              setIsModalOpen(!isModalOpen);
+            }}
+          />
         )}
+
+        <ArchiveIcon
+          onClick={() => {
+            toastTasks({ toastType: "archive", data: registryType });
+            toArchive({ id, setTasks, isArchived });
+          }}
+          className="absolute right-12 cursor-pointer"
+        />
+        <ToastContainer />
 
         {!isView && (
           <Link to={`../tasks-registry/${id}`}>

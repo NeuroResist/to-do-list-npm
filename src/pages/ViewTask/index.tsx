@@ -28,6 +28,7 @@ function ViewTask() {
       </button>
 
       <OneTask
+        isArchived={currentTask.isArchived}
         isView
         add={currentTask.add}
         description={currentTask.description}

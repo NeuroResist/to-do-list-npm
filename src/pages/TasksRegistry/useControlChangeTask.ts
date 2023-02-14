@@ -20,7 +20,6 @@ function useControlChangeTask({ id }: { id: number }) {
       Select: { value: "Дом", label: "Дом" },
     },
   });
-
   const changeTask = ({ add, description }: IChangeTask) => {
     setValue("add", add);
     setValue("description", description);

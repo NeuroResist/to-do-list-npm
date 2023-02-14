@@ -56,7 +56,7 @@ function SideMenu() {
           <div className="absolute flex left-0 items-center justify-center top-0 h-full w-full bg-gray-dark/[0.5] z-10">
             <section
               ref={refModal}
-              className="flex-col relative flex bg-light-blue h-[50%] w-[20%] rounded-2xl p-2"
+              className="flex-col relative flex bg-light-blue h-[50%] w-[40%] rounded-2xl p-2"
             >
               <CloseIcon
                 onClick={() => setIsModalOpen(!isModalOpen)}
@@ -74,10 +74,13 @@ function SideMenu() {
                   <OrangeText>Напоминалка</OrangeText> - таска со временем
                 </li>
               </ul>
-              <p>
+              <p className="mb-3">
                 Для создания и изменения задачи обязательны поля
                 <OrangeText> Название задачи</OrangeText>,<OrangeText> Описание задачи</OrangeText>{" "}
                 и<OrangeText> Категория</OrangeText>.
+              </p>
+              <p>
+                Категории могут иметь только <OrangeText> разные названия</OrangeText>.
               </p>
             </section>
           </div>

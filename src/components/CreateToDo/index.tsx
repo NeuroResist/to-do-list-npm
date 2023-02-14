@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Select from "react-select";
 import clsx from "clsx";
 import Calendar from "react-calendar";
 import { Controller } from "react-hook-form";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 import "react-calendar/dist/Calendar.css";
 import "react-toastify/dist/ReactToastify.css";
 
-import { checkOutsideClick } from "helpers";
+import { checkOutsideClick, toastTasks } from "helpers";
 
 import { ICreateToDo } from "./interface";
 import { ICategory } from "interface";
@@ -25,17 +25,9 @@ function CreateToDo({
   isModalOpen,
   refModal,
 }: ICreateToDo) {
-  const notify = () =>
-    toast(isModalOpen !== undefined ? "Тудушка была изменена!" : "Создана новая Тудушка!", {
-      position: "top-right",
-      autoClose: 1000,
-      hideProgressBar: true,
-      closeOnClick: false,
-      pauseOnHover: false,
-      draggable: false,
-      progress: 0,
-      theme: "light",
-    });
+  const notify = () => toastTasks({ toastType: "changeCreate", data: isModalOpen });
+
+  const ref = useRef<any>(null);
 
   const checkOutsideClickModal = (e: any) =>
     checkOutsideClick({ e, refModal, setIsModalOpen, isModalOpen });
@@ -53,9 +45,13 @@ function CreateToDo({
       ref={refModal}
       id="modal"
       className={clsx("border-2 border-black border-2 bg-background", className)}
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit((data: any) => {
+        onSubmit(data);
+        ref?.current?.clearValue();
+      })}
     >
       <ToastContainer />
+
       <label className="w-full">
         <input
           {...register("add", {
@@ -85,6 +81,7 @@ function CreateToDo({
         name="Select"
         render={({ field: { onChange } }) => (
           <Select
+            ref={ref}
             options={categories.map((category: ICategory) => category.select)}
             onChange={onChange}
             defaultValue={{ label: "Дом", value: "Дом" }}

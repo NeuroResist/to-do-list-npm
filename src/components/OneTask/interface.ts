@@ -4,6 +4,7 @@ export interface ITasksList {
   Calendar: any;
   Select: any;
   id: any;
+  isArchived?: boolean;
 }
 
 export interface IOneTask extends ITasksList {

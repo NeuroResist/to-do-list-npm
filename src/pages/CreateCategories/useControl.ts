@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useOutletContext } from "react-router-dom";
 
+import { toastTasks } from "helpers";
+
 import { IChangeCategory, IStateCategory } from "./interface";
 import { ICategory } from "interface";
 import { Value } from "./types";
@@ -18,12 +20,14 @@ function useControl() {
 
     if (!changingCategory.state) {
       setCategoriesId(categoriesId + 1);
+      toastTasks({ toastType: "category", data: "create" });
 
       setCategories([
         ...categories,
         { id: categoriesId, select: { value: data.value, label: data.value } },
       ]);
     } else {
+      toastTasks({ toastType: "category", data: "change" });
       setCategories((categories: ICategory[]) =>
         categories.map((category: ICategory) =>
           category.id === changingCategory.id

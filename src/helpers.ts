@@ -2,19 +2,25 @@
 import { ITask } from "./interface";
 import { toast } from "react-toastify";
 
-export const filteredTask = (tasks: any) => {
+export const filteredTask = (tasks: any, categories: any) => {
   const filterTasks = (taskType: string) =>
-    tasks.filter(({ isArchived, Calendar }: any) => {
+    tasks.filter(({ isArchived, Calendar, Select }: any) => {
+      console.log();
       if (Calendar && !isArchived && taskType === "taskReminder") return true;
       if (!Calendar && !isArchived && taskType === "task") return true;
       if (isArchived && taskType === "archive") return true;
-      if (taskType === "withoutCategory") return true;
+      if (
+        taskType === "withoutCategory" &&
+        categories.filter((category: any) => category.select.value === Select.value).length === 0
+      )
+        return true;
     });
 
   return {
     taskReminder: filterTasks("taskReminder"),
     task: filterTasks("task"),
     archive: filterTasks("archive"),
+    withoutCategory: filterTasks("withoutCategory"),
   };
 };
 
@@ -26,7 +32,6 @@ export const checkOutsideClick = ({ e, refModal, setIsModalOpen, isModalOpen }: 
 
 // Тост и Текст к ней
 export const toastTasks = ({ toastType, data }: any) => {
-  console.log(toastType, data);
   let text = "";
 
   if (toastType === "archive") {

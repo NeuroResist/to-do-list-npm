@@ -17,10 +17,13 @@ function SideMenu() {
   const [tasks, setTasks] = useState(TASKS);
   const [categories, setCategories] = useState(OPTIONS);
   const [categoriesId, setCategoriesId] = useState(categories.length + 1);
-  const filterTasks = useMemo(() => filteredTask(tasks), [tasks.length]);
+  const filterTasks = useMemo(
+    () => filteredTask(tasks, categories),
+    [tasks.length, categories.length],
+  );
   const [isModalOpen, setIsModalOpen] = useState(false);
   const refModal = useRef<any>(null);
-
+  console.log(filterTasks);
   const checkOutsideClickModal = (e: any) =>
     checkOutsideClick({ e, refModal, setIsModalOpen, isModalOpen });
 
@@ -121,6 +124,12 @@ function SideMenu() {
                   component={<Link to="/tasks-registry/archive" />}
                 >
                   Архив
+                </MenuItem>
+                <MenuItem
+                  className="bg-menu-item"
+                  component={<Link to="/tasks-registry/without-category" />}
+                >
+                  Без категории
                 </MenuItem>
               </SubMenu>
             </Menu>

@@ -7,7 +7,7 @@ import BorderColorIcon from "@mui/icons-material/BorderColor";
 import ArchiveIcon from "@mui/icons-material/Archive";
 
 import CreateToDo from "components/CreateToDo";
-import useControlChangeTask from "pages/TasksRegistry/useControlChangeTask";
+import useControl from "pages/TasksRegistry/useControl";
 
 import { toArchive, toastTasks } from "helpers";
 
@@ -26,7 +26,7 @@ function OneTask({
   className,
 }: IOneTask) {
   const { changeTask, handleSubmit, setTasks, register, control, categories, onSubmit, isValid } =
-    useControlChangeTask({ id });
+    useControl({ id });
 
   const refModal = useRef<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -43,7 +43,7 @@ function OneTask({
       <p className="min-h-[100px] break-all">{description}</p>
 
       <div className="flex justify-between">
-        <p>{Select.value}📋</p>
+        <p>{Select.value + "📋"}</p>
         <p>
           <time>{Calendar && dayjs(Calendar).format("DD.MM.YYYY 🕗")}</time>
         </p>

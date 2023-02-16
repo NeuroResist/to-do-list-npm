@@ -1,10 +1,20 @@
+import { ICategory, ITask } from "interface";
+import { registryTypes } from "../../types";
+
 export interface IChangeTask {
   add: any;
   description: string;
 }
 
 export interface IFilteredTasks {
-  Calendar: any;
-  Select: { value: string; label: string };
-  isArchived: boolean;
+  taskReminder: ITask[];
+  task: ITask[];
+  archive: ITask[];
+  withoutCategory: ITask[];
+}
+
+export interface ITasksWithCategory {
+  registryType: registryTypes;
+  filterTasks: IFilteredTasks;
+  categories: ICategory[];
 }

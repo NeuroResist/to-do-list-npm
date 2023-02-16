@@ -1,11 +1,12 @@
-// Фильтрация всех Тасков в объект с 3-мя категориями
-import { ITask } from "./interface";
 import { toast } from "react-toastify";
 
-export const filteredTask = (tasks: any, categories: any) => {
+import { ITask } from "./interface";
+import { IFilteredTasks } from "./pages/TasksRegistry/interface";
+
+// Фильтрация Тасков по 4 категориям для отрисовки в реестре
+export const filteredTask = (tasks: any, categories: any): IFilteredTasks => {
   const filterTasks = (taskType: string) =>
     tasks.filter(({ isArchived, Calendar, Select }: any) => {
-      console.log();
       if (Calendar && !isArchived && taskType === "taskReminder") return true;
       if (!Calendar && !isArchived && taskType === "task") return true;
       if (isArchived && taskType === "archive") return true;
@@ -85,3 +86,7 @@ export const toArchive = ({ id, setTasks, isArchived }: any) => {
     ),
   );
 };
+
+// Фильтрация Категорий по алфавиту
+export const filteredCategory = (categories: any) =>
+  categories.sort((a: any, b: any) => a.select.value.localeCompare(b.select.value));

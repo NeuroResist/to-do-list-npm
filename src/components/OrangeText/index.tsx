@@ -1,5 +1,7 @@
-function OrangeText({ children }: any) {
-  return <span className="font-bold text-orange">{children}</span>;
+import clsx from "clsx";
+
+function OrangeText({ children, className }: any) {
+  return <span className={clsx("font-bold text-orange", className)}>{children}</span>;
 }
 
 export default OrangeText;

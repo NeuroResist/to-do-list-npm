@@ -10,20 +10,21 @@ import { Link } from "react-router-dom";
 
 import OrangeText from "components/OrangeText";
 
+import { checkOutsideClick, filteredCategory, filteredTask } from "helpers";
+
 import { OPTIONS, TASKS } from "MOCK";
-import { checkOutsideClick, filteredTask } from "helpers";
 
 function SideMenu() {
   const [tasks, setTasks] = useState(TASKS);
-  const [categories, setCategories] = useState(OPTIONS);
+  const [categories, setCategories] = useState(filteredCategory(OPTIONS));
   const [categoriesId, setCategoriesId] = useState(categories.length + 1);
-  const filterTasks = useMemo(
-    () => filteredTask(tasks, categories),
-    [tasks.length, categories.length],
-  );
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const filteredCategories = useMemo(() => filteredCategory(categories), [categories]);
+  const filterTasks = useMemo(() => filteredTask(tasks, categories), [tasks, categories]);
+
   const refModal = useRef<any>(null);
-  console.log(filterTasks);
+
   const checkOutsideClickModal = (e: any) =>
     checkOutsideClick({ e, refModal, setIsModalOpen, isModalOpen });
 
@@ -142,7 +143,7 @@ function SideMenu() {
           context={{
             tasks,
             setTasks,
-            categories,
+            categories: filteredCategories,
             setCategories,
             categoriesId,
             setCategoriesId,

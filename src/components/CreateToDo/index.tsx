@@ -57,9 +57,9 @@ function CreateToDo({
           {...register("add", {
             maxLength: 20,
             minLength: 3,
-            required: "Введите название задачи",
+            required: "Введите название таски",
           })}
-          placeholder="Название задачи"
+          placeholder="Название таски"
           className="w-full h-10 placeholder:text-red placeholder:font-semibold pl-2 border-b-2"
         />
       </label>
@@ -94,15 +94,18 @@ function CreateToDo({
         {...register("description", { maxLength: 200, required: "Введите название задачи" })}
         className="border-y-2 w-full pl-1 placeholder:text-red placeholder:font-semibold"
         name="description"
-        placeholder="Описание задачи ..."
+        placeholder="Описание таски ..."
       />
 
       <input
         onClick={notify}
         disabled={!isValid}
         type="submit"
-        value={isModalOpen ? "Создать" : "Изменить"}
-        className={clsx("border-t-2 w-full cursor-pointer", { "bg-red": !isValid })}
+        value={isModalOpen ? "Изменить" : "Создать"}
+        className={clsx("border-t-2 w-full cursor-pointer", {
+          "bg-red": !isValid,
+          "bg-green": isValid,
+        })}
       />
     </form>
   );

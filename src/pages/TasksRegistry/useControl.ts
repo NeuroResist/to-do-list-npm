@@ -5,7 +5,7 @@ import { IChangeTask } from "./interface";
 import { IOutlet, ITask } from "interface";
 import { IUseControl } from "../CreateTasks/interface";
 
-function useControlChangeTask({ id }: { id: number }) {
+function useControl({ id }: { id: number }) {
   const {
     register,
     handleSubmit,
@@ -56,4 +56,4 @@ function useControlChangeTask({ id }: { id: number }) {
   };
 }
 
-export default useControlChangeTask;
+export default useControl;

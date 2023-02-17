@@ -95,14 +95,14 @@ function SideMenu() {
             <Menu>
               <MenuItem
                 icon={<AssignmentTurnedInIcon />}
-                className="border-b-2 border-b-green"
+                className="border-b-2 border-b-black"
                 component={<Link to="/create-tasks" />}
               >
                 Создание Тасков
               </MenuItem>
               <MenuItem
                 icon={<CategoryIcon />}
-                className="border-b-2 border-b-green"
+                className="border-b-2 border-b-black"
                 component={<Link to="/create-categories" />}
               >
                 Создание/редактор Категорий

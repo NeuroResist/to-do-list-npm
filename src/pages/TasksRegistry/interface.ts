@@ -1,8 +1,8 @@
 import { ICategory, ITask } from "interface";
-import { registryTypes } from "../../types";
+import { registryTypes } from "types";
 
 export interface IChangeTask {
-  add: any;
+  add: string;
   description: string;
 }
 
@@ -13,8 +13,11 @@ export interface IFilteredTasks {
   withoutCategory: ITask[];
 }
 
-export interface ITasksWithCategory {
-  registryType: registryTypes;
+export interface ITasksWithoutCategory {
   filterTasks: IFilteredTasks;
+  registryType: registryTypes;
+}
+
+export interface ITasksWithCategory extends ITasksWithoutCategory {
   categories: ICategory[];
 }

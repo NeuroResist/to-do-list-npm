@@ -2,8 +2,8 @@ import { useMemo } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useOutletContext } from "react-router-dom";
 
-import { IUseControl } from "./interface";
 import { IOutlet } from "interface";
+import { IOnSubmit } from "../TasksRegistry/types";
 
 function useControl() {
   const {
@@ -12,7 +12,7 @@ function useControl() {
     control,
     reset,
     formState: { isValid },
-  } = useForm<IUseControl>({
+  } = useForm<IOnSubmit>({
     defaultValues: {
       add: "",
       description: "",
@@ -25,7 +25,7 @@ function useControl() {
 
   let id = useMemo(() => tasks.length, [tasks.length]);
 
-  const onSubmit: SubmitHandler<IUseControl> = (data) => {
+  const onSubmit: SubmitHandler<IOnSubmit> = (data) => {
     id++;
     setTasks([
       ...tasks,
@@ -35,6 +35,7 @@ function useControl() {
         description: data.description,
         Calendar: data.Calendar,
         Select: data.Select,
+        isArchived: false,
       },
     ]);
     reset();

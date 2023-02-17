@@ -2,7 +2,9 @@ import { ICategory } from "interface";
 
 export interface IStateCategory {
   categories: ICategory[];
-  setCategories: (data: any) => void;
+  setCategories: (
+    categories: ((categories: ICategory[]) => (ICategory | undefined)[]) | ICategory[],
+  ) => void;
   categoriesId: number;
   setCategoriesId: (id: number) => void;
 }

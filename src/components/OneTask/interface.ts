@@ -1,14 +1,8 @@
-export interface ITasksList {
-  add: number;
-  description: any;
-  Calendar: any;
-  Select: any;
-  id: any;
-  isArchived?: boolean;
-}
+import { ITask } from "interface";
+import { registryTypes } from "types";
 
-export interface IOneTask extends ITasksList {
-  registryType?: any;
-  isView?: any;
+export interface IOneTask extends ITask {
+  registryType?: registryTypes;
+  isView?: boolean;
   className?: string;
 }

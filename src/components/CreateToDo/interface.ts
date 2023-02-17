@@ -1,14 +1,18 @@
+import { FormEventHandler, MutableRefObject } from "react";
+import { Control, SubmitHandler } from "react-hook-form";
+
 import { ICategory } from "interface";
+import { IOnSubmit } from "pages/TasksRegistry/types";
 
 export interface ICreateToDo {
-  handleSubmit: any;
+  handleSubmit: (data: any) => FormEventHandler<HTMLFormElement>;
   register: any;
-  control: any;
+  control: Control<IOnSubmit>;
   categories: ICategory[];
-  onSubmit: any;
+  onSubmit: (data: IOnSubmit) => SubmitHandler<IOnSubmit>;
   className?: string;
   isValid?: boolean;
   setIsModalOpen?: (isHide: boolean) => void;
   isModalOpen?: boolean;
-  refModal?: any;
+  refModal?: MutableRefObject<any>;
 }

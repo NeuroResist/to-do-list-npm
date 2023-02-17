@@ -1,18 +1,19 @@
 import { toast } from "react-toastify";
 
-import { ITask } from "./interface";
+import { ICategory, ICheckOutsideClick, ITask, IToArchive, IToastTasks } from "./interface";
 import { IFilteredTasks } from "./pages/TasksRegistry/interface";
 
 // Фильтрация Тасков по 4 категориям для отрисовки в реестре
-export const filteredTask = (tasks: any, categories: any): IFilteredTasks => {
+export const filteredTask = (tasks: ITask[], categories: ICategory[]): IFilteredTasks => {
   const filterTasks = (taskType: string) =>
-    tasks.filter(({ isArchived, Calendar, Select }: any) => {
+    tasks.filter(({ isArchived, Calendar, Select }: ITask) => {
       if (Calendar && !isArchived && taskType === "taskReminder") return true;
       if (!Calendar && !isArchived && taskType === "task") return true;
       if (isArchived && taskType === "archive") return true;
       if (
         taskType === "withoutCategory" &&
-        categories.filter((category: any) => category.select.value === Select.value).length === 0
+        categories.filter((category: ICategory) => category.select.value === Select.value)
+          .length === 0
       )
         return true;
     });
@@ -26,13 +27,18 @@ export const filteredTask = (tasks: any, categories: any): IFilteredTasks => {
 };
 
 // Определение, был ли клик снаружи от элемента
-export const checkOutsideClick = ({ e, refModal, setIsModalOpen, isModalOpen }: any) => {
+export const checkOutsideClick = ({
+  e,
+  refModal,
+  setIsModalOpen,
+  isModalOpen,
+}: ICheckOutsideClick) => {
   if (refModal?.current && !refModal.current.contains(e.target))
     setIsModalOpen && setIsModalOpen(!isModalOpen);
 };
 
 // Тост и Текст к ней
-export const toastTasks = ({ toastType, data }: any) => {
+export const toastTasks = ({ toastType, data }: IToastTasks) => {
   let text = "";
 
   if (toastType === "archive") {
@@ -70,7 +76,7 @@ export const toastTasks = ({ toastType, data }: any) => {
 };
 
 // Занесение и вынесение Таски из архива
-export const toArchive = ({ id, setTasks, isArchived }: any) => {
+export const toArchive = ({ id, setTasks, isArchived }: IToArchive) => {
   setTasks((tasks: ITask[]) =>
     tasks.map((task: ITask) =>
       task.id === id
@@ -88,5 +94,7 @@ export const toArchive = ({ id, setTasks, isArchived }: any) => {
 };
 
 // Фильтрация Категорий по алфавиту
-export const filteredCategory = (categories: any) =>
-  categories.sort((a: any, b: any) => a.select.value.localeCompare(b.select.value));
+export const filteredCategory = (categories: ICategory[]) =>
+  categories.sort((categoryPrev: ICategory, categoryNext: ICategory) =>
+    categoryPrev.select.value.localeCompare(categoryNext.select.value),
+  );

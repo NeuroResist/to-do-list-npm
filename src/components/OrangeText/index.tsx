@@ -1,6 +1,8 @@
 import clsx from "clsx";
 
-function OrangeText({ children, className }: any) {
+import { IOrangeText } from "./interface";
+
+function OrangeText({ children, className }: IOrangeText) {
   return <span className={clsx("font-bold text-orange", className)}>{children}</span>;
 }
 

@@ -1,8 +1,13 @@
+import { MutableRefObject } from "react";
+
+import { IFilteredTasks } from "./pages/TasksRegistry/interface";
+import { registryTypes } from "./types";
+
 export interface ITask {
   id: number;
-  add: any;
+  add: string;
   description: string;
-  Calendar: any;
+  Calendar: Date | undefined;
   Select: { value: string; label: string };
   isArchived: boolean;
 }
@@ -16,6 +21,24 @@ export interface IOutlet {
   tasks: ITask[];
   setTasks: (data: any) => void;
   categories: ICategory[];
-  setCategories: (data: any) => void;
-  filterTasks: any;
+  setCategories: (data: ICategory) => void;
+  filterTasks: IFilteredTasks;
+}
+
+export interface ICheckOutsideClick {
+  e: any;
+  refModal: MutableRefObject<any> | undefined;
+  setIsModalOpen: (isModalOpen: boolean) => void;
+  isModalOpen: boolean;
+}
+
+export interface IToArchive {
+  id: number;
+  setTasks: (task: (tasks: ITask[]) => ITask[] | ITask) => void;
+  isArchived: boolean;
+}
+
+export interface IToastTasks {
+  toastType: "category" | "changeCreate" | "archive";
+  data: "change" | "delete" | "create" | boolean | registryTypes | undefined;
 }

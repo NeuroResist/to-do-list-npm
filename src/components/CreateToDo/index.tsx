@@ -12,6 +12,7 @@ import { checkOutsideClick, toastTasks } from "helpers";
 
 import { ICreateToDo } from "./interface";
 import { ICategory } from "interface";
+import { IOnSubmit } from "pages/TasksRegistry/types";
 
 function CreateToDo({
   handleSubmit,
@@ -30,6 +31,8 @@ function CreateToDo({
   const ref = useRef<any>(null);
 
   const checkOutsideClickModal = (e: any) =>
+    setIsModalOpen &&
+    isModalOpen &&
     checkOutsideClick({ e, refModal, setIsModalOpen, isModalOpen });
 
   useEffect(() => {
@@ -45,7 +48,7 @@ function CreateToDo({
       ref={refModal}
       id="modal"
       className={clsx("border-2 border-black border-2 bg-background", className)}
-      onSubmit={handleSubmit((data: any) => {
+      onSubmit={handleSubmit((data: IOnSubmit) => {
         onSubmit(data);
         ref?.current?.clearValue();
       })}

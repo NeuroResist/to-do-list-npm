@@ -3,7 +3,7 @@ import { useOutletContext } from "react-router-dom";
 
 import { IChangeTask } from "./interface";
 import { IOutlet, ITask } from "interface";
-import { IUseControl } from "../CreateTasks/interface";
+import { IOnSubmit } from "./types";
 
 function useControl({ id }: { id: number }) {
   const {
@@ -12,7 +12,7 @@ function useControl({ id }: { id: number }) {
     control,
     setValue,
     formState: { isValid },
-  } = useForm<IUseControl>({
+  } = useForm<IOnSubmit>({
     defaultValues: {
       add: "",
       description: "",
@@ -27,7 +27,7 @@ function useControl({ id }: { id: number }) {
 
   const { tasks, categories, setTasks }: IOutlet = useOutletContext();
 
-  const onSubmit: SubmitHandler<IUseControl> = (data) =>
+  const onSubmit: SubmitHandler<IOnSubmit> = (data) =>
     setTasks((tasks: ITask[]) =>
       tasks.map((task: ITask) =>
         task.id === id
@@ -37,7 +37,7 @@ function useControl({ id }: { id: number }) {
               description: data.description,
               Calendar: data.Calendar,
               Select: data.Select,
-              isArchived: data.isArchived,
+              isArchived: task.isArchived,
             }
           : task,
       ),

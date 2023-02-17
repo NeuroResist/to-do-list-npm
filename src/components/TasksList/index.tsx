@@ -1,11 +1,12 @@
 import OneTask from "../OneTask";
 
-import { ITasksList } from "../OneTask/interface";
+import { ITask } from "interface";
+import { ITasksList } from "./interface";
 
-function TasksList({ tasks, registryType }: { tasks: any; registryType: any }) {
+function TasksList({ tasks, registryType }: ITasksList) {
   return (
     <>
-      {tasks.map(({ add, description, Calendar, Select, id, isArchived }: ITasksList) => (
+      {tasks.map(({ add, description, Calendar, Select, id, isArchived }: ITask) => (
         <div key={id}>
           <OneTask
             isArchived={isArchived}

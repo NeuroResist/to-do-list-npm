@@ -19,10 +19,7 @@ function TasksRegistry({ registryType }: { registryType: registryTypes }) {
           categories={categories}
         />
       ) : (
-        <TasksWithoutCategory
-          registryType={registryType}
-          filterTasks={filterTasks["withoutCategory"]}
-        />
+        <TasksWithoutCategory registryType={registryType} filterTasks={filterTasks} />
       )}
     </ul>
   );

@@ -102,8 +102,8 @@ export const TASKS: ITask[] = [
 ];
 
 export const OPTIONS = [
-  { id: 1, select: { value: "Дом", label: "Дом" } },
-  { id: 2, select: { value: "Работа", label: "Работа" } },
-  { id: 3, select: { value: "Учеба", label: "Учеба" } },
-  { id: 4, select: { value: "Ааа", label: "Ааа" } },
+  { value: "Дом", label: "Дом" },
+  { value: "Работа", label: "Работа" },
+  { value: "Учеба", label: "Учеба" },
+  { value: "Ааа", label: "Ааа" },
 ];

@@ -12,8 +12,7 @@ export const filteredTask = (tasks: ITask[], categories: ICategory[]): IFiltered
       if (isArchived && taskType === "archive") return true;
       if (
         taskType === "withoutCategory" &&
-        categories.filter((category: ICategory) => category.select.value === Select.value)
-          .length === 0
+        categories.filter((category: ICategory) => category.value === Select.value).length === 0
       )
         return true;
     });
@@ -96,5 +95,5 @@ export const toArchive = ({ id, setTasks, isArchived }: IToArchive) => {
 // Фильтрация Категорий по алфавиту
 export const filteredCategory = (categories: ICategory[]) =>
   categories.sort((categoryPrev: ICategory, categoryNext: ICategory) =>
-    categoryPrev.select.value.localeCompare(categoryNext.select.value),
+    categoryPrev.value.localeCompare(categoryNext.value),
   );

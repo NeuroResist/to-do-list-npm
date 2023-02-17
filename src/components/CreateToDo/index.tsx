@@ -85,7 +85,12 @@ function CreateToDo({
         render={({ field: { onChange } }) => (
           <Select
             ref={ref}
-            options={categories.map((category: ICategory) => category.select)}
+            options={categories.map((category: ICategory) => {
+              return {
+                value: category.value,
+                label: category.value,
+              };
+            })}
             onChange={onChange}
             defaultValue={{ label: "Дом", value: "Дом" }}
             placeholder="Дом"

@@ -17,7 +17,6 @@ import { OPTIONS, TASKS } from "MOCK";
 function SideMenu() {
   const [tasks, setTasks] = useState(TASKS);
   const [categories, setCategories] = useState(filteredCategory(OPTIONS));
-  const [categoriesId, setCategoriesId] = useState(categories.length + 1);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const filteredCategories = useMemo(() => filteredCategory(categories), [categories]);
@@ -145,8 +144,6 @@ function SideMenu() {
             setTasks,
             categories: filteredCategories,
             setCategories,
-            categoriesId,
-            setCategoriesId,
             filterTasks,
           }}
         />

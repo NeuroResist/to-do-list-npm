@@ -13,8 +13,8 @@ export interface ITask {
 }
 
 export interface ICategory {
-  id: number;
-  select: { value: string; label: string };
+  value: string;
+  label: string;
 }
 
 export interface IOutlet {

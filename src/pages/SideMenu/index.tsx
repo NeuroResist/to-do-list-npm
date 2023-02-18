@@ -21,7 +21,7 @@ function SideMenu() {
 
   const filteredCategories = useMemo(() => filteredCategory(categories), [categories]);
   const filterTasks = useMemo(() => filteredTask(tasks, categories), [tasks, categories]);
-
+  console.log(filterTasks);
   const refModal = useRef<any>(null);
 
   const checkOutsideClickModal = (e: any) =>
@@ -59,13 +59,14 @@ function SideMenu() {
           <div className="absolute flex left-0 items-center justify-center top-0 h-full w-full bg-gray-dark/[0.5] z-10">
             <section
               ref={refModal}
-              className="flex-col relative flex bg-light-blue h-[50%] w-[40%] rounded-2xl p-2"
+              className="flex-col relative flex bg-light-blue min-h-[50%] w-[40%] rounded-2xl p-2"
             >
               <CloseIcon
                 onClick={() => setIsModalOpen(!isModalOpen)}
                 className="absolute top-2 right-2 cursor-pointer"
               />
-              <h2 className="font-bold self-center mb-3">Подсказки</h2>
+              <h2 className="font-bold self-center mb-3 text-3xl">Подсказки</h2>
+              <h3 className="font-bold text-pink text-2xl mb-2">Создание тасков</h3>
               <ul className="mb-3">
                 <li>
                   <OrangeText>Таска</OrangeText> - и заметки, и напоминалки
@@ -77,14 +78,37 @@ function SideMenu() {
                   <OrangeText>Напоминалка</OrangeText> - таска со временем
                 </li>
               </ul>
-              <p className="mb-3">
-                Для создания и изменения задачи обязательны поля
-                <OrangeText> Название задачи</OrangeText>,<OrangeText> Описание задачи</OrangeText>{" "}
-                и<OrangeText> Категория</OrangeText>.
-              </p>
+              <h3 className="font-bold text-pink text-2xl mb-2">Создание/редактор Категорий</h3>
               <p>
-                Категории могут иметь только <OrangeText> разные названия</OrangeText>.
+                Для создания и изменения задачи обязательны поля:
+                <br />
+                <OrangeText> Название задачи</OrangeText>
+                <br />
+                <OrangeText> Описание задачи</OrangeText>
+                <br />
+                <OrangeText> Категория</OrangeText>.
               </p>
+              <p className="mb-3">
+                Категории могут иметь только <OrangeText> разные названия</OrangeText>
+              </p>
+              <h3 className="font-bold text-pink text-2xl mb-2">Реестр задач</h3>
+              <p className="mb-2">
+                Реестры <OrangeText>Заметки</OrangeText>, <OrangeText>Напоминания</OrangeText> и
+                <OrangeText> Архив </OrangeText>
+                схожи. В каждом из них рассортированы по Категориям Таски, соответствующие им. В
+                реестре <OrangeText>Без категории</OrangeText>
+              </p>
+              <p className="mb-2">
+                Карточка имеет в себе: <OrangeText>название</OrangeText>,
+                <OrangeText> описание</OrangeText>, <OrangeText>категорию</OrangeText>, и, в
+                зависимости от типа Таски, <OrangeText>дату</OrangeText>.
+              </p>
+              <p className="mb-2">
+                С карточкой можно взаимодействовать тремя действиями:
+                <OrangeText> перенести в архив</OrangeText>,<OrangeText> редактировать</OrangeText>{" "}
+                и<OrangeText> просмотреть</OrangeText> ее.
+              </p>
+              <h4 className="font-bold text-pink text-xl">Архив</h4>
             </section>
           </div>
         )}

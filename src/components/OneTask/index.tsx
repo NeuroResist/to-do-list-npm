@@ -27,7 +27,7 @@ function OneTask({
 }: IOneTask) {
   const { changeTask, handleSubmit, setTasks, register, control, categories, onSubmit, isValid } =
     useControl({ id });
-
+  console.log(select);
   const refModal = useRef<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -49,7 +49,7 @@ function OneTask({
         </p>
       </div>
       <div className="flex absolute top-1 right-1">
-        {registryType !== "archive" && !isView && (
+        {registryType !== "archive" && (
           <BorderColorIcon
             className="cursor-pointer"
             onClick={() => {
@@ -59,13 +59,18 @@ function OneTask({
           />
         )}
 
-        <ArchiveIcon
-          onClick={() => {
-            toastTasks({ toastType: "archive", data: registryType });
-            toArchive({ id, setTasks, isArchived });
-          }}
-          className="absolute right-12 cursor-pointer"
-        />
+        {registryType !== "withoutCategory" && !isView && (
+          <ArchiveIcon
+            onClick={() => {
+              toastTasks({ toastType: "archive", data: registryType });
+              toArchive({ id, setTasks, isArchived });
+            }}
+            className={clsx("absolute cursor-pointer", {
+              "right-12": registryType !== "archive",
+              "right-6": registryType === "archive",
+            })}
+          />
+        )}
         <ToastContainer />
 
         {!isView && (

@@ -15,7 +15,7 @@ function ViewTask() {
 
   const currentTask = useMemo(
     () => tasks.filter((task: ITask) => task.id === Number(id))[0],
-    [tasks.length],
+    [tasks],
   );
 
   return (

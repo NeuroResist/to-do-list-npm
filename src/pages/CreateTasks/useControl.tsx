@@ -26,6 +26,7 @@ function useControl() {
   let id = useMemo(() => tasks.length, [tasks.length]);
 
   const onSubmit: SubmitHandler<IOnSubmit> = (data) => {
+    console.log(data.select);
     id++;
     setTasks([
       ...tasks,

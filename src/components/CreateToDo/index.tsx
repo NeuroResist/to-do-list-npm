@@ -49,6 +49,7 @@ function CreateToDo({
       id="modal"
       className={clsx("border-2 border-black border-2 bg-background", className)}
       onSubmit={handleSubmit((data: IOnSubmit) => {
+        console.log(data);
         onSubmit(data);
         ref?.current?.clearValue();
       })}

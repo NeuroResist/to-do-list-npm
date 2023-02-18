@@ -16,8 +16,8 @@ function useControl({ id }: { id: number }) {
     defaultValues: {
       add: "",
       description: "",
-      Calendar: undefined,
-      Select: { value: "Дом", label: "Дом" },
+      calendar: undefined,
+      select: { value: "Дом", label: "Дом" },
     },
   });
   const changeTask = ({ add, description }: IChangeTask) => {
@@ -35,8 +35,8 @@ function useControl({ id }: { id: number }) {
               id: id,
               add: data.add,
               description: data.description,
-              Calendar: data.Calendar,
-              Select: data.Select,
+              calendar: data.calendar,
+              select: data.select,
               isArchived: task.isArchived,
             }
           : task,

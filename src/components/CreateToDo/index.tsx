@@ -69,7 +69,7 @@ function CreateToDo({
 
       <Controller
         control={control}
-        name="Calendar"
+        name="calendar"
         render={({ field: { onChange } }) => (
           <Calendar
             className="border-b-2 border-b-black"
@@ -81,7 +81,7 @@ function CreateToDo({
 
       <Controller
         control={control}
-        name="Select"
+        name="select"
         render={({ field: { onChange } }) => (
           <Select
             ref={ref}

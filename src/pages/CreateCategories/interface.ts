@@ -10,9 +10,5 @@ export interface IStateCategory {
 export interface ICategories {
   categories: ICategory[];
   deleteCategory: ({ value }: { value: string }) => void;
-  changeCategory: ({ value }: IChangeCategory) => void;
-}
-
-export interface IChangeCategory {
-  value: string;
+  changeCategory: ({ value }: { value: string }) => void;
 }

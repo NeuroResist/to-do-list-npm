@@ -7,8 +7,8 @@ export interface ITask {
   id: number;
   add: string;
   description: string;
-  Calendar: Date | undefined;
-  Select: { value: string; label: string };
+  calendar: Date | undefined;
+  select: { value: string; label: string };
   isArchived: boolean;
 }
 

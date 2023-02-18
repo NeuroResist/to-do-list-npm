@@ -9,7 +9,7 @@ function TasksWithCategory({ registryType, filterTasks, categories }: ITasksWith
     <>
       {categories.map((category: ICategory) => {
         const filteredTasks = filterTasks[registryType].filter(
-          (task: ITask) => task.Select.value === category.value,
+          (task: ITask) => task.select.value === category.value,
         );
 
         if (!filteredTasks.length) {

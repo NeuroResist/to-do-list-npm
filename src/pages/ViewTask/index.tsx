@@ -32,8 +32,8 @@ function ViewTask() {
         isView
         add={currentTask.add}
         description={currentTask.description}
-        Calendar={currentTask.Calendar}
-        Select={currentTask.Select}
+        calendar={currentTask.calendar}
+        select={currentTask.select}
         id={currentTask.id}
         className="min-w-[400px]"
       />

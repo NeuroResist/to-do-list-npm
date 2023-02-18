@@ -6,13 +6,13 @@ import { IFilteredTasks } from "./pages/TasksRegistry/interface";
 // Фильтрация Тасков по 4 категориям для отрисовки в реестре
 export const filteredTask = (tasks: ITask[], categories: ICategory[]): IFilteredTasks => {
   const filterTasks = (taskType: string) =>
-    tasks.filter(({ isArchived, Calendar, Select }: ITask) => {
-      if (Calendar && !isArchived && taskType === "taskReminder") return true;
-      if (!Calendar && !isArchived && taskType === "task") return true;
+    tasks.filter(({ isArchived, calendar, select }: ITask) => {
+      if (calendar && !isArchived && taskType === "taskReminder") return true;
+      if (!calendar && !isArchived && taskType === "task") return true;
       if (isArchived && taskType === "archive") return true;
       if (
         taskType === "withoutCategory" &&
-        categories.filter((category: ICategory) => category.value === Select.value).length === 0
+        categories.filter((category: ICategory) => category.value === select.value).length === 0
       )
         return true;
     });
@@ -83,8 +83,8 @@ export const toArchive = ({ id, setTasks, isArchived }: IToArchive) => {
             id: id,
             add: task.add,
             description: task.description,
-            Calendar: task.Calendar,
-            Select: task.Select,
+            calendar: task.calendar,
+            select: task.select,
             isArchived: !isArchived,
           }
         : task,

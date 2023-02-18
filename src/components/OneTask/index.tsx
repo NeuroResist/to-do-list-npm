@@ -18,8 +18,8 @@ function OneTask({
   isArchived,
   add,
   description,
-  Calendar,
-  Select,
+  calendar,
+  select,
   registryType,
   id,
   isView,
@@ -43,9 +43,9 @@ function OneTask({
       <p className="min-h-[100px] break-all">{description}</p>
 
       <div className="flex justify-between">
-        <p>{Select.value + "📋"}</p>
+        <p>{select.value + "📋"}</p>
         <p>
-          <time>{Calendar && dayjs(Calendar).format("DD.MM.YYYY 🕗")}</time>
+          <time>{calendar && dayjs(calendar).format("DD.MM.YYYY 🕗")}</time>
         </p>
       </div>
       <div className="flex absolute top-1 right-1">

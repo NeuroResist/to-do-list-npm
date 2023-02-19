@@ -30,13 +30,13 @@ export const TASKS_REGISTER = [
   <>
     Реестры <OrangeText>Заметки</OrangeText>, <OrangeText>Напоминания</OrangeText> и
     <OrangeText> Архив </OrangeText>
-    схожи. В каждом из них рассортированы по Категориям Таски, соответствующие им. В реестре{" "}
-    <OrangeText>Без категории</OrangeText> все Таски находятся без сортировки
+    схожи. В каждом из них рассортированы по Категориям Таски, соответствующие им. В реестре
+    <OrangeText> Без категории</OrangeText> все Таски находятся без сортировки.
   </>,
   <>
-    Карточка имеет в себе: <OrangeText>название</OrangeText>,<OrangeText> описание</OrangeText>,{" "}
-    <OrangeText>категорию</OrangeText>, и, в зависимости от типа Таски,{" "}
-    <OrangeText>дату</OrangeText>.
+    Карточка имеет в себе: <OrangeText>название</OrangeText>,<OrangeText> описание</OrangeText>,
+    <OrangeText> категорию</OrangeText>, и, в зависимости от типа Таски,
+    <OrangeText> дату</OrangeText>.
   </>,
   <>
     С карточкой можно взаимодействовать тремя действиями:
@@ -50,10 +50,4 @@ export const TASKS_REGISTER = [
   </>,
 ];
 
-export const VIEW_CARD = [
-  <>
-    Исключения: в <OrangeText>Без категории</OrangeText> нельзя архивировать задачу, в
-    <OrangeText> Архиве</OrangeText> нельзя изменить задачу, в
-    <OrangeText> просмотре Таски</OrangeText> можно только изменить ее.
-  </>,
-];
+export const VIEW_CARD = [<>В просмотре карточки можно увидеть основную информацию о Таске. </>];

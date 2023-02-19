@@ -11,7 +11,7 @@ function ModalHelpSections({ refModal, setIsModalOpen, isModalOpen }: IModalHelp
     <div className="absolute flex left-0 items-center justify-center top-0 h-full w-full bg-gray-dark/[0.5] z-10">
       <section
         ref={refModal}
-        className="flex-col relative flex bg-light-blue min-h-[50%] w-[40%] rounded-2xl p-2"
+        className="flex-col relative overflow-auto flex bg-light-blue h-[800px] max-h-full w-[40%] rounded-2xl p-2"
       >
         <CloseIcon
           onClick={() => setIsModalOpen(!isModalOpen)}
@@ -23,8 +23,6 @@ function ModalHelpSections({ refModal, setIsModalOpen, isModalOpen }: IModalHelp
         <HelpSection header="Создание Тасков" paragraphs={CREATE_TASKS} />
 
         <HelpSection header="Создание/редактор Категорий" paragraphs={CREATE_EDIT_CATEGORY} />
-
-        <h3 className="font-bold text-pink text-2xl mb-2">Создание/редактор Категорий</h3>
 
         <HelpSection header="Реестр задач" paragraphs={TASKS_REGISTER} />
 

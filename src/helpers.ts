@@ -7,7 +7,6 @@ import { IFilteredTasks } from "./pages/TasksRegistry/interface";
 export const filteredTask = (tasks: ITask[], categories: ICategory[]): IFilteredTasks => {
   const filterTasks = (taskType: string) =>
     tasks.filter(({ isArchived, calendar, select }: ITask) => {
-      console.log();
       if (calendar && !isArchived && taskType === "taskReminder") return true;
       if (!calendar && !isArchived && taskType === "task") return true;
       if (isArchived && taskType === "archive") return true;

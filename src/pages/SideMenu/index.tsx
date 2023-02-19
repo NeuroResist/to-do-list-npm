@@ -21,7 +21,6 @@ function SideMenu() {
 
   const filteredCategories = useMemo(() => filteredCategory(categories), [categories]);
   const filterTasks = useMemo(() => filteredTask(tasks, categories), [tasks, categories]);
-  console.log(filterTasks);
   const refModal = useRef<any>(null);
 
   const checkOutsideClickModal = (e: any) =>

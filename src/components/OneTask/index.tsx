@@ -27,7 +27,6 @@ function OneTask({
 }: IOneTask) {
   const { changeTask, handleSubmit, setTasks, register, control, categories, onSubmit, isValid } =
     useControl({ id });
-  console.log(select);
   const refModal = useRef<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 

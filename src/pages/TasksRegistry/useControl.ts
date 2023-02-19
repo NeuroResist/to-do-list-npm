@@ -28,11 +28,9 @@ function useControl({ id }: { id: number }) {
   const { tasks, categories, setTasks }: IOutlet = useOutletContext();
 
   const onSubmit: SubmitHandler<IOnSubmit> = (data) => {
-    console.log(data);
     setTasks((tasks: ITask[]) =>
-      tasks.map((task: ITask) => {
-        console.log(data);
-        return task.id === id
+      tasks.map((task: ITask) =>
+        task.id === id
           ? {
               id: id,
               add: data.add,
@@ -41,8 +39,8 @@ function useControl({ id }: { id: number }) {
               select: data.select,
               isArchived: task.isArchived,
             }
-          : task;
-      }),
+          : task,
+      ),
     );
   };
 

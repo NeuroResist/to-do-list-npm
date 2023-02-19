@@ -5,14 +5,13 @@ import { ToastContainer } from "react-toastify";
 
 import { toastTasks } from "helpers";
 
-import { ICategory } from "interface";
 import { ICategories } from "./interface";
 
 function Categories({ categories, changeCategory, deleteCategory }: ICategories) {
   return (
     <ul className="mb-3">
       <ToastContainer />
-      {categories.map(({ value }: ICategory) => (
+      {categories.map(({ value }: { value: string }) => (
         <li
           key={value}
           className="w-[500px] mb-1 h-10 bg-light-blue mx-10 border-2 rounded flex justify-between items-center px-1"

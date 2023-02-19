@@ -1,14 +1,13 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Outlet } from "react-router";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import CategoryIcon from "@mui/icons-material/Category";
-import CloseIcon from "@mui/icons-material/Close";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
 
-import OrangeText from "components/OrangeText";
+import ModalHelpSections from "./ModalHelpSections/ModalHelpSections";
+import MyProfile from "./MyProfile";
 
 import { checkOutsideClick, filteredCategory, filteredTask } from "helpers";
 
@@ -37,79 +36,20 @@ function SideMenu() {
   return (
     <div className="flex min-h-screen">
       <div className="min-w-[300px] bg-light-blue shrink-0 p-3">
-        <figure className="flex mb-2 relative">
-          <img className="rounded-full" src="./me.jpg" alt="account" />
-          <div className="p-2">
-            <figcaption className="font-bold">Орлов Ярослав</figcaption>
-
-            <HelpOutlineIcon
-              onClick={() => setIsModalOpen(!isModalOpen)}
-              className="absolute top-0 right-0 cursor-pointer"
-              fontSize="large"
-            />
-
-            <address className="text-sm text-[#0F0]">
-              <a href="mailto:pataponchik3@gmail.com">pataponchik3@gmail.com</a>
-            </address>
-          </div>
-        </figure>
+        <MyProfile
+          setIsModalOpen={setIsModalOpen}
+          isModalOpen={isModalOpen}
+          icon={"./me.jpg"}
+          name={"Ярослав Орлов"}
+          email={"pataponchik3@gmail.com"}
+        />
 
         {isModalOpen && (
-          <div className="absolute flex left-0 items-center justify-center top-0 h-full w-full bg-gray-dark/[0.5] z-10">
-            <section
-              ref={refModal}
-              className="flex-col relative flex bg-light-blue min-h-[50%] w-[40%] rounded-2xl p-2"
-            >
-              <CloseIcon
-                onClick={() => setIsModalOpen(!isModalOpen)}
-                className="absolute top-2 right-2 cursor-pointer"
-              />
-              <h2 className="font-bold self-center mb-3 text-3xl">Подсказки</h2>
-              <h3 className="font-bold text-pink text-2xl mb-2">Создание тасков</h3>
-              <ul className="mb-3">
-                <li>
-                  <OrangeText>Таска</OrangeText> - и заметки, и напоминалки
-                </li>
-                <li>
-                  <OrangeText>Заметка</OrangeText> - таска без времени
-                </li>
-                <li>
-                  <OrangeText>Напоминалка</OrangeText> - таска со временем
-                </li>
-              </ul>
-              <h3 className="font-bold text-pink text-2xl mb-2">Создание/редактор Категорий</h3>
-              <p>
-                Для создания и изменения задачи обязательны поля:
-                <br />
-                <OrangeText> Название задачи</OrangeText>
-                <br />
-                <OrangeText> Описание задачи</OrangeText>
-                <br />
-                <OrangeText> Категория</OrangeText>.
-              </p>
-              <p className="mb-3">
-                Категории могут иметь только <OrangeText> разные названия</OrangeText>
-              </p>
-              <h3 className="font-bold text-pink text-2xl mb-2">Реестр задач</h3>
-              <p className="mb-2">
-                Реестры <OrangeText>Заметки</OrangeText>, <OrangeText>Напоминания</OrangeText> и
-                <OrangeText> Архив </OrangeText>
-                схожи. В каждом из них рассортированы по Категориям Таски, соответствующие им. В
-                реестре <OrangeText>Без категории</OrangeText>
-              </p>
-              <p className="mb-2">
-                Карточка имеет в себе: <OrangeText>название</OrangeText>,
-                <OrangeText> описание</OrangeText>, <OrangeText>категорию</OrangeText>, и, в
-                зависимости от типа Таски, <OrangeText>дату</OrangeText>.
-              </p>
-              <p className="mb-2">
-                С карточкой можно взаимодействовать тремя действиями:
-                <OrangeText> перенести в архив</OrangeText>,<OrangeText> редактировать</OrangeText>{" "}
-                и<OrangeText> просмотреть</OrangeText> ее.
-              </p>
-              <h4 className="font-bold text-pink text-xl">Архив</h4>
-            </section>
-          </div>
+          <ModalHelpSections
+            refModal={refModal}
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
+          />
         )}
 
         <div className="flex flex-col relative">

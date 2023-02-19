@@ -20,14 +20,14 @@ function useControl({ id }: { id: number }) {
       select: { value: "Дом", label: "Дом" },
     },
   });
+  const { tasks, categories, setTasks }: IOutlet = useOutletContext();
+
   const changeTask = ({ add, description }: IChangeTask) => {
     setValue("add", add);
     setValue("description", description);
   };
 
-  const { tasks, categories, setTasks }: IOutlet = useOutletContext();
-
-  const onSubmit: SubmitHandler<IOnSubmit> = (data) => {
+  const onSubmit: SubmitHandler<IOnSubmit> = (data) =>
     setTasks((tasks: ITask[]) =>
       tasks.map((task: ITask) =>
         task.id === id
@@ -42,7 +42,6 @@ function useControl({ id }: { id: number }) {
           : task,
       ),
     );
-  };
 
   return {
     tasks,

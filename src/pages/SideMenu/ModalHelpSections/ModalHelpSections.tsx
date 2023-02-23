@@ -8,7 +8,7 @@ import { IModalHelpSections } from "./interface";
 
 function ModalHelpSections({ refModal, setIsModalOpen, isModalOpen }: IModalHelpSections) {
   return (
-    <div className="absolute flex left-0 items-center justify-center top-0 h-full w-full bg-gray-dark/[0.5] z-10">
+    <div className="absolute flex left-0 items-center justify-center top-0 h-full w-full bg-gray-dark/[0.5] z-10 py-5">
       <section
         ref={refModal}
         className="flex-col relative overflow-auto flex bg-light-blue h-[800px] max-h-full w-[40%] rounded-2xl p-2"

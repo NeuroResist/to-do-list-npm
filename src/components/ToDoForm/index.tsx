@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import Select from "react-select";
 import clsx from "clsx";
 import Calendar from "react-calendar";
-import { Controller } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { ToastContainer } from "react-toastify";
 
 import "react-calendar/dist/Calendar.css";
@@ -10,22 +10,32 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { checkOutsideClick, toastTasks } from "helpers";
 
-import { ICreateToDo } from "./interface";
+import { IToDoForm } from "./interface";
 import { ICategory } from "interface";
 import { IOnSubmit } from "pages/TasksRegistry/types";
 
-function CreateToDo({
-  handleSubmit,
-  register,
-  control,
+function ToDoForm({
   categories,
   onSubmit,
-  isValid,
   className,
   setIsModalOpen,
   isModalOpen,
   refModal,
-}: ICreateToDo) {
+}: IToDoForm) {
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { isValid },
+  } = useForm<IOnSubmit>({
+    defaultValues: {
+      add: "",
+      description: "",
+      calendar: undefined,
+      select: { value: "Дом", label: "Дом" },
+    },
+  });
+
   const notify = () => toastTasks({ toastType: "changeCreate", data: isModalOpen });
 
   const ref = useRef<any>(null);
@@ -119,4 +129,4 @@ function CreateToDo({
   );
 }
 
-export default CreateToDo;
+export default ToDoForm;

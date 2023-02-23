@@ -6,8 +6,8 @@ import HelpCenterIcon from "@mui/icons-material/HelpCenter";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import ArchiveIcon from "@mui/icons-material/Archive";
 
-import CreateToDo from "components/CreateToDo";
-import useControl from "pages/TasksRegistry/useControl";
+import ToDoForm from "components/ToDoForm";
+import useControl from "components/OneTask/useControl";
 
 import { toArchive, toastTasks } from "helpers";
 
@@ -25,8 +25,7 @@ function OneTask({
   isView,
   className,
 }: IOneTask) {
-  const { changeTask, handleSubmit, setTasks, register, control, categories, onSubmit, isValid } =
-    useControl({ id });
+  const { changeTask, setTasks, categories, onSubmit } = useControl({ id });
   const refModal = useRef<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -80,13 +79,10 @@ function OneTask({
       </div>
 
       {registryType !== "archive" && isModalOpen && (
-        <CreateToDo
+        <ToDoForm
+          changeTask={changeTask}
           isModalOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}
-          isValid={isValid}
-          handleSubmit={handleSubmit}
-          register={register}
-          control={control}
           categories={categories}
           onSubmit={onSubmit}
           className="absolute top-1 right-14 z-10"

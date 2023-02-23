@@ -1,25 +1,12 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useOutletContext } from "react-router-dom";
 
-import { IChangeTask } from "./interface";
+import { IChangeTask } from "pages/TasksRegistry/interface";
 import { IOutlet, ITask } from "interface";
-import { IOnSubmit } from "./types";
+import { IOnSubmit } from "pages/TasksRegistry/types";
 
 function useControl({ id }: { id: number }) {
-  const {
-    register,
-    handleSubmit,
-    control,
-    setValue,
-    formState: { isValid },
-  } = useForm<IOnSubmit>({
-    defaultValues: {
-      add: "",
-      description: "",
-      calendar: undefined,
-      select: { value: "Дом", label: "Дом" },
-    },
-  });
+  const { setValue } = useForm();
   const { tasks, categories, setTasks }: IOutlet = useOutletContext();
 
   const changeTask = ({ add, description }: IChangeTask) => {
@@ -47,12 +34,8 @@ function useControl({ id }: { id: number }) {
     tasks,
     changeTask,
     setTasks,
-    handleSubmit,
-    register,
-    control,
     categories,
     onSubmit,
-    isValid,
   };
 }
 

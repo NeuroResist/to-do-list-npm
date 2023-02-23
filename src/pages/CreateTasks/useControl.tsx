@@ -6,20 +6,7 @@ import { IOutlet } from "interface";
 import { IOnSubmit } from "../TasksRegistry/types";
 
 function useControl() {
-  const {
-    register,
-    handleSubmit,
-    control,
-    reset,
-    formState: { isValid },
-  } = useForm<IOnSubmit>({
-    defaultValues: {
-      add: "",
-      description: "",
-      calendar: undefined,
-      select: { value: "Дом", label: "Дом" },
-    },
-  });
+  const { reset } = useForm();
 
   const { tasks, setTasks, categories }: IOutlet = useOutletContext();
 
@@ -41,7 +28,7 @@ function useControl() {
     reset();
   };
 
-  return { tasks, handleSubmit, register, control, categories, onSubmit, isValid };
+  return { tasks, categories, onSubmit };
 }
 
 export default useControl;

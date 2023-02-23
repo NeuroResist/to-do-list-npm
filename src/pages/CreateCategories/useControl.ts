@@ -13,7 +13,6 @@ function useControl() {
   const { register, handleSubmit, reset, setValue } = useForm<{ value: string }>({});
 
   const onSubmit = (data: { value: string }) => {
-    // Исправить на сообщение об ошибке, повторяющийся элемент
     if (categories.find((category: ICategory) => category.value === data.value)) return null;
 
     if (!changingCategory.value.length) {

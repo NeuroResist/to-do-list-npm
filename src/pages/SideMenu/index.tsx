@@ -8,11 +8,19 @@ import SidebarMenu from "./Menu";
 import { checkOutsideClick, filteredCategory, filteredTask } from "helpers";
 
 import { OPTIONS, TASKS } from "MOCK";
+import { $categories } from "../../store";
+import { useStore } from "effector-react";
 
 function SideMenu() {
   const [tasks, setTasks] = useState(TASKS);
   const [categories, setCategories] = useState(filteredCategory(OPTIONS));
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    //console.log(tasks);
+  }, [tasks]);
+  console.log(useStore($categories));
 
   const filteredCategories = useMemo(() => filteredCategory(categories), [categories]);
   const filterTasks = useMemo(() => filteredTask(tasks, categories), [tasks, categories]);

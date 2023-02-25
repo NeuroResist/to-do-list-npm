@@ -1,22 +1,9 @@
-import { useMemo } from "react";
-import { useParams } from "react-router";
-import { useNavigate } from "react-router-dom";
-
-import { useOutletContext } from "react-router-dom";
-
 import OneTask from "components/OneTask";
 
-import { ITask } from "interface";
+import useControl from "./useControl";
 
 function ViewTask() {
-  const { tasks }: { tasks: ITask[] } = useOutletContext();
-  const { id } = useParams();
-  const navigate = useNavigate();
-
-  const currentTask = useMemo(
-    () => tasks.filter((task: ITask) => task.id === Number(id))[0],
-    [tasks],
-  );
+  const { navigate, currentTask } = useControl();
 
   return (
     <div className="flex justify-center mt-10">

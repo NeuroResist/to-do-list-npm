@@ -11,5 +11,7 @@ export interface IToDoForm {
   setIsModalOpen?: (isHide: boolean) => void;
   isModalOpen?: boolean;
   refModal?: MutableRefObject<any>;
-  changeTask?: any;
+  change?: any;
+  description?: any;
+  add?: any;
 }

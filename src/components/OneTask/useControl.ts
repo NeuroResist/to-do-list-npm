@@ -1,18 +1,11 @@
-import { SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler } from "react-hook-form";
 import { useOutletContext } from "react-router-dom";
 
-import { IChangeTask } from "pages/TasksRegistry/interface";
 import { IOutlet, ITask } from "interface";
 import { IOnSubmit } from "pages/TasksRegistry/types";
 
 function useControl({ id }: { id: number }) {
-  const { setValue } = useForm();
   const { tasks, categories, setTasks }: IOutlet = useOutletContext();
-
-  const changeTask = ({ add, description }: IChangeTask) => {
-    setValue("add", add);
-    setValue("description", description);
-  };
 
   const onSubmit: SubmitHandler<IOnSubmit> = (data) =>
     setTasks((tasks: ITask[]) =>
@@ -32,7 +25,6 @@ function useControl({ id }: { id: number }) {
 
   return {
     tasks,
-    changeTask,
     setTasks,
     categories,
     onSubmit,

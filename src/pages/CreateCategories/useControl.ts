@@ -6,6 +6,7 @@ import { toastTasks } from "helpers";
 
 import { IStateCategory } from "./interface";
 import { ICategory } from "interface";
+import { changeCategoryStore, createCategoryStore, deleteCategoryStore } from "../../store";
 
 function useControl() {
   const { categories, setCategories }: IStateCategory = useOutletContext();
@@ -16,15 +17,19 @@ function useControl() {
     if (categories.find((category: ICategory) => category.value === data.value)) return null;
 
     if (!changingCategory.value.length) {
+      createCategoryStore({ value: data.value, label: data.value });
       setCategories([...categories, { value: data.value, label: data.value }]);
     } else {
-      setCategories((categories: ICategory[]) =>
-        categories.map((category: ICategory) =>
-          category.value === changingCategory.value
-            ? { value: data.value, label: data.value }
-            : category,
-        ),
+      const stores = categories.map((category: ICategory) =>
+        category.value === changingCategory.value
+          ? { value: data.value, label: data.value }
+          : category,
       );
+
+      changeCategoryStore(stores ?? categories);
+
+      setCategories(stores);
+
       setChangingCategory({ value: data.value });
     }
 
@@ -41,12 +46,19 @@ function useControl() {
     setValue("value", value);
   };
 
-  const deleteCategory = ({ value }: { value: string }) =>
+  const deleteCategory = ({ value }: { value: string }) => {
+    deleteCategoryStore(
+      categories
+        .map((category: ICategory) => (category.value === value ? undefined : category))
+        .filter(Boolean),
+    );
+
     setCategories((categories: ICategory[]) =>
       categories
         .map((category: ICategory) => (category.value === value ? undefined : category))
         .filter(Boolean),
     );
+  };
 
   return { categories, changeCategory, handleSubmit, register, onSubmit, deleteCategory };
 }

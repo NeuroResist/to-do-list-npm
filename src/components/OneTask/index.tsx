@@ -25,7 +25,7 @@ function OneTask({
   isView,
   className,
 }: IOneTask) {
-  const { changeTask, setTasks, categories, onSubmit } = useControl({ id });
+  const { setTasks, categories, onSubmit } = useControl({ id });
   const refModal = useRef<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -50,10 +50,7 @@ function OneTask({
         {registryType !== "archive" && (
           <BorderColorIcon
             className="cursor-pointer"
-            onClick={() => {
-              changeTask({ add: add, description: description });
-              setIsModalOpen(!isModalOpen);
-            }}
+            onClick={() => setIsModalOpen(!isModalOpen)}
           />
         )}
 
@@ -80,7 +77,6 @@ function OneTask({
 
       {registryType !== "archive" && isModalOpen && (
         <ToDoForm
-          changeTask={changeTask}
           isModalOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}
           categories={categories}

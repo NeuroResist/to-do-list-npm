@@ -7,9 +7,13 @@ export interface ITask {
   id: number;
   add: string;
   description: string;
-  calendar: Date | undefined;
+  calendar?: Date;
   select: { value: string; label: string };
   isArchived: boolean;
+}
+
+export interface IChangeTaskStore extends ITask {
+  isToArchive?: boolean;
 }
 
 export interface ICategory {
@@ -17,9 +21,18 @@ export interface ICategory {
   label: string;
 }
 
+export interface IAddTaskStore {
+  id: number;
+  data: ITask;
+}
+
+export interface IChangeCategoryStore {
+  changingCategory: { value: string };
+  value: string;
+}
+
 export interface IOutlet {
   tasks: ITask[];
-  setTasks: (data: any) => void;
   categories: ICategory[];
   setCategories: (data: ICategory) => void;
   filterTasks: IFilteredTasks;
@@ -32,13 +45,7 @@ export interface ICheckOutsideClick {
   isModalOpen: boolean;
 }
 
-export interface IToArchive {
-  id: number;
-  setTasks: (task: (tasks: ITask[]) => ITask[] | ITask) => void;
-  isArchived: boolean;
-}
-
 export interface IToastTasks {
   toastType: "category" | "changeCreate" | "archive";
-  data: "change" | "delete" | "create" | boolean | registryTypes | undefined;
+  data?: "change" | "delete" | "create" | boolean | registryTypes;
 }

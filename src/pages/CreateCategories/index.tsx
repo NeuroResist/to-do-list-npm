@@ -3,18 +3,13 @@ import Categories from "./Categories";
 import useControl from "./useControl";
 
 function CreateCategories() {
-  const { categories, changeCategory, handleSubmit, register, onSubmit, deleteCategory } =
-    useControl();
+  const { categories, changeCategory, handleSubmit, register, onSubmit } = useControl();
 
   return (
     <section className="flex justify-center flex-col items-center mt-10">
       <h2 className="font-semibold text-3xl mb-5">Все категории:</h2>
 
-      <Categories
-        categories={categories}
-        changeCategory={changeCategory}
-        deleteCategory={deleteCategory}
-      />
+      <Categories categories={categories} changeCategory={changeCategory} />
 
       <form className="min-w-[300px]" onSubmit={handleSubmit(onSubmit)}>
         <input

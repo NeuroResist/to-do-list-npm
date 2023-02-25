@@ -1,15 +1,14 @@
 import { useState } from "react";
+import { useStore } from "effector-react";
 import { useForm } from "react-hook-form";
-import { useOutletContext } from "react-router-dom";
 
+import { $categories, changeCategoryStore, createCategoryStore } from "store";
 import { toastTasks } from "helpers";
 
-import { IStateCategory } from "./interface";
 import { ICategory } from "interface";
-import { changeCategoryStore, createCategoryStore, deleteCategoryStore } from "../../store";
 
 function useControl() {
-  const { categories, setCategories }: IStateCategory = useOutletContext();
+  const categories = useStore($categories);
   const [changingCategory, setChangingCategory] = useState({ value: "" });
   const { register, handleSubmit, reset, setValue } = useForm<{ value: string }>({});
 
@@ -17,18 +16,9 @@ function useControl() {
     if (categories.find((category: ICategory) => category.value === data.value)) return null;
 
     if (!changingCategory.value.length) {
-      createCategoryStore({ value: data.value, label: data.value });
-      setCategories([...categories, { value: data.value, label: data.value }]);
+      createCategoryStore(data.value);
     } else {
-      const stores = categories.map((category: ICategory) =>
-        category.value === changingCategory.value
-          ? { value: data.value, label: data.value }
-          : category,
-      );
-
-      changeCategoryStore(stores ?? categories);
-
-      setCategories(stores);
+      changeCategoryStore({ changingCategory, value: data.value });
 
       setChangingCategory({ value: data.value });
     }
@@ -46,21 +36,7 @@ function useControl() {
     setValue("value", value);
   };
 
-  const deleteCategory = ({ value }: { value: string }) => {
-    deleteCategoryStore(
-      categories
-        .map((category: ICategory) => (category.value === value ? undefined : category))
-        .filter(Boolean),
-    );
-
-    setCategories((categories: ICategory[]) =>
-      categories
-        .map((category: ICategory) => (category.value === value ? undefined : category))
-        .filter(Boolean),
-    );
-  };
-
-  return { categories, changeCategory, handleSubmit, register, onSubmit, deleteCategory };
+  return { categories, changeCategory, handleSubmit, register, onSubmit };
 }
 
 export default useControl;

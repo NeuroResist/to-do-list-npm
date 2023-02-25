@@ -1,0 +1,26 @@
+import { checkOutsideClick, toastTasks } from "helpers";
+import { useEffect, useRef } from "react";
+import { IUseControl } from "./interface";
+
+function useControl({ isModalOpen, setIsModalOpen, refModal }: IUseControl) {
+  const notify = () => toastTasks({ toastType: "changeCreate", data: isModalOpen });
+
+  const ref = useRef<any>(null);
+
+  const checkOutsideClickModal = (e: any) =>
+    setIsModalOpen &&
+    isModalOpen &&
+    checkOutsideClick({ e, refModal, setIsModalOpen, isModalOpen });
+
+  useEffect(() => {
+    document.addEventListener("mousedown", checkOutsideClickModal);
+
+    return () => {
+      document.removeEventListener("mousedown", checkOutsideClickModal);
+    };
+  }, [isModalOpen]);
+
+  return { ref, notify };
+}
+
+export default useControl;

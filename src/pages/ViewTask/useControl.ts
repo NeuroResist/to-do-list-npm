@@ -1,11 +1,14 @@
 import { useMemo } from "react";
 import { useParams } from "react-router";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useStore } from "effector-react";
+
+import { $tasks } from "store";
 
 import { ITask } from "interface";
 
 function useControl() {
-  const { tasks }: { tasks: ITask[] } = useOutletContext();
+  const tasks = useStore($tasks);
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -13,6 +16,7 @@ function useControl() {
     () => tasks.filter((task: ITask) => task.id === Number(id))[0],
     [tasks],
   );
+
   return { tasks, id, navigate, currentTask };
 }
 

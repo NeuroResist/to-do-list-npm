@@ -7,13 +7,13 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import { ProSidebarProvider } from "react-pro-sidebar";
 
 import "./assets/styles/index.css";
 
 import NotFound from "./pages/NotFound";
 import SideMenu from "./pages/SideMenu";
 import CreateCategories from "./pages/CreateCategories";
-import { ProSidebarProvider } from "react-pro-sidebar";
 import TasksRegistry from "./pages/TasksRegistry";
 import ViewTask from "./pages/ViewTask";
 

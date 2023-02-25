@@ -1,5 +1,3 @@
-import React from "react";
-
 import ToDoForm from "components/ToDoForm";
 
 import useControl from "./useControl";

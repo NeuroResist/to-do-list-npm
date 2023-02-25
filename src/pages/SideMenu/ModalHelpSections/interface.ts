@@ -7,7 +7,7 @@ export interface IHelpSection {
 }
 
 export interface IModalHelpSections {
-  refModal: MutableRefObject<any> | undefined;
+  refModal?: MutableRefObject<any>;
   setIsModalOpen: (isModalOpen: boolean) => void;
   isModalOpen: boolean;
 }

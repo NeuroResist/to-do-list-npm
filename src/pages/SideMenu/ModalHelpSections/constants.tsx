@@ -1,5 +1,4 @@
 import OrangeText from "components/OrangeText";
-import React from "react";
 
 export const CREATE_TASKS = [
   <>

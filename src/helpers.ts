@@ -1,29 +1,6 @@
 import { toast } from "react-toastify";
 
-import { ICategory, ICheckOutsideClick, ITask, IToArchive, IToastTasks } from "./interface";
-import { IFilteredTasks } from "./pages/TasksRegistry/interface";
-
-// Фильтрация Тасков по 4 категориям для отрисовки в реестре
-export const filteredTask = (tasks: ITask[], categories: ICategory[]): IFilteredTasks => {
-  const filterTasks = (taskType: string) =>
-    tasks.filter(({ isArchived, calendar, select }: ITask) => {
-      if (calendar && !isArchived && taskType === "taskReminder") return true;
-      if (!calendar && !isArchived && taskType === "task") return true;
-      if (isArchived && taskType === "archive") return true;
-      if (
-        taskType === "withoutCategory" &&
-        categories.filter((category: ICategory) => category?.value === select?.value).length === 0
-      )
-        return true;
-    });
-
-  return {
-    taskReminder: filterTasks("taskReminder"),
-    task: filterTasks("task"),
-    archive: filterTasks("archive"),
-    withoutCategory: filterTasks("withoutCategory"),
-  };
-};
+import { ICategory, ICheckOutsideClick, IToastTasks } from "./interface";
 
 // Определение, был ли клик снаружи от элемента
 export const checkOutsideClick = ({
@@ -72,24 +49,6 @@ export const toastTasks = ({ toastType, data }: IToastTasks) => {
     progress: 0,
     theme: "light",
   });
-};
-
-// Занесение и вынесение Таски из архива
-export const toArchive = ({ id, setTasks, isArchived }: IToArchive) => {
-  setTasks((tasks: ITask[]) =>
-    tasks.map((task: ITask) =>
-      task.id === id
-        ? {
-            id: id,
-            add: task.add,
-            description: task.description,
-            calendar: task.calendar,
-            select: task.select,
-            isArchived: !isArchived,
-          }
-        : task,
-    ),
-  );
 };
 
 // Фильтрация Категорий по алфавиту

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Select from "react-select";
 import clsx from "clsx";
 import Calendar from "react-calendar";
@@ -8,11 +8,10 @@ import { ToastContainer } from "react-toastify";
 import "react-calendar/dist/Calendar.css";
 import "react-toastify/dist/ReactToastify.css";
 
-import { checkOutsideClick, toastTasks } from "helpers";
-
 import { IToDoForm } from "./interface";
 import { ICategory } from "interface";
 import { IOnSubmit } from "pages/TasksRegistry/types";
+import useControl from "./useControl";
 
 function ToDoForm({
   categories,
@@ -36,22 +35,11 @@ function ToDoForm({
     },
   });
 
-  const notify = () => toastTasks({ toastType: "changeCreate", data: isModalOpen });
-
-  const ref = useRef<any>(null);
-
-  const checkOutsideClickModal = (e: any) =>
-    setIsModalOpen &&
-    isModalOpen &&
-    checkOutsideClick({ e, refModal, setIsModalOpen, isModalOpen });
-
-  useEffect(() => {
-    document.addEventListener("mousedown", checkOutsideClickModal);
-
-    return () => {
-      document.removeEventListener("mousedown", checkOutsideClickModal);
-    };
-  }, [isModalOpen]);
+  const { ref, notify } = useControl({
+    isModalOpen,
+    setIsModalOpen,
+    refModal,
+  });
 
   return (
     <form

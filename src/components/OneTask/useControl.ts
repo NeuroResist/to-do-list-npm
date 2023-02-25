@@ -1,33 +1,36 @@
+import { useRef, useState } from "react";
+import { useStore } from "effector-react";
 import { SubmitHandler } from "react-hook-form";
-import { useOutletContext } from "react-router-dom";
 
-import { IOutlet, ITask } from "interface";
+import { $categories, $tasks, changeTaskStore } from "store";
+
 import { IOnSubmit } from "pages/TasksRegistry/types";
 
 function useControl({ id }: { id: number }) {
-  const { tasks, categories, setTasks }: IOutlet = useOutletContext();
+  const tasks = useStore($tasks);
+  const categories = useStore($categories);
 
-  const onSubmit: SubmitHandler<IOnSubmit> = (data) =>
-    setTasks((tasks: ITask[]) =>
-      tasks.map((task: ITask) =>
-        task.id === id
-          ? {
-              id: id,
-              add: data.add,
-              description: data.description,
-              calendar: data.calendar,
-              select: data.select,
-              isArchived: task.isArchived,
-            }
-          : task,
-      ),
-    );
+  const refModal = useRef<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const onSubmit: SubmitHandler<IOnSubmit> = (data) => {
+    changeTaskStore({
+      id,
+      description: data.description,
+      add: data.add,
+      calendar: data.calendar,
+      select: data.select,
+      isToArchive: false,
+    });
+  };
 
   return {
     tasks,
-    setTasks,
     categories,
     onSubmit,
+    refModal,
+    isModalOpen,
+    setIsModalOpen,
   };
 }
 

@@ -15,3 +15,9 @@ export interface IToDoForm {
   description?: any;
   add?: any;
 }
+
+export interface IUseControl {
+  refModal?: MutableRefObject<any>;
+  isModalOpen?: boolean;
+  setIsModalOpen?: (isHide: boolean) => void;
+}

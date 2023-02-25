@@ -1,30 +1,23 @@
 import { useMemo } from "react";
+import { useStore } from "effector-react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useOutletContext } from "react-router-dom";
 
-import { IOutlet } from "interface";
+import { $categories, $tasks, addTaskStore } from "store";
+
 import { IOnSubmit } from "../TasksRegistry/types";
 
 function useControl() {
   const { reset } = useForm();
-
-  const { tasks, setTasks, categories }: IOutlet = useOutletContext();
+  const tasks = useStore($tasks);
+  const categories = useStore($categories);
 
   let id = useMemo(() => tasks.length, [tasks.length]);
 
   const onSubmit: SubmitHandler<IOnSubmit> = (data) => {
     id++;
-    setTasks([
-      ...tasks,
-      {
-        id: id,
-        add: data.add,
-        description: data.description,
-        calendar: data.calendar,
-        select: data.select,
-        isArchived: false,
-      },
-    ]);
+
+    addTaskStore({ id, data });
+
     reset();
   };
 

@@ -1,6 +1,6 @@
-import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
+import { ToastContainer } from "react-toastify";
 import clsx from "clsx";
 import HelpCenterIcon from "@mui/icons-material/HelpCenter";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
@@ -9,10 +9,11 @@ import ArchiveIcon from "@mui/icons-material/Archive";
 import ToDoForm from "components/ToDoForm";
 import useControl from "components/OneTask/useControl";
 
-import { toArchive, toastTasks } from "helpers";
+import { changeTaskStore } from "store";
+
+import { toastTasks } from "helpers";
 
 import { IOneTask } from "./interface";
-import { ToastContainer } from "react-toastify";
 
 function OneTask({
   isArchived,
@@ -25,9 +26,7 @@ function OneTask({
   isView,
   className,
 }: IOneTask) {
-  const { setTasks, categories, onSubmit } = useControl({ id });
-  const refModal = useRef<any>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { categories, onSubmit, refModal, isModalOpen, setIsModalOpen } = useControl({ id });
 
   return (
     <section
@@ -58,7 +57,7 @@ function OneTask({
           <ArchiveIcon
             onClick={() => {
               toastTasks({ toastType: "archive", data: registryType });
-              toArchive({ id, setTasks, isArchived });
+              changeTaskStore({ id, isArchived, isToArchive: true });
             }}
             className={clsx("absolute cursor-pointer", {
               "right-12": registryType !== "archive",

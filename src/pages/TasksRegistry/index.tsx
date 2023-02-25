@@ -1,17 +1,15 @@
-import { useOutletContext } from "react-router-dom";
-import clsx from "clsx";
-
 import TasksWithCategory from "./TasksWithCategory";
-
-import { IOutlet } from "interface";
-import { registryTypes } from "types";
 import TasksWithoutCategory from "./TasksWithoutCategory";
 
+import useControl from "./useControl";
+
+import { registryTypes } from "types";
+
 function TasksRegistry({ registryType }: { registryType: registryTypes }) {
-  const { categories, filterTasks }: IOutlet = useOutletContext();
+  const { categories, filterTasks } = useControl();
 
   return (
-    <ul className={clsx("flex flex-col items-center", {})}>
+    <ul className="flex flex-col items-center">
       {registryType !== "withoutCategory" ? (
         <TasksWithCategory
           registryType={registryType}

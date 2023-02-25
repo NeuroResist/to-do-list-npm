@@ -4,8 +4,9 @@ import { useStore } from "effector-react";
 import { $categories, $tasks } from "store";
 
 import { checkOutsideClick } from "helpers";
-import { ICategory, ITask } from "../../interface";
-import { IFilteredTasks } from "../TasksRegistry/interface";
+
+import { ICategory, ITask } from "interface";
+import { IFilteredTasksForSections } from "../TasksRegistry/interface";
 
 function UseControl() {
   const tasks = useStore($tasks);
@@ -13,8 +14,8 @@ function UseControl() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Фильтрация Тасков по 4 категориям для отрисовки в реестре
-  const filteredTask = (tasks: ITask[], categories: ICategory[]): IFilteredTasks => {
-    const filterTasks = (taskType: string) =>
+  const filteredTask = (tasks: ITask[], categories: ICategory[]): IFilteredTasksForSections => {
+    const filterTasksForSections = (taskType: string) =>
       tasks.filter(({ isArchived, calendar, select }: ITask) => {
         if (calendar && !isArchived && taskType === "taskReminder") return true;
         if (!calendar && !isArchived && taskType === "task") return true;
@@ -27,10 +28,10 @@ function UseControl() {
       });
 
     return {
-      taskReminder: filterTasks("taskReminder"),
-      task: filterTasks("task"),
-      archive: filterTasks("archive"),
-      withoutCategory: filterTasks("withoutCategory"),
+      taskReminder: filterTasksForSections("taskReminder"),
+      task: filterTasksForSections("task"),
+      archive: filterTasksForSections("archive"),
+      withoutCategory: filterTasksForSections("withoutCategory"),
     };
   };
 

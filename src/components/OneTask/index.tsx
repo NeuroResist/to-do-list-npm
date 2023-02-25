@@ -9,7 +9,7 @@ import ArchiveIcon from "@mui/icons-material/Archive";
 import ToDoForm from "components/ToDoForm";
 import useControl from "components/OneTask/useControl";
 
-import { changeTaskStore } from "store";
+import { changeTaskFx } from "store";
 
 import { toastTasks } from "helpers";
 
@@ -57,7 +57,7 @@ function OneTask({
           <ArchiveIcon
             onClick={() => {
               toastTasks({ toastType: "archive", data: registryType });
-              changeTaskStore({ id, isArchived, isToArchive: true });
+              changeTaskFx({ id, isArchived, isToArchive: true });
             }}
             className={clsx("absolute cursor-pointer", {
               "right-12": registryType !== "archive",

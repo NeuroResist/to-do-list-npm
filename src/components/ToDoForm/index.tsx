@@ -8,10 +8,11 @@ import { ToastContainer } from "react-toastify";
 import "react-calendar/dist/Calendar.css";
 import "react-toastify/dist/ReactToastify.css";
 
+import useControl from "./useControl";
+
 import { IToDoForm } from "./interface";
 import { ICategory } from "interface";
 import { IOnSubmit } from "pages/TasksRegistry/types";
-import useControl from "./useControl";
 
 function ToDoForm({
   categories,
@@ -35,7 +36,7 @@ function ToDoForm({
     },
   });
 
-  const { ref, notify } = useControl({
+  const { refClearValue, notify } = useControl({
     isModalOpen,
     setIsModalOpen,
     refModal,
@@ -48,7 +49,7 @@ function ToDoForm({
       className={clsx("border-2 border-black border-2 bg-background", className)}
       onSubmit={handleSubmit((data: IOnSubmit) => {
         onSubmit(data);
-        !isModalOpen && ref?.current?.clearValue();
+        !isModalOpen && refClearValue?.current?.clearValue();
       })}
     >
       <ToastContainer />
@@ -82,7 +83,7 @@ function ToDoForm({
         name="select"
         render={({ field: { onChange } }) => (
           <Select
-            ref={ref}
+            ref={refClearValue}
             options={categories.map((category: ICategory) => {
               return {
                 value: category.value,

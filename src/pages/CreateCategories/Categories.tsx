@@ -2,7 +2,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 import EditIcon from "@mui/icons-material/Edit";
 import { ToastContainer } from "react-toastify";
 
-import { deleteCategoryStore } from "store";
+import { deleteCategoryFx } from "store";
 
 import { toastTasks } from "helpers";
 
@@ -20,14 +20,14 @@ function Categories({ categories, changeCategory }: ICategories) {
           <p>{value}</p>
 
           <div>
-            <button className="mx-1" onClick={() => changeCategory({ value: value })}>
+            <button className="mx-1" onClick={() => changeCategory(value)}>
               <EditIcon />
             </button>
 
             <button
               onClick={() => {
                 toastTasks({ toastType: "category", data: "delete" });
-                deleteCategoryStore(value);
+                deleteCategoryFx(value);
               }}
             >
               <ClearIcon />

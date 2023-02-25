@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { useStore } from "effector-react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { $categories, $tasks, addTaskStore } from "store";
+import { $categories, $tasks, addTaskFx } from "store";
 
 import { IOnSubmit } from "../TasksRegistry/types";
 
@@ -16,7 +16,7 @@ function useControl() {
   const onSubmit: SubmitHandler<IOnSubmit> = (data) => {
     id++;
 
-    addTaskStore({ id, data });
+    addTaskFx({ id, data });
 
     reset();
   };

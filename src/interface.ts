@@ -1,7 +1,7 @@
 import { MutableRefObject } from "react";
 
-import { IFilteredTasks } from "./pages/TasksRegistry/interface";
-import { registryTypes } from "./types";
+import { IFilteredTasksForSections } from "./pages/TasksRegistry/interface";
+import { registryType } from "./types";
 
 export interface ITask {
   id: number;
@@ -12,7 +12,7 @@ export interface ITask {
   isArchived: boolean;
 }
 
-export interface IChangeTaskStore extends ITask {
+export interface IChangeTaskFx extends ITask {
   isToArchive?: boolean;
 }
 
@@ -21,13 +21,13 @@ export interface ICategory {
   label: string;
 }
 
-export interface IAddTaskStore {
+export interface IAddTaskFx {
   id: number;
   data: ITask;
 }
 
-export interface IChangeCategoryStore {
-  changingCategory: { value: string };
+export interface IChangeCategoryFx {
+  changingCategory: string;
   value: string;
 }
 
@@ -35,7 +35,7 @@ export interface IOutlet {
   tasks: ITask[];
   categories: ICategory[];
   setCategories: (data: ICategory) => void;
-  filterTasks: IFilteredTasks;
+  filterTasks: IFilteredTasksForSections;
 }
 
 export interface ICheckOutsideClick {
@@ -47,5 +47,5 @@ export interface ICheckOutsideClick {
 
 export interface IToastTasks {
   toastType: "category" | "changeCreate" | "archive";
-  data?: "change" | "delete" | "create" | boolean | registryTypes;
+  data?: "change" | "delete" | "create" | boolean | registryType;
 }

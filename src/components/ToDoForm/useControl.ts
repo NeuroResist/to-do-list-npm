@@ -5,7 +5,7 @@ import { IUseControl } from "./interface";
 function useControl({ isModalOpen, setIsModalOpen, refModal }: IUseControl) {
   const notify = () => toastTasks({ toastType: "changeCreate", data: isModalOpen });
 
-  const ref = useRef<any>(null);
+  const refClearValue = useRef<any>(null);
 
   const checkOutsideClickModal = (e: any) =>
     setIsModalOpen &&
@@ -20,7 +20,7 @@ function useControl({ isModalOpen, setIsModalOpen, refModal }: IUseControl) {
     };
   }, [isModalOpen]);
 
-  return { ref, notify };
+  return { refClearValue, notify };
 }
 
 export default useControl;

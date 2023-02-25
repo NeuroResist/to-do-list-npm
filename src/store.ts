@@ -6,33 +6,27 @@ import { filteredCategory } from "./helpers";
 
 import { OPTIONS, TASKS } from "./MOCK";
 
-import {
-  IAddTaskStore,
-  ICategory,
-  IChangeCategoryStore,
-  IChangeTaskStore,
-  ITask,
-} from "./interface";
+import { IAddTaskFx, ICategory, IChangeCategoryFx, IChangeTaskFx, ITask } from "./interface";
 import { isEmpty } from "lodash";
 
-export const addTaskStore = createEvent<any>();
-export const changeTaskStore = createEvent<any>();
+export const addTaskFx = createEvent<any>();
+export const changeTaskFx = createEvent<any>();
 
-export const createCategoryStore = createEvent<any>();
-export const changeCategoryStore = createEvent<any>();
-export const deleteCategoryStore = createEvent<any>();
+export const createCategoryFx = createEvent<any>();
+export const changeCategoryFx = createEvent<any>();
+export const deleteCategoryFx = createEvent<any>();
 
 export const $categories = createStore(filteredCategory(OPTIONS))
-  .on(createCategoryStore, (categories, value: string) => [
+  .on(createCategoryFx, (categories, value: string) => [
     ...categories,
     { value: value, label: value },
   ])
-  .on(changeCategoryStore, (categories, { changingCategory, value }: IChangeCategoryStore) =>
+  .on(changeCategoryFx, (categories, { changingCategory, value }: IChangeCategoryFx) =>
     categories.map((category: ICategory) =>
-      category.value === changingCategory.value ? { value: value, label: value } : category,
+      category.value === changingCategory ? { value: value, label: value } : category,
     ),
   )
-  .on(deleteCategoryStore, (categories, value: string) =>
+  .on(deleteCategoryFx, (categories, value: string) =>
     categories
       .map((category: ICategory) =>
         category.value === value ? { value: "", label: "" } : category,
@@ -42,7 +36,7 @@ export const $categories = createStore(filteredCategory(OPTIONS))
 
 // ТАСКИ
 export const $tasks = createStore(TASKS)
-  .on(addTaskStore, (tasks, { id, data }: IAddTaskStore) => [
+  .on(addTaskFx, (tasks, { id, data }: IAddTaskFx) => [
     ...tasks,
     {
       id: id,
@@ -54,11 +48,8 @@ export const $tasks = createStore(TASKS)
     },
   ])
   .on(
-    changeTaskStore,
-    (
-      tasks,
-      { id, description, add, calendar, select, isToArchive, isArchived }: IChangeTaskStore,
-    ) =>
+    changeTaskFx,
+    (tasks, { id, description, add, calendar, select, isToArchive, isArchived }: IChangeTaskFx) =>
       tasks.map((task: ITask) =>
         task.id === id
           ? {

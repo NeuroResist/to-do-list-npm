@@ -1,7 +1,7 @@
 import { ICategory, ITask } from "interface";
-import { registryTypes } from "types";
+import { registryType } from "types";
 
-export interface IFilteredTasks {
+export interface IFilteredTasksForSections {
   taskReminder: ITask[];
   task: ITask[];
   archive: ITask[];
@@ -9,8 +9,8 @@ export interface IFilteredTasks {
 }
 
 export interface ITasksWithoutCategory {
-  filterTasks: IFilteredTasks;
-  registryType: registryTypes;
+  filterTasks: IFilteredTasksForSections;
+  registryType: registryType;
 }
 
 export interface ITasksWithCategory extends ITasksWithoutCategory {

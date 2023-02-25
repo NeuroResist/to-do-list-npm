@@ -3,9 +3,9 @@ import TasksWithoutCategory from "./TasksWithoutCategory";
 
 import useControl from "./useControl";
 
-import { registryTypes } from "types";
+import { registryType } from "types";
 
-function TasksRegistry({ registryType }: { registryType: registryTypes }) {
+function TasksRegistry({ registryType }: { registryType: registryType }) {
   const { categories, filterTasks } = useControl();
 
   return (

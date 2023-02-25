@@ -2,37 +2,37 @@ import { useState } from "react";
 import { useStore } from "effector-react";
 import { useForm } from "react-hook-form";
 
-import { $categories, changeCategoryStore, createCategoryStore } from "store";
+import { $categories, changeCategoryFx, createCategoryFx } from "store";
 import { toastTasks } from "helpers";
 
 import { ICategory } from "interface";
 
 function useControl() {
   const categories = useStore($categories);
-  const [changingCategory, setChangingCategory] = useState({ value: "" });
+  const [changingCategory, setChangingCategory] = useState("");
   const { register, handleSubmit, reset, setValue } = useForm<{ value: string }>({});
 
   const onSubmit = (data: { value: string }) => {
     if (categories.find((category: ICategory) => category.value === data.value)) return null;
 
-    if (!changingCategory.value.length) {
-      createCategoryStore(data.value);
+    if (!changingCategory.length) {
+      createCategoryFx(data.value);
     } else {
-      changeCategoryStore({ changingCategory, value: data.value });
+      changeCategoryFx({ changingCategory, value: data.value });
 
-      setChangingCategory({ value: data.value });
+      setChangingCategory("");
     }
 
     toastTasks({
       toastType: "category",
-      data: changingCategory.value.length ? "create" : "change",
+      data: changingCategory.length ? "create" : "change",
     });
 
     reset();
   };
 
-  const changeCategory = ({ value }: { value: string }) => {
-    setChangingCategory({ value: value });
+  const changeCategory = (value: string) => {
+    setChangingCategory(value);
     setValue("value", value);
   };
 

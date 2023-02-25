@@ -1,8 +1,8 @@
 import { ITask } from "interface";
-import { registryTypes } from "types";
+import { registryType } from "types";
 
 export interface IOneTask extends ITask {
-  registryType?: registryTypes;
+  registryType?: registryType;
   isView?: boolean;
   className?: string;
 }

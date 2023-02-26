@@ -2,7 +2,13 @@ import CloseIcon from "@mui/icons-material/Close";
 
 import HelpSection from "./HelpSection";
 
-import { CREATE_EDIT_CATEGORY, CREATE_TASKS, TASKS_REGISTER, VIEW_CARD } from "./constants";
+import {
+  CREATE_EDIT_TASK,
+  TASKS_TYPES,
+  TASKS_REGISTER,
+  VIEW_CARD,
+  CREATE_EDIT_CATEGORY,
+} from "./constants";
 
 import { IModalHelpSections } from "./interface";
 
@@ -20,7 +26,9 @@ function ModalHelpSections({ refModal, setIsModalOpen, isModalOpen }: IModalHelp
 
         <h2 className="font-bold self-center mb-3 text-3xl">Подсказки</h2>
 
-        <HelpSection header="Создание Тасков" paragraphs={CREATE_TASKS} />
+        <HelpSection header="Виды задач" paragraphs={TASKS_TYPES} />
+
+        <HelpSection header="Создание Тасков" paragraphs={CREATE_EDIT_TASK} />
 
         <HelpSection header="Создание/редактор Категорий" paragraphs={CREATE_EDIT_CATEGORY} />
 

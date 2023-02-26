@@ -3,7 +3,7 @@ import Categories from "./Categories";
 import useControl from "./useControl";
 
 function CreateCategories() {
-  const { categories, changeCategory, handleSubmit, register, onSubmit } = useControl();
+  const { categories, changeCategory, handleSubmit, register, onSubmit, errors } = useControl();
 
   return (
     <section className="flex justify-center flex-col items-center mt-10">
@@ -19,6 +19,13 @@ function CreateCategories() {
         />
 
         <button className="bg-blue w-[100px] rounded-r-lg h-10">Добавить</button>
+        {errors.value && (
+          <p className="text-red font-bold">
+            {errors.value.type === "required"
+              ? "Введите описание таски"
+              : "Длина названия от 3 до 20 символов"}
+          </p>
+        )}
       </form>
     </section>
   );

@@ -10,7 +10,13 @@ import { ICategory } from "interface";
 function useControl() {
   const categories = useStore($categories);
   const [changingCategory, setChangingCategory] = useState("");
-  const { register, handleSubmit, reset, setValue } = useForm<{ value: string }>({});
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setValue,
+    formState: { errors },
+  } = useForm<{ value: string }>({});
 
   const onSubmit = (data: { value: string }) => {
     // Проверка, была ли создана Категория с уже существующим Именем
@@ -38,7 +44,7 @@ function useControl() {
     setValue("value", value);
   };
 
-  return { categories, changeCategory, handleSubmit, register, onSubmit };
+  return { categories, changeCategory, handleSubmit, register, onSubmit, errors };
 }
 
 export default useControl;

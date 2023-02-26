@@ -1,3 +1,4 @@
+import { persist } from "effector-storage/local";
 import { createEvent, createStore } from "effector";
 import { isEmpty } from "lodash";
 
@@ -61,3 +62,7 @@ export const $tasks = createStore(TASKS)
           : task,
       ),
   );
+
+// Занесение Сторов в localStorage
+persist({ store: $categories, key: "categories" });
+persist({ store: $tasks, key: "tasks" });

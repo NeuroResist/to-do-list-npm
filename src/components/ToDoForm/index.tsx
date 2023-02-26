@@ -126,11 +126,12 @@ function ToDoForm({
 
       <input
         onClick={notify}
+        disabled={!isValid}
         type="submit"
         value={isModalOpen ? "Изменить" : "Создать"}
-        className={clsx("border-t-2 w-full cursor-pointer", {
+        className={clsx("border-t-2 w-full", {
           "bg-red": !isValid,
-          "bg-green": isValid,
+          "bg-green cursor-pointer": isValid,
         })}
       />
     </form>

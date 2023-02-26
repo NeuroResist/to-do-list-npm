@@ -1,13 +1,13 @@
 // Засунуть tasks categories filterTasks в localStorage
 
 import { createEvent, createStore } from "effector";
+import { isEmpty } from "lodash";
 
 import { filteredCategory } from "./helpers";
 
 import { OPTIONS, TASKS } from "./MOCK";
 
 import { IAddTaskFx, ICategory, IChangeCategoryFx, IChangeTaskFx, ITask } from "./interface";
-import { isEmpty } from "lodash";
 
 export const addTaskFx = createEvent<any>();
 export const changeTaskFx = createEvent<any>();

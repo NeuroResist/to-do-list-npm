@@ -23,6 +23,7 @@ function ToDoForm({
   refModal,
 }: IToDoForm) {
   const {
+    reset,
     register,
     handleSubmit,
     control,
@@ -49,7 +50,8 @@ function ToDoForm({
       className={clsx("border-2 border-black border-2 bg-background", className)}
       onSubmit={handleSubmit((data: IOnSubmit) => {
         onSubmit(data);
-        !isModalOpen && refClearValue?.current?.clearValue();
+        !isModalOpen && refClearValue?.current?.clearValue(); // Ресет категории при отправке формы
+        reset();
       })}
     >
       <ToastContainer />

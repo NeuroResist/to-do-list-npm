@@ -13,6 +13,7 @@ function useControl() {
   const { register, handleSubmit, reset, setValue } = useForm<{ value: string }>({});
 
   const onSubmit = (data: { value: string }) => {
+    // Проверка, была ли создана Категория с уже существующим Именем
     if (categories.find((category: ICategory) => category.value === data.value)) return null;
 
     if (!changingCategory.length) {
@@ -31,6 +32,7 @@ function useControl() {
     reset();
   };
 
+  // Функция для установления изменяемой в данный момент Категории
   const changeCategory = (value: string) => {
     setChangingCategory(value);
     setValue("value", value);

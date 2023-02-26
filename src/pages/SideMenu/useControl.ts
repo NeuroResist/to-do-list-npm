@@ -38,6 +38,7 @@ function UseControl() {
   const filterTasks = useMemo(() => filteredTask(tasks, categories), [tasks, categories]);
   const refModal = useRef<any>(null);
 
+  // При открытой модалке нельзя скроллить страницу
   document.body.style.overflow = isModalOpen ? "hidden" : "auto";
 
   useEffect(() => {

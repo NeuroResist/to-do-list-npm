@@ -16,19 +16,22 @@ export default function ErrorPage() {
       </p>
       <ul className="flex flex-col">
         <Link className={text} to="/create-tasks">
-          /create-tasks
+          Создание Тасков
         </Link>
         <Link className={text} to="/create-categories">
-          /create-categories
+          Создание/редактор Категорий
         </Link>
         <Link className={text} to="/tasks-registry/task-registry">
-          /tasks-registry/task-registry
+          Заметки
         </Link>
         <Link className={text} to="/tasks-registry/task-reminder-registry">
-          /tasks-registry/task-reminder-registry
+          Напоминания
+        </Link>
+        <Link className={text} to="/tasks-registry/archive">
+          Архив
         </Link>
         <Link className={text} to="/tasks-registry/without-category">
-          /tasks-registry/without-category
+          Без Категории
         </Link>
       </ul>
     </div>

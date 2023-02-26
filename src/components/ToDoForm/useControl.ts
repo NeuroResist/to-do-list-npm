@@ -5,6 +5,7 @@ import { IUseControl } from "./interface";
 function useControl({ isModalOpen, setIsModalOpen, refModal }: IUseControl) {
   const notify = () => toastTasks({ toastType: "changeCreate", data: isModalOpen });
 
+  // Ref для удаления значения Категории при ресете формы
   const refClearValue = useRef<any>(null);
 
   const checkOutsideClickModal = (e: any) =>

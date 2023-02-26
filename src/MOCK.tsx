@@ -2,10 +2,11 @@ import dayjs from "dayjs";
 
 import { ITask } from "./interface";
 
+// Таски
 export const TASKS: ITask[] = [
   {
     id: 1,
-    add: "11111",
+    name: "11111",
     description: "11111",
     calendar: dayjs("01.01.2001").toDate(),
     select: { value: "Дом", label: "Дом" },
@@ -13,7 +14,7 @@ export const TASKS: ITask[] = [
   },
   {
     id: 2,
-    add: "22222",
+    name: "22222",
     description: "22222",
     calendar: dayjs("02.02.2002").toDate(),
     select: { value: "Дом", label: "Дом" },
@@ -21,7 +22,7 @@ export const TASKS: ITask[] = [
   },
   {
     id: 3,
-    add: "33333",
+    name: "33333",
     description: "33333",
     calendar: dayjs("03.03.2003").toDate(),
     select: { value: "Работа", label: "Работа" },
@@ -29,7 +30,7 @@ export const TASKS: ITask[] = [
   },
   {
     id: 4,
-    add: "44444",
+    name: "44444",
     description: "44444",
     calendar: dayjs("04.04.2004").toDate(),
     select: { value: "Работа", label: "Работа" },
@@ -37,7 +38,7 @@ export const TASKS: ITask[] = [
   },
   {
     id: 5,
-    add: "55555",
+    name: "55555",
     description: "55555",
     calendar: dayjs("05.05.2005").toDate(),
     select: { value: "Учеба", label: "Учеба" },
@@ -45,7 +46,7 @@ export const TASKS: ITask[] = [
   },
   {
     id: 6,
-    add: "66666",
+    name: "66666",
     description: "66666",
     calendar: dayjs("06.06.2006").toDate(),
     select: { value: "Учеба", label: "Учеба" },
@@ -53,7 +54,7 @@ export const TASKS: ITask[] = [
   },
   {
     id: 7,
-    add: "77777",
+    name: "77777",
     description: "77777",
     calendar: undefined,
     select: { value: "Дом", label: "Дом" },
@@ -61,7 +62,7 @@ export const TASKS: ITask[] = [
   },
   {
     id: 8,
-    add: "88888",
+    name: "88888",
     description: "88888",
     calendar: undefined,
     select: { value: "Дом", label: "Дом" },
@@ -69,7 +70,7 @@ export const TASKS: ITask[] = [
   },
   {
     id: 9,
-    add: "99999",
+    name: "99999",
     description: "99999",
     calendar: undefined,
     select: { value: "Работа", label: "Работа" },
@@ -77,7 +78,7 @@ export const TASKS: ITask[] = [
   },
   {
     id: 10,
-    add: "101010",
+    name: "101010",
     description: "101010",
     calendar: undefined,
     select: { value: "Работа", label: "Работа" },
@@ -85,7 +86,7 @@ export const TASKS: ITask[] = [
   },
   {
     id: 11,
-    add: "111111",
+    name: "111111",
     description: "111111",
     calendar: undefined,
     select: { value: "Учеба", label: "Учеба" },
@@ -93,7 +94,7 @@ export const TASKS: ITask[] = [
   },
   {
     id: 12,
-    add: "121212",
+    name: "121212",
     description: "121212",
     calendar: undefined,
     select: { value: "Учеба", label: "Учеба" },
@@ -101,6 +102,7 @@ export const TASKS: ITask[] = [
   },
 ];
 
+// Категории
 export const OPTIONS = [
   { value: "Дом", label: "Дом" },
   { value: "Работа", label: "Работа" },

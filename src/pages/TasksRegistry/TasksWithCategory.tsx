@@ -8,6 +8,7 @@ function TasksWithCategory({ registryType, filterTasks, categories }: ITasksWith
   return (
     <>
       {categories.map((category: ICategory) => {
+        // Отображения Таски имеющий тип registryType
         const filteredTasks = filterTasks[registryType].filter(
           (task: ITask) => task.select.value === category.value,
         );

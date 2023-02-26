@@ -1,5 +1,3 @@
-// Засунуть tasks categories filterTasks в localStorage
-
 import { createEvent, createStore } from "effector";
 import { isEmpty } from "lodash";
 
@@ -40,7 +38,7 @@ export const $tasks = createStore(TASKS)
     ...tasks,
     {
       id: id,
-      add: data.add,
+      name: data.name,
       description: data.description,
       calendar: data.calendar,
       select: data.select,
@@ -49,12 +47,12 @@ export const $tasks = createStore(TASKS)
   ])
   .on(
     changeTaskFx,
-    (tasks, { id, description, add, calendar, select, isToArchive, isArchived }: IChangeTaskFx) =>
+    (tasks, { id, description, name, calendar, select, isToArchive, isArchived }: IChangeTaskFx) =>
       tasks.map((task: ITask) =>
         task.id === id
           ? {
               id: id,
-              add: add ?? task.add,
+              name: name ?? task.name,
               description: description ?? task.description,
               calendar: calendar ?? task.calendar,
               select: select ?? task.select,

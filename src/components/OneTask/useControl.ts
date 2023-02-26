@@ -13,16 +13,15 @@ function useControl({ id }: { id: number }) {
   const refModal = useRef<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const onSubmit: SubmitHandler<IOnSubmit> = (data) => {
+  const onSubmit: SubmitHandler<IOnSubmit> = (data) =>
     changeTaskFx({
       id,
       description: data.description,
-      add: data.add,
+      name: data.name,
       calendar: data.calendar,
       select: data.select,
       isToArchive: false,
     });
-  };
 
   return {
     tasks,

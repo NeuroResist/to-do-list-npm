@@ -15,9 +15,10 @@ import { toastTasks } from "helpers";
 
 import { IOneTask } from "./interface";
 
+// Компонент с 1 карточкой и информацией в ней
 function OneTask({
   isArchived,
-  add,
+  name,
   description,
   calendar,
   select,
@@ -36,7 +37,7 @@ function OneTask({
         { "!bg-gray": registryType === "archive" },
       )}
     >
-      <p className="text-center decoration-2 underline">{add}</p>
+      <p className="text-center decoration-2 underline">{name}</p>
       <p className="min-h-[100px] break-all">{description}</p>
 
       <div className="flex justify-between">

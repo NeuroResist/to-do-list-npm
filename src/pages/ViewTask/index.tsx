@@ -17,7 +17,7 @@ function ViewTask() {
       <OneTask
         isArchived={currentTask.isArchived}
         isView
-        add={currentTask.add}
+        name={currentTask.name}
         description={currentTask.description}
         calendar={currentTask.calendar}
         select={currentTask.select}

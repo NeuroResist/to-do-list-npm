@@ -1,4 +1,3 @@
-import React from "react";
 import Select from "react-select";
 import clsx from "clsx";
 import Calendar from "react-calendar";
@@ -14,6 +13,7 @@ import { IToDoForm } from "./interface";
 import { ICategory } from "interface";
 import { IOnSubmit } from "pages/TasksRegistry/types";
 
+// Форма для создания новой Таски / Изменения уже существующей Таски
 function ToDoForm({
   categories,
   onSubmit,
@@ -30,7 +30,7 @@ function ToDoForm({
     formState: { isValid },
   } = useForm<IOnSubmit>({
     defaultValues: {
-      add: "",
+      name: "",
       description: "",
       calendar: undefined,
       select: { value: "Дом", label: "Дом" },
@@ -58,7 +58,7 @@ function ToDoForm({
 
       <label className="w-full">
         <input
-          {...register("add", {
+          {...register("name", {
             maxLength: 20,
             minLength: 3,
             required: "Введите название таски",

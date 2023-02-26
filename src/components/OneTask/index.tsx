@@ -47,7 +47,7 @@ function OneTask({
         </p>
       </div>
       <div className="flex absolute top-1 right-1">
-        {registryType !== "archive" && (
+        {registryType !== "archive" && !isArchived && (
           <BorderColorIcon
             className="cursor-pointer"
             onClick={() => setIsModalOpen(!isModalOpen)}

@@ -25,9 +25,10 @@ function ToDoForm({
   const {
     reset,
     register,
+    clearErrors,
     handleSubmit,
     control,
-    formState: { isValid },
+    formState: { isValid, errors },
   } = useForm<IOnSubmit>({
     defaultValues: {
       name: "",
@@ -51,6 +52,7 @@ function ToDoForm({
       onSubmit={handleSubmit((data: IOnSubmit) => {
         onSubmit(data);
         !isModalOpen && refClearValue?.current?.clearValue(); // Ресет категории при отправке формы
+        clearErrors();
         reset();
       })}
     >
@@ -67,6 +69,15 @@ function ToDoForm({
           className="w-full h-10 placeholder:text-red placeholder:font-semibold pl-2 border-b-2"
         />
       </label>
+      {errors.name && (
+        <p className="text-red font-bold">
+          {errors.name.type === "required"
+            ? "Введите название таски"
+            : errors.name.type === "minLength"
+            ? "Длина названия не менее 3 символов"
+            : "Длина названия не более 20 символов"}
+        </p>
+      )}
 
       <Controller
         control={control}
@@ -100,15 +111,21 @@ function ToDoForm({
       />
 
       <textarea
-        {...register("description", { maxLength: 200, required: "Введите название задачи" })}
+        {...register("description", { maxLength: 200, required: "Введите описание задачи" })}
         className="border-y-2 w-full pl-1 placeholder:text-red placeholder:font-semibold"
         name="description"
         placeholder="Описание таски ..."
       />
+      {errors.description && (
+        <p className="text-red font-bold">
+          {errors.description.type === "required"
+            ? "Введите описание таски"
+            : "Длина описания не более 200 символов"}
+        </p>
+      )}
 
       <input
         onClick={notify}
-        disabled={!isValid}
         type="submit"
         value={isModalOpen ? "Изменить" : "Создать"}
         className={clsx("border-t-2 w-full cursor-pointer", {

@@ -43,12 +43,12 @@ export const $tasks = createStore(TASKS)
       description: data.description,
       calendar: data.calendar,
       select: data.select,
-      isArchived: false,
+      isDeleted: false,
     },
   ])
   .on(
     changeTaskFx,
-    (tasks, { id, description, name, calendar, select, isToArchive, isArchived }: IChangeTaskFx) =>
+    (tasks, { id, description, name, calendar, select, isToDelete, isDeleted }: IChangeTaskFx) =>
       tasks.map((task: ITask) =>
         task.id === id
           ? {
@@ -57,7 +57,7 @@ export const $tasks = createStore(TASKS)
               description: description ?? task.description,
               calendar: calendar ?? task.calendar,
               select: select ?? task.select,
-              isArchived: isToArchive ? !isArchived : task.isArchived,
+              isDeleted: isToDelete ? !isDeleted : task.isDeleted,
             }
           : task,
       ),

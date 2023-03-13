@@ -14,13 +14,13 @@ export interface ITask {
   calendar?: Date;
   /** @param select - Выбранная Категория */
   select: { value: string; label: string };
-  /** @param isArchived - Архивированна ли Таска, boolean */
-  isArchived: boolean;
+  /** @param isDeleted - Удалена ли Таска, boolean */
+  isDeleted: boolean;
 }
 
 export interface IChangeTaskFx extends ITask {
-  /** @param isToArchive - Нужно ли переместить Таску в Архив */
-  isToArchive?: boolean;
+  /** @param isToDelete - Нужно ли переместить Таску в Удаленные */
+  isToDelete?: boolean;
 }
 
 export interface ICategory {
@@ -68,7 +68,7 @@ export interface ICheckOutsideClick {
 
 export interface IToastTasks {
   /** @param toastType - Тип Таски в Toast */
-  toastType: "category" | "changeCreate" | "archive";
+  toastType: "category" | "changeCreate" | "delete";
   /** @param data - Информация для действия в Toast */
   data?: "change" | "delete" | "create" | boolean | registryType;
 }

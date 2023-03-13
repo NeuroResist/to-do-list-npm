@@ -38,7 +38,7 @@ const router = createBrowserRouter(
         path="tasks-registry/task-reminder-registry"
         element={<TasksRegistry registryType="taskReminder" />}
       />
-      <Route path="tasks-registry/archive" element={<TasksRegistry registryType="archive" />} />
+      <Route path="tasks-registry/delete" element={<TasksRegistry registryType="delete" />} />
       <Route
         path="tasks-registry/without-category"
         element={<TasksRegistry registryType="withoutCategory" />}

@@ -10,7 +10,7 @@ export const TASKS: ITask[] = [
     description: "11111",
     calendar: dayjs("01.01.2001").toDate(),
     select: { value: "Дом", label: "Дом" },
-    isArchived: false,
+    isDeleted: false,
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ export const TASKS: ITask[] = [
     description: "22222",
     calendar: dayjs("02.02.2002").toDate(),
     select: { value: "Дом", label: "Дом" },
-    isArchived: false,
+    isDeleted: false,
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ export const TASKS: ITask[] = [
     description: "33333",
     calendar: dayjs("03.03.2003").toDate(),
     select: { value: "Работа", label: "Работа" },
-    isArchived: false,
+    isDeleted: false,
   },
   {
     id: 4,
@@ -34,7 +34,7 @@ export const TASKS: ITask[] = [
     description: "44444",
     calendar: dayjs("04.04.2004").toDate(),
     select: { value: "Работа", label: "Работа" },
-    isArchived: false,
+    isDeleted: false,
   },
   {
     id: 5,
@@ -42,7 +42,7 @@ export const TASKS: ITask[] = [
     description: "55555",
     calendar: dayjs("05.05.2005").toDate(),
     select: { value: "Учеба", label: "Учеба" },
-    isArchived: true,
+    isDeleted: true,
   },
   {
     id: 6,
@@ -50,7 +50,7 @@ export const TASKS: ITask[] = [
     description: "66666",
     calendar: dayjs("06.06.2006").toDate(),
     select: { value: "Учеба", label: "Учеба" },
-    isArchived: true,
+    isDeleted: true,
   },
   {
     id: 7,
@@ -58,7 +58,7 @@ export const TASKS: ITask[] = [
     description: "77777",
     calendar: undefined,
     select: { value: "Дом", label: "Дом" },
-    isArchived: false,
+    isDeleted: false,
   },
   {
     id: 8,
@@ -66,7 +66,7 @@ export const TASKS: ITask[] = [
     description: "88888",
     calendar: undefined,
     select: { value: "Дом", label: "Дом" },
-    isArchived: false,
+    isDeleted: false,
   },
   {
     id: 9,
@@ -74,7 +74,7 @@ export const TASKS: ITask[] = [
     description: "99999",
     calendar: undefined,
     select: { value: "Работа", label: "Работа" },
-    isArchived: true,
+    isDeleted: true,
   },
   {
     id: 10,
@@ -82,7 +82,7 @@ export const TASKS: ITask[] = [
     description: "101010",
     calendar: undefined,
     select: { value: "Работа", label: "Работа" },
-    isArchived: true,
+    isDeleted: true,
   },
   {
     id: 11,
@@ -90,7 +90,7 @@ export const TASKS: ITask[] = [
     description: "111111",
     calendar: undefined,
     select: { value: "Учеба", label: "Учеба" },
-    isArchived: true,
+    isDeleted: true,
   },
   {
     id: 12,
@@ -98,7 +98,7 @@ export const TASKS: ITask[] = [
     description: "121212",
     calendar: undefined,
     select: { value: "Учеба", label: "Учеба" },
-    isArchived: true,
+    isDeleted: true,
   },
 ];
 

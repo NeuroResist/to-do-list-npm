@@ -6,10 +6,10 @@ import { ITasksList } from "./interface";
 function TasksList({ tasks, registryType }: ITasksList) {
   return (
     <>
-      {tasks.map(({ name, description, calendar, select, id, isArchived }: ITask) => (
+      {tasks.map(({ name, description, calendar, select, id, isDeleted }: ITask) => (
         <div key={id}>
           <OneTask
-            isArchived={isArchived}
+            isDeleted={isDeleted}
             id={id}
             name={name}
             calendar={calendar}

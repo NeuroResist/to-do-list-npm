@@ -17,7 +17,7 @@ import { IOneTask } from "./interface";
 
 // Компонент с 1 карточкой и информацией в ней
 function OneTask({
-  isArchived,
+  isDeleted,
   name,
   description,
   calendar,
@@ -34,7 +34,7 @@ function OneTask({
       className={clsx(
         "relative flex flex-col min-h-[100px] min-w-[250px] bg-[#FDE8EE] border-4 border-pink box-border p-2",
         className,
-        { "!bg-gray": registryType === "archive" },
+        { "!bg-gray": registryType === "delete" },
       )}
     >
       <p className="text-center decoration-2 underline">{name}</p>
@@ -47,7 +47,7 @@ function OneTask({
         </p>
       </div>
       <div className="flex absolute top-1 right-1">
-        {registryType !== "archive" && !isArchived && (
+        {registryType !== "delete" && !isDeleted && (
           <BorderColorIcon
             className="cursor-pointer"
             onClick={() => setIsModalOpen(!isModalOpen)}
@@ -57,12 +57,12 @@ function OneTask({
         {registryType !== "withoutCategory" && !isView && (
           <ArchiveIcon
             onClick={() => {
-              toastTasks({ toastType: "archive", data: registryType });
-              changeTaskFx({ id, isArchived, isToArchive: true });
+              toastTasks({ toastType: "delete", data: registryType });
+              changeTaskFx({ id, isDeleted, isToDelete: true });
             }}
             className={clsx("absolute cursor-pointer", {
-              "right-12": registryType !== "archive",
-              "right-6": registryType === "archive",
+              "right-12": registryType !== "delete",
+              "right-6": registryType === "delete",
             })}
           />
         )}
@@ -75,7 +75,7 @@ function OneTask({
         )}
       </div>
 
-      {registryType !== "archive" && isModalOpen && (
+      {registryType !== "delete" && isModalOpen && (
         <ToDoForm
           isModalOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}

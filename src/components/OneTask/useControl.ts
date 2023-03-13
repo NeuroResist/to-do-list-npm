@@ -20,7 +20,7 @@ function useControl({ id }: { id: number }) {
       name: data.name,
       calendar: data.calendar,
       select: data.select,
-      isToArchive: false,
+      isToDelete: false,
     });
 
   return {

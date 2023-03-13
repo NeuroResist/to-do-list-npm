@@ -40,7 +40,7 @@ export const CREATE_EDIT_CATEGORY = [
 export const TASKS_REGISTER = [
   <>
     Реестры: <OrangeText>Заметки</OrangeText>, <OrangeText>Напоминания</OrangeText> и
-    <OrangeText> Архив </OrangeText>
+    <OrangeText> Удаленные </OrangeText>
     схожи. В каждом из них рассортированы по Категориям Таски, соответствующие им. В реестре
     <OrangeText> Без категории</OrangeText> все Таски находятся без сортировки.
   </>,
@@ -51,12 +51,12 @@ export const TASKS_REGISTER = [
   </>,
   <>
     С карточкой можно взаимодействовать тремя действиями:
-    <OrangeText> перенести в архив</OrangeText>,<OrangeText> редактировать </OrangeText>и
+    <OrangeText> перенести в Удаленные</OrangeText>,<OrangeText> редактировать </OrangeText>и
     <OrangeText> просмотреть</OrangeText> ее.
   </>,
   <>
-    Исключения: в <OrangeText>Без категории</OrangeText> нельзя архивировать задачу, в
-    <OrangeText> Архиве</OrangeText> нельзя изменить задачу, в
+    Исключения: в <OrangeText>Без категории</OrangeText> нельзя удалить задачу, в
+    <OrangeText> Удаленных</OrangeText> нельзя изменить задачу, в
     <OrangeText> просмотре Таски</OrangeText> можно только изменить ее.
   </>,
 ];

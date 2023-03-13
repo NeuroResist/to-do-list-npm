@@ -12,7 +12,7 @@ function ViewTask() {
       <BackButton navigate={navigate} />
 
       <OneTask
-        isArchived={currentTask.isArchived}
+        isDeleted={currentTask.isDeleted}
         isView
         name={currentTask.name}
         description={currentTask.description}

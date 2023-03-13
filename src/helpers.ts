@@ -17,13 +17,13 @@ export const checkOutsideClick = ({
 export const toastTasks = ({ toastType, data }: IToastTasks) => {
   let text = "";
 
-  if (toastType === "archive") {
+  if (toastType === "delete") {
     text =
       data === "task"
-        ? "Заметка была перенесена в архив!"
+        ? "Заметка была перенесена в удаленные!"
         : data === "taskReminder"
-        ? "Напоминалка была перенесена в архив!"
-        : "Таска была разархивирована";
+        ? "Напоминалка была перенесена в удаленные!"
+        : "Таска была восстановлена";
   }
 
   if (toastType === "changeCreate") {

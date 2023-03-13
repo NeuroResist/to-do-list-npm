@@ -24,7 +24,7 @@ function TasksWithCategory({ registryType, filterTasks, categories }: ITasksWith
                 ? " Заметок"
                 : registryType === "taskReminder"
                 ? " Напоминаний"
-                : " архивированных Тасков"}
+                : " удаленных Тасков"}
             </li>
           );
         }

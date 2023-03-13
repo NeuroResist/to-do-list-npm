@@ -35,8 +35,8 @@ function SidebarMenu() {
           >
             Напоминания
           </MenuItem>
-          <MenuItem className="bg-menu-item" component={<Link to="/tasks-registry/archive" />}>
-            Архив
+          <MenuItem className="bg-menu-item" component={<Link to="/tasks-registry/delete" />}>
+            Удаленные
           </MenuItem>
           <MenuItem
             className="bg-menu-item"

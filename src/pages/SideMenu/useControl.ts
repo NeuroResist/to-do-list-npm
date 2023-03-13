@@ -16,10 +16,10 @@ function UseControl() {
   // Фильтрация Тасков по 4 категориям для отрисовки в реестре
   const filteredTask = (tasks: ITask[], categories: ICategory[]): IFilteredTasksForSections => {
     const filterTasksForSections = (taskType: string) =>
-      tasks.filter(({ isArchived, calendar, select }: ITask) => {
-        if (calendar && !isArchived && taskType === "taskReminder") return true;
-        if (!calendar && !isArchived && taskType === "task") return true;
-        if (isArchived && taskType === "archive") return true;
+      tasks.filter(({ isDeleted, calendar, select }: ITask) => {
+        if (calendar && !isDeleted && taskType === "taskReminder") return true;
+        if (!calendar && !isDeleted && taskType === "task") return true;
+        if (isDeleted && taskType === "delete") return true;
         if (
           taskType === "withoutCategory" &&
           categories.filter((category: ICategory) => category?.value === select?.value).length === 0
@@ -30,7 +30,7 @@ function UseControl() {
     return {
       taskReminder: filterTasksForSections("taskReminder"),
       task: filterTasksForSections("task"),
-      archive: filterTasksForSections("archive"),
+      delete: filterTasksForSections("delete"),
       withoutCategory: filterTasksForSections("withoutCategory"),
     };
   };

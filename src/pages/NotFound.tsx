@@ -27,8 +27,8 @@ export default function ErrorPage() {
         <Link className={text} to="/tasks-registry/task-reminder-registry">
           Напоминания
         </Link>
-        <Link className={text} to="/tasks-registry/archive">
-          Архив
+        <Link className={text} to="/tasks-registry/delete">
+          Удаленные
         </Link>
         <Link className={text} to="/tasks-registry/without-category">
           Без Категории

@@ -6,8 +6,8 @@ export interface IFilteredTasksForSections {
   taskReminder: ITask[];
   /** @param task - Массив Заметок */
   task: ITask[];
-  /** @param archive - Массив Архивированных Тасков */
-  archive: ITask[];
+  /** @param delete - Массив Удаленных Тасков */
+  delete: ITask[];
   /** @param withoutCategory - Массив Тасков без Категории */
   withoutCategory: ITask[];
 }

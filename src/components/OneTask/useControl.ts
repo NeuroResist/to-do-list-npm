@@ -9,8 +9,7 @@ import { IOnSubmit } from "pages/TasksRegistry/types";
 function useControl({ id }: { id: number }) {
   const tasks = useStore($tasks);
   const categories = useStore($categories);
-  const user = useStore($user);
-  const status = "В работе";
+  const userName = useStore($user);
 
   const refModal = useRef<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,6 +21,8 @@ function useControl({ id }: { id: number }) {
       name: data.name,
       calendar: data.calendar,
       select: data.select,
+      userName: data.userName,
+      taskStatus: data.taskStatus,
       isToDelete: false,
     });
 
@@ -32,7 +33,7 @@ function useControl({ id }: { id: number }) {
     refModal,
     isModalOpen,
     setIsModalOpen,
-    user,
+    userName,
   };
 }
 

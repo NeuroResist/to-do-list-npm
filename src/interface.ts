@@ -16,6 +16,10 @@ export interface ITask {
   select: { value: string; label: string };
   /** @param isDeleted - Удалена ли Таска, boolean */
   isDeleted: boolean;
+  /** @param userName - Уникальный ник аккаунта */
+  userName: string;
+  /** @param taskStatus - Статус таски */
+  taskStatus?: string;
 }
 
 export interface IChangeTaskFx extends ITask {
@@ -91,7 +95,7 @@ export interface IMyProfile {
   userName: string;
 }
 
-export interface IStatus {
+export interface ITaskStatus {
   /** @param label - Название Статуса */
   label: string;
   /** @param value - Значение Статуса */

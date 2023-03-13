@@ -24,10 +24,13 @@ function OneTask({
   select,
   registryType,
   id,
+  taskStatus,
   isView,
   className,
 }: IOneTask) {
-  const { categories, onSubmit, refModal, isModalOpen, setIsModalOpen, user } = useControl({ id });
+  const { categories, onSubmit, refModal, isModalOpen, setIsModalOpen, userName } = useControl({
+    id,
+  });
 
   return (
     <section
@@ -46,8 +49,8 @@ function OneTask({
         </p>
       </div>
       <div className="flex justify-between">
-        <p>{user}</p>
-        <p className="bg-orange px-2 rounded">{user}</p>
+        <p>{userName}</p>
+        {taskStatus && <p className="bg-orange px-2 rounded">{taskStatus}</p>}
       </div>
 
       <div className="flex absolute top-1 right-1">
@@ -61,6 +64,7 @@ function OneTask({
         {registryType !== "withoutCategory" && !isView && (
           <ArchiveIcon
             onClick={() => {
+              console.log(registryType);
               toastTasks({ toastType: "delete", data: registryType });
               changeTaskFx({ id, isDeleted, isToDelete: true });
             }}

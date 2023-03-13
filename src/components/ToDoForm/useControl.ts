@@ -1,9 +1,15 @@
-import { checkOutsideClick, toastTasks } from "helpers";
 import { useEffect, useRef } from "react";
+import { useStore } from "effector-react";
+
+import { $user } from "store";
+
+import { checkOutsideClick, toastTasks } from "helpers";
+
 import { IUseControl } from "./interface";
 
 function useControl({ isModalOpen, setIsModalOpen, refModal }: IUseControl) {
   const notify = () => toastTasks({ toastType: "changeCreate", data: isModalOpen });
+  const userName = useStore($user);
 
   // Ref для удаления значения Категории при ресете формы
   const refClearValue = useRef<any>(null);
@@ -21,7 +27,7 @@ function useControl({ isModalOpen, setIsModalOpen, refModal }: IUseControl) {
     };
   }, [isModalOpen]);
 
-  return { refClearValue, notify };
+  return { refClearValue, notify, userName };
 }
 
 export default useControl;

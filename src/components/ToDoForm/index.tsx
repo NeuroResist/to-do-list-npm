@@ -1,5 +1,6 @@
 import Select from "react-select";
 import clsx from "clsx";
+import dayjs from "dayjs";
 import Calendar from "react-calendar";
 import { Controller, useForm } from "react-hook-form";
 import { ToastContainer } from "react-toastify";
@@ -38,7 +39,7 @@ function ToDoForm({
     },
   });
 
-  const { refClearValue, notify } = useControl({
+  const { refClearValue, notify, userName } = useControl({
     isModalOpen,
     setIsModalOpen,
     refModal,
@@ -50,7 +51,16 @@ function ToDoForm({
       id="modal"
       className={clsx("border-2 border-black border-2 bg-background", className)}
       onSubmit={handleSubmit((data: IOnSubmit) => {
-        onSubmit(data);
+        onSubmit({
+          ...data,
+          userName: userName,
+          taskStatus: data.calendar
+            ? dayjs().isBefore(dayjs(data.calendar))
+              ? "В работе"
+              : "Просрочено"
+            : undefined,
+        });
+
         !isModalOpen && refClearValue?.current?.clearValue(); // Ресет категории при отправке формы
         clearErrors();
         reset();
@@ -83,11 +93,7 @@ function ToDoForm({
         control={control}
         name="calendar"
         render={({ field: { onChange } }) => (
-          <Calendar
-            className="border-b-2 border-b-black"
-            minDate={new Date()}
-            onClickDay={onChange}
-          />
+          <Calendar className="border-b-2 border-b-black" onClickDay={onChange} />
         )}
       />
 

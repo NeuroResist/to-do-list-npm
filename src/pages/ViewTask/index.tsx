@@ -18,6 +18,8 @@ function ViewTask() {
         description={currentTask.description}
         calendar={currentTask.calendar}
         select={currentTask.select}
+        userName={currentTask.userName}
+        taskStatus={currentTask.taskStatus}
         id={currentTask.id}
         className="min-w-[400px]"
       />

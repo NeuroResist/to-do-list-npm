@@ -1,5 +1,6 @@
 import { persist } from "effector-storage/local";
 import { createEvent, createStore } from "effector";
+import dayjs from "dayjs";
 import { isEmpty } from "lodash";
 
 import { filteredCategory } from "./helpers";
@@ -43,6 +44,8 @@ export const $tasks = createStore(TASKS)
       description: data.description,
       calendar: data.calendar,
       select: data.select,
+      userName: data.userName,
+      taskStatus: data.taskStatus,
       isDeleted: false,
     },
   ])
@@ -57,6 +60,17 @@ export const $tasks = createStore(TASKS)
               description: description ?? task.description,
               calendar: calendar ?? task.calendar,
               select: select ?? task.select,
+              userName: task.userName,
+              // Проверить
+              taskStatus: isToDelete
+                ? !isDeleted
+                  ? "Удалено"
+                  : task.calendar
+                  ? dayjs().isBefore(dayjs(task.calendar))
+                    ? "В работе"
+                    : "Просрочено"
+                  : undefined
+                : "dasdsa",
               isDeleted: isToDelete ? !isDeleted : task.isDeleted,
             }
           : task,

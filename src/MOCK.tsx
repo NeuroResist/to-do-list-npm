@@ -10,6 +10,8 @@ export const TASKS: ITask[] = [
     description: "11111",
     calendar: dayjs("01.01.2001").toDate(),
     select: { value: "Дом", label: "Дом" },
+    userName: "yaroslav195",
+    taskStatus: "Просрочено",
     isDeleted: false,
   },
   {
@@ -18,6 +20,9 @@ export const TASKS: ITask[] = [
     description: "22222",
     calendar: dayjs("02.02.2002").toDate(),
     select: { value: "Дом", label: "Дом" },
+    userName: "yaroslav195",
+    taskStatus: "Просрочено",
+
     isDeleted: false,
   },
   {
@@ -26,6 +31,8 @@ export const TASKS: ITask[] = [
     description: "33333",
     calendar: dayjs("03.03.2003").toDate(),
     select: { value: "Работа", label: "Работа" },
+    userName: "yaroslav195",
+    taskStatus: "Просрочено",
     isDeleted: false,
   },
   {
@@ -34,6 +41,8 @@ export const TASKS: ITask[] = [
     description: "44444",
     calendar: dayjs("04.04.2004").toDate(),
     select: { value: "Работа", label: "Работа" },
+    userName: "yaroslav195",
+    taskStatus: "Просрочено",
     isDeleted: false,
   },
   {
@@ -42,6 +51,8 @@ export const TASKS: ITask[] = [
     description: "55555",
     calendar: dayjs("05.05.2005").toDate(),
     select: { value: "Учеба", label: "Учеба" },
+    userName: "yaroslav195",
+    taskStatus: "Удалено",
     isDeleted: true,
   },
   {
@@ -50,6 +61,8 @@ export const TASKS: ITask[] = [
     description: "66666",
     calendar: dayjs("06.06.2006").toDate(),
     select: { value: "Учеба", label: "Учеба" },
+    userName: "yaroslav195",
+    taskStatus: "Удалено",
     isDeleted: true,
   },
   {
@@ -58,6 +71,8 @@ export const TASKS: ITask[] = [
     description: "77777",
     calendar: undefined,
     select: { value: "Дом", label: "Дом" },
+    userName: "yaroslav195",
+    taskStatus: undefined,
     isDeleted: false,
   },
   {
@@ -66,6 +81,8 @@ export const TASKS: ITask[] = [
     description: "88888",
     calendar: undefined,
     select: { value: "Дом", label: "Дом" },
+    userName: "yaroslav195",
+    taskStatus: undefined,
     isDeleted: false,
   },
   {
@@ -74,6 +91,8 @@ export const TASKS: ITask[] = [
     description: "99999",
     calendar: undefined,
     select: { value: "Работа", label: "Работа" },
+    userName: "yaroslav195",
+    taskStatus: undefined,
     isDeleted: true,
   },
   {
@@ -82,6 +101,8 @@ export const TASKS: ITask[] = [
     description: "101010",
     calendar: undefined,
     select: { value: "Работа", label: "Работа" },
+    userName: "yaroslav195",
+    taskStatus: undefined,
     isDeleted: true,
   },
   {
@@ -90,6 +111,8 @@ export const TASKS: ITask[] = [
     description: "111111",
     calendar: undefined,
     select: { value: "Учеба", label: "Учеба" },
+    userName: "yaroslav195",
+    taskStatus: undefined,
     isDeleted: true,
   },
   {
@@ -98,6 +121,8 @@ export const TASKS: ITask[] = [
     description: "121212",
     calendar: undefined,
     select: { value: "Учеба", label: "Учеба" },
+    userName: "yaroslav195",
+    taskStatus: undefined,
     isDeleted: true,
   },
 ];

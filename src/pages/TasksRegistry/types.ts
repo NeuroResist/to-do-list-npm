@@ -3,4 +3,6 @@ export type IOnSubmit = {
   description: string;
   calendar?: Date;
   select: { value: string; label: string };
+  userName: string;
+  taskStatus?: string;
 };

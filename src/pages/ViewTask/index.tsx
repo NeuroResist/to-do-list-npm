@@ -1,5 +1,7 @@
 import OneTask from "components/OneTask";
 
+import BackButton from "components/BackButton";
+
 import useControl from "./useControl";
 
 function ViewTask() {
@@ -7,12 +9,7 @@ function ViewTask() {
 
   return (
     <div className="flex justify-center mt-10">
-      <button
-        className="absolute top-0 left-0 w-[100px] h-[60px] bg-red font-bold"
-        onClick={() => navigate(-1)}
-      >
-        Назад
-      </button>
+      <BackButton navigate={navigate} />
 
       <OneTask
         isArchived={currentTask.isArchived}

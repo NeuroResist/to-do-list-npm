@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useStore } from "effector-react";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 import { $categories, changeCategoryFx, createCategoryFx } from "store";
@@ -15,8 +16,9 @@ function useControl() {
     handleSubmit,
     reset,
     setValue,
-    formState: { errors },
+    formState: { errors, isDirty },
   } = useForm<{ value: string }>({});
+  const navigate = useNavigate();
 
   const onSubmit = (data: { value: string }) => {
     // Проверка, была ли создана Категория с уже существующим Именем
@@ -44,7 +46,19 @@ function useControl() {
     setValue("value", value);
   };
 
-  return { categories, changeCategory, handleSubmit, register, onSubmit, errors };
+  return {
+    navigate,
+    isDirty,
+    setValue,
+    setChangingCategory,
+    categories,
+    changeCategory,
+    handleSubmit,
+    register,
+    onSubmit,
+    errors,
+    isChanging: Boolean(changingCategory.length),
+  };
 }
 
 export default useControl;

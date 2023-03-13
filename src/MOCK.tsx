@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 
-import { ITask } from "./interface";
+import { IMyProfile, IOptions, ITask } from "./interface";
 
 // Таски
 export const TASKS: ITask[] = [
@@ -103,9 +103,36 @@ export const TASKS: ITask[] = [
 ];
 
 // Категории
-export const OPTIONS = [
+export const OPTIONS: IOptions[] = [
   { value: "Дом", label: "Дом" },
   { value: "Работа", label: "Работа" },
   { value: "Учеба", label: "Учеба" },
   { value: "Ааа", label: "Ааа" },
+];
+
+export const MY_PROFILE: IMyProfile[] = [
+  {
+    iconPath: "./me.jpg",
+    name: "Ярослав Орлов",
+    email: "pataponchik3@gmail.com",
+    userName: "yaroslav195",
+  },
+  {
+    iconPath: "./me.jpg",
+    name: "Кулаковский Максим",
+    email: "kulakovsky@gmail.com",
+    userName: "yaroslav195",
+  },
+  {
+    iconPath: "./me.jpg",
+    name: "Дмитрий Никитин",
+    email: "dmnikitin@gmail.com",
+    userName: "yaroslav195",
+  },
+  {
+    iconPath: "./me.jpg",
+    name: "Олег Караев",
+    email: "olegkaraev@gmail.com",
+    userName: "yaroslav195",
+  },
 ];

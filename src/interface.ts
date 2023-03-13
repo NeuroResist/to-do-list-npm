@@ -72,3 +72,30 @@ export interface IToastTasks {
   /** @param data - Информация для действия в Toast */
   data?: "change" | "delete" | "create" | boolean | registryType;
 }
+
+export interface IOptions {
+  /** @param value - Значение категории - селекта (равно label) */
+  value: string;
+  /** @param label - Название категории - селекта (равно value) */
+  label: string;
+}
+
+export interface IMyProfile {
+  /** @param iconPath - Путь к иконке Профиля */
+  iconPath: string;
+  /** @param name - Имя Профиля */
+  name: string;
+  /** @param email - Email профиля */
+  email: string;
+  /** @param userName - Уникальный ник аккаунта */
+  userName: string;
+}
+
+export interface IStatus {
+  /** @param label - Название Статуса */
+  label: string;
+  /** @param value - Значение Статуса */
+  value: string;
+  /** @param color - Название Цвета */
+  color: string;
+}

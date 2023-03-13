@@ -3,8 +3,8 @@ export interface IMyProfile {
   setIsModalOpen: (isModalOpen: boolean) => void;
   /** @param isModalOpen - Открыта ли сейчас модалка, boolean */
   isModalOpen: boolean;
-  /** @param icon - Путь к иконке Профиля */
-  icon: string;
+  /** @param iconPath - Путь к иконке Профиля */
+  iconPath: string;
   /** @param name - Имя Профиля */
   name: string;
   /** @param email - Email профиля */

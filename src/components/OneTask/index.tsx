@@ -27,7 +27,7 @@ function OneTask({
   isView,
   className,
 }: IOneTask) {
-  const { categories, onSubmit, refModal, isModalOpen, setIsModalOpen } = useControl({ id });
+  const { categories, onSubmit, refModal, isModalOpen, setIsModalOpen, user } = useControl({ id });
 
   return (
     <section
@@ -39,13 +39,17 @@ function OneTask({
     >
       <p className="text-center decoration-2 underline">{name}</p>
       <p className="min-h-[100px] break-all">{description}</p>
-
       <div className="flex justify-between">
         <p>{select.value + "📋"}</p>
         <p>
           <time>{calendar && dayjs(calendar).format("DD.MM.YYYY 🕗")}</time>
         </p>
       </div>
+      <div className="flex justify-between">
+        <p>{user}</p>
+        <p className="bg-orange px-2 rounded">{user}</p>
+      </div>
+
       <div className="flex absolute top-1 right-1">
         {registryType !== "delete" && !isDeleted && (
           <BorderColorIcon

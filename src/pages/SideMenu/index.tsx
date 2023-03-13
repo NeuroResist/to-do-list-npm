@@ -6,7 +6,7 @@ import SidebarMenu from "./Menu";
 
 import useControl from "./useControl";
 
-import { MY_PROFILE } from "./MyProfile/constants";
+import { MY_PROFILE } from "MOCK";
 
 function SideMenu() {
   const { isModalOpen, setIsModalOpen, filterTasks, refModal } = useControl();
@@ -17,7 +17,7 @@ function SideMenu() {
         <MyProfile
           setIsModalOpen={setIsModalOpen}
           isModalOpen={isModalOpen}
-          icon={MY_PROFILE[0].icon}
+          iconPath={MY_PROFILE[0].iconPath}
           name={MY_PROFILE[0].name}
           email={MY_PROFILE[0].email}
         />

@@ -4,7 +4,7 @@ import { isEmpty } from "lodash";
 
 import { filteredCategory } from "./helpers";
 
-import { OPTIONS, TASKS } from "./MOCK";
+import { MY_PROFILE, OPTIONS, TASKS } from "./MOCK";
 
 import { IAddTaskFx, ICategory, IChangeCategoryFx, IChangeTaskFx, ITask } from "./interface";
 
@@ -62,6 +62,9 @@ export const $tasks = createStore(TASKS)
           : task,
       ),
   );
+
+// Нынешний пользователь
+export const $user = createStore(MY_PROFILE[0].userName);
 
 // Занесение Сторов в localStorage
 persist({ store: $categories, key: "categories" });

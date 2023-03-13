@@ -2,10 +2,10 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 import { IMyProfile } from "./interface";
 
-function MyProfile({ setIsModalOpen, isModalOpen, icon, name, email }: IMyProfile) {
+function MyProfile({ setIsModalOpen, isModalOpen, iconPath, name, email }: IMyProfile) {
   return (
     <figure className="flex mb-2 relative">
-      <img className="rounded-full" src={icon} alt="account" />
+      <img className="rounded-full" src={iconPath} alt="account" />
 
       <div className="p-2">
         <figcaption className="font-bold">{name}</figcaption>

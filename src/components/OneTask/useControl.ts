@@ -2,13 +2,15 @@ import { useRef, useState } from "react";
 import { useStore } from "effector-react";
 import { SubmitHandler } from "react-hook-form";
 
-import { $categories, $tasks, changeTaskFx } from "store";
+import { $categories, $tasks, $user, changeTaskFx } from "store";
 
 import { IOnSubmit } from "pages/TasksRegistry/types";
 
 function useControl({ id }: { id: number }) {
   const tasks = useStore($tasks);
   const categories = useStore($categories);
+  const user = useStore($user);
+  const status = "В работе";
 
   const refModal = useRef<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,6 +32,7 @@ function useControl({ id }: { id: number }) {
     refModal,
     isModalOpen,
     setIsModalOpen,
+    user,
   };
 }
 

@@ -17,7 +17,7 @@ function useControl() {
     [tasks],
   );
 
-  return { tasks, id, navigate, currentTask };
+  return { id, navigate, currentTask };
 }
 
 export default useControl;

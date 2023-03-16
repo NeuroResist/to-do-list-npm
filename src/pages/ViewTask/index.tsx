@@ -11,18 +11,12 @@ function ViewTask() {
     <div className="flex justify-center mt-10">
       <BackButton navigate={navigate} />
 
-      <OneTask
-        isDeleted={currentTask.isDeleted}
-        isView
-        name={currentTask.name}
-        description={currentTask.description}
-        calendar={currentTask.calendar}
-        select={currentTask.select}
-        userName={currentTask.userName}
-        taskStatus={currentTask.taskStatus}
-        id={currentTask.id}
-        className="min-w-[400px]"
-      />
+      <div className="absolute left-[100px] top-0 bg-blue">
+        <div>Дата создания: {currentTask.createDate}</div>
+        <div>Дата изменения: {currentTask.updateDate ?? "Не изменялась"}</div>
+      </div>
+
+      <OneTask {...currentTask} isView className="min-w-[400px]" />
     </div>
   );
 }

@@ -53,6 +53,8 @@ function ToDoForm({
       onSubmit={handleSubmit((data: IOnSubmit) => {
         onSubmit({
           ...data,
+          createDate: dayjs().format("DD.MM.YYYY, HH:mm [по Мск]"),
+          updateDate: undefined,
           userName: userName,
           taskStatus: data.calendar
             ? dayjs().isBefore(dayjs(data.calendar))

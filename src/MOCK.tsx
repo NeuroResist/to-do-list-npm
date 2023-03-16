@@ -12,6 +12,8 @@ export const TASKS: ITask[] = [
     select: { value: "Дом", label: "Дом" },
     userName: "yaroslav195",
     taskStatus: "Просрочено",
+    updateDate: "17.03.2011, 01:13 по Мск",
+    createDate: "17.03.2001, 01:13 по Мск",
     isDeleted: false,
   },
   {
@@ -22,7 +24,8 @@ export const TASKS: ITask[] = [
     select: { value: "Дом", label: "Дом" },
     userName: "yaroslav195",
     taskStatus: "Просрочено",
-
+    updateDate: "17.03.2022, 01:13 по Мск",
+    createDate: "17.03.2002, 01:13 по Мск",
     isDeleted: false,
   },
   {
@@ -33,6 +36,8 @@ export const TASKS: ITask[] = [
     select: { value: "Работа", label: "Работа" },
     userName: "yaroslav195",
     taskStatus: "Просрочено",
+    updateDate: "17.03.2033, 01:13 по Мск",
+    createDate: "17.03.2003, 01:13 по Мск",
     isDeleted: false,
   },
   {
@@ -43,6 +48,8 @@ export const TASKS: ITask[] = [
     select: { value: "Работа", label: "Работа" },
     userName: "yaroslav195",
     taskStatus: "Просрочено",
+    updateDate: "17.03.2044, 01:13 по Мск",
+    createDate: "17.03.2004, 01:13 по Мск",
     isDeleted: false,
   },
   {
@@ -53,6 +60,8 @@ export const TASKS: ITask[] = [
     select: { value: "Учеба", label: "Учеба" },
     userName: "yaroslav195",
     taskStatus: "Удалено",
+    updateDate: "17.03.2055, 01:13 по Мск",
+    createDate: "17.03.2005, 01:13 по Мск",
     isDeleted: true,
   },
   {
@@ -63,6 +72,8 @@ export const TASKS: ITask[] = [
     select: { value: "Учеба", label: "Учеба" },
     userName: "yaroslav195",
     taskStatus: "Удалено",
+    updateDate: "17.03.2066, 01:13 по Мск",
+    createDate: "17.03.2006, 01:13 по Мск",
     isDeleted: true,
   },
   {
@@ -73,6 +84,8 @@ export const TASKS: ITask[] = [
     select: { value: "Дом", label: "Дом" },
     userName: "yaroslav195",
     taskStatus: undefined,
+    updateDate: "17.03.2077, 01:13 по Мск",
+    createDate: "17.03.2007, 01:13 по Мск",
     isDeleted: false,
   },
   {
@@ -83,6 +96,8 @@ export const TASKS: ITask[] = [
     select: { value: "Дом", label: "Дом" },
     userName: "yaroslav195",
     taskStatus: undefined,
+    updateDate: "17.03.2088, 01:13 по Мск",
+    createDate: "17.03.2008, 01:13 по Мск",
     isDeleted: false,
   },
   {
@@ -93,6 +108,8 @@ export const TASKS: ITask[] = [
     select: { value: "Работа", label: "Работа" },
     userName: "yaroslav195",
     taskStatus: undefined,
+    updateDate: "17.03.2099, 01:13 по Мск",
+    createDate: "17.03.2009, 01:13 по Мск",
     isDeleted: true,
   },
   {
@@ -103,6 +120,8 @@ export const TASKS: ITask[] = [
     select: { value: "Работа", label: "Работа" },
     userName: "yaroslav195",
     taskStatus: undefined,
+    updateDate: "17.03.2110, 01:13 по Мск",
+    createDate: "17.03.2010, 01:13 по Мск",
     isDeleted: true,
   },
   {
@@ -113,6 +132,8 @@ export const TASKS: ITask[] = [
     select: { value: "Учеба", label: "Учеба" },
     userName: "yaroslav195",
     taskStatus: undefined,
+    updateDate: "17.03.2111, 01:13 по Мск",
+    createDate: "17.03.2011, 01:13 по Мск",
     isDeleted: true,
   },
   {
@@ -123,6 +144,8 @@ export const TASKS: ITask[] = [
     select: { value: "Учеба", label: "Учеба" },
     userName: "yaroslav195",
     taskStatus: undefined,
+    updateDate: "17.03.2112, 01:13 по Мск",
+    createDate: "17.03.2012, 01:13 по Мск",
     isDeleted: true,
   },
 ];

@@ -13,6 +13,8 @@ import { changeTaskFx } from "store";
 
 import { toastTasks } from "helpers";
 
+import { STATUSES } from "components/OneTask/constants";
+
 import { IOneTask } from "./interface";
 
 // Компонент с 1 карточкой и информацией в ней
@@ -32,6 +34,8 @@ function OneTask({
     id,
   });
 
+  const statusColor = STATUSES.find((item: any) => item.label === taskStatus)?.color;
+
   return (
     <section
       className={clsx(
@@ -50,7 +54,7 @@ function OneTask({
       </div>
       <div className="flex justify-between">
         <p>{userName}</p>
-        {taskStatus && <p className="bg-orange px-2 rounded">{taskStatus}</p>}
+        {taskStatus && <p className={`px-2 rounded ${statusColor}`}>{taskStatus}</p>}
       </div>
 
       <div className="flex absolute top-1 right-1">

@@ -19,7 +19,11 @@ export interface ITask {
   /** @param userName - Уникальный ник аккаунта */
   userName: string;
   /** @param taskStatus - Статус таски */
-  taskStatus?: string;
+  taskStatus?: "Удалено" | "В работе" | "Просрочено";
+  /** @param createDate - Дата создания таски */
+  createDate: string;
+  /** @param updateDate - Дата изменение таски */
+  updateDate?: string;
 }
 
 export interface IChangeTaskFx extends ITask {
@@ -95,11 +99,11 @@ export interface IMyProfile {
   userName: string;
 }
 
-export interface ITaskStatus {
-  /** @param label - Название Статуса */
-  label: string;
-  /** @param value - Значение Статуса */
-  value: string;
-  /** @param color - Название Цвета */
-  color: string;
+export interface IChangedTaskStatus {
+  /** @param isToDelete - Нужно ли переместить Таску в Удаленные */
+  isToDelete?: boolean;
+  /** @param isDeleted - Удалена ли Таска, boolean */
+  isDeleted: boolean;
+  /** @param calendar - Выбранная Дата для Напоминалки */
+  calendar?: Date;
 }

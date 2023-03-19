@@ -2,7 +2,7 @@ import { ICategory, ITask } from "interface";
 import { registryType } from "types";
 
 export interface IFilteredTasksForSections {
-  /** @param taskReminder - Массив Напоминалок */
+  /** @param taskReminder - Массив Напоминаний */
   taskReminder: ITask[];
   /** @param task - Массив Заметок */
   task: ITask[];

@@ -3,7 +3,7 @@ export type IOnSubmit = {
   name: string;
   /** @param description - Описание Таски */
   description: string;
-  /** @param calendar - Выбранная Дата для Напоминалки */
+  /** @param calendar - Выбранная Дата для Напоминания */
   calendar?: Date;
   /** @param select - Выбранная Категория */
   select: { value: string; label: string };

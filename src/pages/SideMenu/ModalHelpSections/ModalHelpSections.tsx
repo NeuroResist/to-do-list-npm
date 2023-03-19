@@ -8,6 +8,8 @@ import {
   TASKS_REGISTER,
   VIEW_CARD,
   CREATE_EDIT_CATEGORY,
+  FILTER,
+  STATUSES,
 } from "./constants";
 
 import { IModalHelpSections } from "./interface";
@@ -37,6 +39,10 @@ function ModalHelpSections(props: IModalHelpSections) {
         <HelpSection header="Реестр задач" paragraphs={TASKS_REGISTER} />
 
         <HelpSection header="Просмотр карточки" paragraphs={VIEW_CARD} />
+
+        <HelpSection header="Фильтрация" paragraphs={FILTER} />
+
+        <HelpSection header="Статусная модель" paragraphs={STATUSES} />
       </section>
     </div>
   );

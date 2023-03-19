@@ -2,11 +2,11 @@ import OrangeText from "components/OrangeText";
 
 export const TASKS_TYPES = [
   <>
-    <OrangeText>Таска</OrangeText> - и заметки, и напоминалки
+    <OrangeText>Таска</OrangeText> - и заметки, и напоминаний
     <br />
     <OrangeText>Заметка</OrangeText> - таска без времени
     <br />
-    <OrangeText>Напоминалка</OrangeText> - таска со временем
+    <OrangeText>Напоминание</OrangeText> - таска со временем
     <br />
   </>,
 ];
@@ -23,7 +23,7 @@ export const CREATE_EDIT_TASK = [
   </>,
   <>
     Необязательное поле - <OrangeText>Дата</OrangeText>, в зависимости от ее наличия Таска будет
-    отнесена либо к <OrangeText>Напоминалкам</OrangeText>, либо к <OrangeText>Заметкам</OrangeText>
+    отнесена либо к <OrangeText>Напоминаниям</OrangeText>, либо к <OrangeText>Заметкам</OrangeText>
   </>,
 ];
 
@@ -58,6 +58,31 @@ export const TASKS_REGISTER = [
     Исключения: в <OrangeText>Без категории</OrangeText> нельзя удалить задачу, в
     <OrangeText> Удаленных</OrangeText> нельзя изменить задачу, в
     <OrangeText> просмотре Таски</OrangeText> можно только изменить ее.
+  </>,
+];
+
+export const FILTER = [
+  <>
+    <OrangeText>Фильтрация</OrangeText> - доступна во всех реестрах. Фильтровать можно по следующим
+    критериям:
+    <br />
+    <OrangeText>Дата</OrangeText>,<OrangeText> Категория</OrangeText>,
+    <OrangeText> Статус</OrangeText>
+    <br />
+    Чтобы обнулить фильтрацию надо выбрать статус и категорию "Все"
+  </>,
+];
+
+export const STATUSES = [
+  <>
+    <OrangeText>Статусы</OrangeText> - статусная модель, которая есть у Напоминаний. Есть три вида
+    статусов:
+    <br />
+    <OrangeText>В работе</OrangeText> - Если время таски еще не вышло
+    <br />
+    <OrangeText> Просрочено</OrangeText> - если прошло время выполнения напоминания
+    <br />
+    <OrangeText> Удалено</OrangeText> - если напоминание удалено, либо выполнено
   </>,
 ];
 

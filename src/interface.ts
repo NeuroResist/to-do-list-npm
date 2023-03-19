@@ -10,7 +10,7 @@ export interface ITask {
   name: string;
   /** @param description - Описание Таски */
   description: string;
-  /** @param calendar - Выбранная Дата для Напоминалки */
+  /** @param calendar - Выбранная Дата для Напоминаний */
   calendar?: Date;
   /** @param select - Выбранная Категория */
   select: { value: string; label: string };
@@ -104,7 +104,7 @@ export interface IChangedTaskStatus {
   isToDelete?: boolean;
   /** @param isDeleted - Удалена ли Таска, boolean */
   isDeleted: boolean;
-  /** @param calendar - Выбранная Дата для Напоминалки */
+  /** @param calendar - Выбранная Дата для Напоминаний */
   calendar?: Date;
 }
 

@@ -2,7 +2,9 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 import { IMyProfile } from "./interface";
 
-function MyProfile({ setIsModalOpen, isModalOpen, iconPath, name, email }: IMyProfile) {
+function MyProfile(props: IMyProfile) {
+  const { setIsModalOpen, isModalOpen, iconPath, name, email } = props;
+
   return (
     <figure className="flex mb-2 relative">
       <img className="rounded-full" src={iconPath} alt="account" />

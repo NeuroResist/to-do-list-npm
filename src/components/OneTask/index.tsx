@@ -11,30 +11,30 @@ import useControl from "components/OneTask/useControl";
 
 import { changeTaskFx } from "store";
 
-import { STATUSES } from "../../constants";
-
 import { toastTasks } from "helpers";
 
 import { IOneTask } from "./interface";
 
 // Компонент с 1 карточкой и информацией в ней
-function OneTask({
-  isDeleted,
-  name,
-  description,
-  calendar,
-  select,
-  registryType,
-  id,
-  taskStatus,
-  isView,
-  className,
-}: IOneTask) {
-  const { categories, onSubmit, refModal, isModalOpen, setIsModalOpen, userName } = useControl({
+function OneTask(props: IOneTask) {
+  const {
+    isDeleted,
+    name,
+    description,
+    calendar,
+    select,
+    registryType,
     id,
-  });
+    taskStatus,
+    isView,
+    className,
+  } = props;
 
-  const statusColor = STATUSES.find((item: any) => item.label === taskStatus)?.color;
+  const { categories, onSubmit, refModal, isModalOpen, setIsModalOpen, userName, statusColor } =
+    useControl({
+      id,
+      taskStatus,
+    });
 
   return (
     <section

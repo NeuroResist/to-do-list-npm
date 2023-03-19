@@ -4,7 +4,9 @@ import OrangeText from "components/OrangeText";
 import { ICategory, ITask } from "interface";
 import { ITasksWithCategory } from "./interface";
 
-function TasksWithCategory({ registryType, filterTasks, categories }: ITasksWithCategory) {
+function TasksWithCategory(props: ITasksWithCategory) {
+  const { registryType, filterTasks, categories } = props;
+
   return (
     <>
       {categories.map((category: ICategory) => {

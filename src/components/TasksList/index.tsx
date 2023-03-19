@@ -3,7 +3,9 @@ import OneTask from "../OneTask";
 import { ITask } from "interface";
 import { ITasksList } from "./interface";
 
-function TasksList({ tasks, registryType }: ITasksList) {
+function TasksList(props: ITasksList) {
+  const { tasks, registryType } = props;
+
   return (
     <>
       {tasks.map((task: ITask) => (

@@ -1,22 +1,21 @@
 import dayjs from "dayjs";
 import { toast } from "react-toastify";
 
-import { ICategory, ICheckOutsideClick, ITask, IToastTasks } from "./interface";
+import { ICategory, ICheckOutsideClick, IFilterTask, ITask, IToastTasks } from "./interface";
 import { IFilteredTasksForSections } from "./pages/TasksRegistry/interface";
 
 // Определение, был ли клик снаружи от элемента
-export const checkOutsideClick = ({
-  e,
-  refModal,
-  setIsModalOpen,
-  isModalOpen,
-}: ICheckOutsideClick) => {
+export const checkOutsideClick = (props: ICheckOutsideClick) => {
+  const { e, refModal, setIsModalOpen, isModalOpen } = props;
+
   if (refModal?.current && !refModal.current.contains(e.target))
     setIsModalOpen && setIsModalOpen(!isModalOpen);
 };
 
 // Тост и Текст к ней
-export const toastTasks = ({ toastType, data }: IToastTasks) => {
+export const toastTasks = (props: IToastTasks) => {
+  const { toastType, data } = props;
+
   let text = "";
 
   if (toastType === "delete") {
@@ -54,7 +53,9 @@ export const toastTasks = ({ toastType, data }: IToastTasks) => {
 };
 
 // Фильтрация тасков для отображения в реестре
-export const filterTask = ({ tasks, categories, filter }: any): IFilteredTasksForSections => {
+export const filterTask = (props: IFilterTask): IFilteredTasksForSections => {
+  const { tasks, categories, filter } = props;
+
   const filterTasksForSections = (taskType: string) =>
     tasks.filter(({ isDeleted, calendar, select }: ITask) => {
       if (calendar && !isDeleted && taskType === "taskReminder") return true;

@@ -1,6 +1,10 @@
 import clsx from "clsx";
 
-function BackButton({ navigate, isDisabled }: any) {
+import { IBackButton } from "./interface";
+
+function BackButton(props: IBackButton) {
+  const { navigate, isDisabled } = props;
+
   return (
     <button
       disabled={isDisabled}

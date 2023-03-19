@@ -2,7 +2,7 @@ import Select from "react-select";
 import clsx from "clsx";
 import dayjs from "dayjs";
 import Calendar from "react-calendar";
-import { Controller, useForm } from "react-hook-form";
+import { Controller } from "react-hook-form";
 import { ToastContainer } from "react-toastify";
 
 import "react-calendar/dist/Calendar.css";
@@ -15,31 +15,21 @@ import { ICategory } from "interface";
 import { IOnSubmit } from "pages/TasksRegistry/types";
 
 // Форма для создания новой Таски / Изменения уже существующей Таски
-function ToDoForm({
-  categories,
-  onSubmit,
-  className,
-  setIsModalOpen,
-  isModalOpen,
-  refModal,
-}: IToDoForm) {
+function ToDoForm(props: IToDoForm) {
+  const { categories, onSubmit, className, setIsModalOpen, isModalOpen, refModal } = props;
+
   const {
+    refClearValue,
+    notify,
+    userName,
     reset,
     register,
     clearErrors,
     handleSubmit,
     control,
-    formState: { isValid, errors },
-  } = useForm<IOnSubmit>({
-    defaultValues: {
-      name: "",
-      description: "",
-      calendar: undefined,
-      select: { value: "Дом", label: "Дом" },
-    },
-  });
-
-  const { refClearValue, notify, userName } = useControl({
+    isValid,
+    errors,
+  } = useControl({
     isModalOpen,
     setIsModalOpen,
     refModal,

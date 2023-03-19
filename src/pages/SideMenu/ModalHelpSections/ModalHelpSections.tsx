@@ -12,7 +12,9 @@ import {
 
 import { IModalHelpSections } from "./interface";
 
-function ModalHelpSections({ refModal, setIsModalOpen, isModalOpen }: IModalHelpSections) {
+function ModalHelpSections(props: IModalHelpSections) {
+  const { refModal, setIsModalOpen, isModalOpen } = props;
+
   return (
     <div className="absolute flex left-0 items-center justify-center top-0 h-full w-full bg-gray-dark/[0.5] z-10 py-5">
       <section

@@ -2,7 +2,9 @@ import { ReactElement } from "react";
 import clsx from "clsx";
 import { IHelpSection } from "./interface";
 
-function HelpSection({ header, paragraphs, styles }: IHelpSection) {
+function HelpSection(props: IHelpSection) {
+  const { header, paragraphs, styles } = props;
+
   return (
     <>
       <h3 className={clsx("font-bold text-pink text-2xl mb-2 ", styles?.header)}>{header}</h3>

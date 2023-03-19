@@ -4,9 +4,11 @@ import { SubmitHandler } from "react-hook-form";
 
 import { $categories, $tasks, $user, changeTaskFx } from "store";
 
+import { STATUSES } from "../../constants";
+
 import { IOnSubmit } from "pages/TasksRegistry/types";
 
-function useControl({ id }: { id: number }) {
+function useControl({ id, taskStatus }: { id: number; taskStatus?: string }) {
   const tasks = useStore($tasks);
   const categories = useStore($categories);
   const userName = useStore($user);
@@ -26,7 +28,10 @@ function useControl({ id }: { id: number }) {
       isToDelete: false,
     });
 
+  const statusColor = STATUSES.find((item: any) => item.label === taskStatus)?.color;
+
   return {
+    statusColor,
     tasks,
     categories,
     onSubmit,

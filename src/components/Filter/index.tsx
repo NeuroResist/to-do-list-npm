@@ -1,53 +1,22 @@
-import { useStore } from "effector-react";
-import { Controller, useForm } from "react-hook-form";
+import { Controller } from "react-hook-form";
 import clsx from "clsx";
 import Select from "react-select";
 import Calendar from "react-calendar";
 
-import { $categories } from "store";
-
 import useControl from "./useControl";
 
-import { STATUSES } from "../../constants";
+import { IFilter } from "./interface";
 
-import { ICategory, IStatuse } from "interface";
+function Filter(props: IFilter) {
+  const { setFilteredTasks, refModal } = props;
 
-function Filter({ setFilteredTasks, refModal }: any) {
-  const { onSubmit } = useControl({ setFilteredTasks });
-
-  const categories = useStore($categories);
-
-  const { handleSubmit, control } = useForm<any>({
-    defaultValues: {
-      selectCalendar: "",
-      selectStatus: { label: "Все", value: "Все" },
-      selectCategory: { value: "Все", label: "Все" },
-    },
+  const { onSubmit, handleSubmit, control, optionsCategories, optionsStatuses } = useControl({
+    setFilteredTasks,
   });
 
-  const optionsCategories = () => [
-    { value: "Все", label: "Все" },
-    ...categories.map((category: ICategory) => {
-      return {
-        value: category.value,
-        label: category.value,
-      };
-    }),
-  ];
-
-  const optionsStatuses = () => [
-    { value: "Все", label: "Все" },
-    ...STATUSES.map((status: IStatuse) => {
-      return {
-        value: status.label,
-        label: status.label,
-      };
-    }),
-  ];
-
   return (
-    <section>
-      <h3>Фильтр</h3>
+    <section className="absolute top-[70px] left-5 z-10">
+      <h3 className="text-center bg-orange">Фильтр</h3>
 
       <form
         ref={refModal}

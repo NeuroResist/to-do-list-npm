@@ -3,7 +3,9 @@ import OrangeText from "components/OrangeText";
 
 import { ITasksWithoutCategory } from "./interface";
 
-function TasksWithoutCategory({ filterTasks, registryType }: ITasksWithoutCategory) {
+function TasksWithoutCategory(props: ITasksWithoutCategory) {
+  const { filterTasks, registryType } = props;
+
   return filterTasks["withoutCategory"].length > 0 ? (
     <>
       <h2 className="self-start mb-5 mt-5 self-center text-3xl border-2 border-r-0 border-l-0 border-t-0 border-b-blue">

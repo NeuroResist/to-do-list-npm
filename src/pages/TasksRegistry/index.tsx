@@ -39,6 +39,3 @@ function TasksRegistry({ registryType }: { registryType: registryType }) {
 }
 
 export default TasksRegistry;
-
-// Fri Mar 03 2023 00:00:00 GMT+0300 (Москва, стандартное время)
-// Fri Mar 03 2023 00:00:00 GMT+0300 (Москва, стандартное время)

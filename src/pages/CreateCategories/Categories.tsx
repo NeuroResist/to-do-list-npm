@@ -8,7 +8,9 @@ import { toastTasks } from "helpers";
 
 import { ICategories } from "./interface";
 
-function Categories({ categories, changeCategory }: ICategories) {
+function Categories(props: ICategories) {
+  const { categories, changeCategory } = props;
+
   return (
     <ul className="mb-3">
       <ToastContainer />

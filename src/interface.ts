@@ -114,3 +114,16 @@ export interface IStatuse {
   /** @param color - Цвет статуса */
   color: string;
 }
+
+export interface IFilterTask {
+  /** @param tasks - Массив Тасков */
+  tasks: ITask[];
+  /** @param categories - Массив Категорий */
+  categories: ICategory[];
+  /** @param filter - Параметры для фильтрации Тасков */
+  filter?: {
+    filterCalendar: Date;
+    filterStatus: { value: string; label: string };
+    filterCategory: { value: string; label: string };
+  };
+}

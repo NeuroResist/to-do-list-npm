@@ -107,3 +107,10 @@ export interface IChangedTaskStatus {
   /** @param calendar - Выбранная Дата для Напоминалки */
   calendar?: Date;
 }
+
+export interface IStatuse {
+  /** @param label - Название статус */
+  label: "Удалено" | "В работе" | "Просрочено";
+  /** @param color - Цвет статуса */
+  color: string;
+}

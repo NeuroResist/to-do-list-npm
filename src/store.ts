@@ -24,7 +24,7 @@ export const changeCategoryFx = createEvent<any>();
 export const deleteCategoryFx = createEvent<any>();
 
 const changedTaskStatus = ({ isToDelete, isDeleted, calendar }: IChangedTaskStatus) => {
-  if (isToDelete && isDeleted) return "Удалено";
+  if (isToDelete && isDeleted && calendar) return "Удалено";
 
   if (calendar) {
     if (dayjs().isBefore(dayjs(calendar))) {

@@ -11,9 +11,9 @@ import useControl from "components/OneTask/useControl";
 
 import { changeTaskFx } from "store";
 
-import { toastTasks } from "helpers";
+import { STATUSES } from "../../constants";
 
-import { STATUSES } from "components/OneTask/constants";
+import { toastTasks } from "helpers";
 
 import { IOneTask } from "./interface";
 
@@ -65,10 +65,9 @@ function OneTask({
           />
         )}
 
-        {registryType !== "withoutCategory" && !isView && (
+        {registryType !== "withoutCategory" && (
           <ArchiveIcon
             onClick={() => {
-              console.log(registryType);
               toastTasks({ toastType: "delete", data: registryType });
               changeTaskFx({ id, isDeleted, isToDelete: true });
             }}

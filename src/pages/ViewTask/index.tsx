@@ -12,8 +12,12 @@ function ViewTask() {
       <BackButton navigate={navigate} />
 
       <div className="absolute left-[100px] top-0 bg-blue">
-        <div>Дата создания: {currentTask.createDate}</div>
-        <div>Дата изменения: {currentTask.updateDate ?? "Не изменялась"}</div>
+        <p>
+          <time>Дата создания: {currentTask.createDate}</time>
+        </p>
+        <p>
+          <time>Дата изменения: {currentTask.updateDate ?? "Не изменялась"}</time>
+        </p>
       </div>
 
       <OneTask {...currentTask} isView className="min-w-[400px]" />

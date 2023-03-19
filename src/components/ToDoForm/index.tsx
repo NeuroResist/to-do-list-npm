@@ -56,11 +56,8 @@ function ToDoForm({
           createDate: dayjs().format("DD.MM.YYYY, HH:mm [по Мск]"),
           updateDate: undefined,
           userName: userName,
-          taskStatus: data.calendar
-            ? dayjs().isBefore(dayjs(data.calendar))
-              ? "В работе"
-              : "Просрочено"
-            : undefined,
+          taskStatus:
+            data.calendar && dayjs().isBefore(dayjs(data.calendar)) ? "В работе" : "Просрочено",
         });
 
         !isModalOpen && refClearValue?.current?.clearValue(); // Ресет категории при отправке формы

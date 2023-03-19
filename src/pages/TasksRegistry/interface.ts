@@ -17,6 +17,8 @@ export interface ITasksWithoutCategory {
   filterTasks: IFilteredTasksForSections;
   /** @param registryType - Один из 4х видов карточки */
   registryType: registryType;
+  /** @param filter - Условия для фильтрации по 3м параметрам */
+  filter?: any;
 }
 
 export interface ITasksWithCategory extends ITasksWithoutCategory {

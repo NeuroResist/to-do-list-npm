@@ -1,7 +1,7 @@
 import { MutableRefObject } from "react";
 
 import { IFilteredTasksForSections } from "./pages/TasksRegistry/interface";
-import { registryType } from "./types";
+import { RegistryType } from "./types";
 
 export interface ITask {
   /** @param id - Айди Таски */
@@ -78,7 +78,7 @@ export interface IToastTasks {
   /** @param toastType - Тип Таски в Toast */
   toastType: "category" | "changeCreate" | "delete";
   /** @param data - Информация для действия в Toast */
-  data?: "change" | "delete" | "create" | boolean | registryType;
+  data?: "change" | "delete" | "create" | boolean | RegistryType;
 }
 
 export interface IOptions {

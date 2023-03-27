@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useStore } from "effector-react";
+import { useUnit } from "effector-react";
 
 import { $categories, $tasks } from "store";
 
@@ -10,8 +10,7 @@ import { STATUSES } from "../../constants";
 import { ICategory, IStatuse } from "interface";
 
 function useControl({ setFilteredTasks }: { setFilteredTasks: (data: any) => void }) {
-  const tasks = useStore($tasks);
-  const categories = useStore($categories);
+  const [tasks, categories] = useUnit([$tasks, $categories]);
 
   const onSubmit: SubmitHandler<any> = (data) => {
     const filter = {

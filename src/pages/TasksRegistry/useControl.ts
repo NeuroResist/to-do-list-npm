@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useStore } from "effector-react";
+import { useUnit } from "effector-react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
 import { $categories } from "store";
@@ -10,9 +10,13 @@ import { IOutlet } from "interface";
 
 function useControl() {
   const refModal = useRef<any>(null);
-  const categories = useStore($categories);
+
+  const categories = useUnit($categories);
+
   const { filterTasks }: IOutlet = useOutletContext();
+
   const navigate = useNavigate();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const checkOutsideClickModal = (e: any) =>

@@ -9,7 +9,7 @@ function TasksList(props: ITasksList) {
   return (
     <>
       {tasks.map((task: ITask) => (
-        <div key={task.id}>
+        <div key={`task_${task.id}`}>
           <OneTask {...task} registryType={registryType} />
         </div>
       ))}

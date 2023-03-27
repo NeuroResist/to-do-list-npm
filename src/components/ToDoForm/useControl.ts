@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useEffect, useRef } from "react";
-import { useStore } from "effector-react";
+import { useUnit } from "effector-react";
 
 import { $user } from "store";
 
@@ -9,10 +9,10 @@ import { checkOutsideClick, toastTasks } from "helpers";
 import { IUseControl } from "./interface";
 import { IOnSubmit } from "pages/TasksRegistry/types";
 
-function useControl({ isModalOpen, setIsModalOpen, refModal }: IUseControl) {
+function useControl({ isModalOpen, setIsModalOpen, refModal, onSubmit }: IUseControl) {
   const notify = () => toastTasks({ toastType: "changeCreate", data: isModalOpen });
 
-  const userName = useStore($user);
+  const userName = useUnit($user);
 
   const {
     reset,
@@ -46,6 +46,14 @@ function useControl({ isModalOpen, setIsModalOpen, refModal }: IUseControl) {
     };
   }, [isModalOpen]);
 
+  const onToDoFormSubmit = (props: any) => {
+    onSubmit(props);
+
+    !isModalOpen && refClearValue?.current?.clearValue(); // Ресет категории при отправке формы
+    clearErrors();
+    reset();
+  };
+
   return {
     refClearValue,
     notify,
@@ -53,6 +61,7 @@ function useControl({ isModalOpen, setIsModalOpen, refModal }: IUseControl) {
     reset,
     register,
     clearErrors,
+    onToDoFormSubmit,
     handleSubmit,
     control,
     isValid,

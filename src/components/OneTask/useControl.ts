@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { useStore } from "effector-react";
+import { useUnit } from "effector-react";
 import { SubmitHandler } from "react-hook-form";
 
 import { $categories, $tasks, $user, changeTaskFx } from "store";
@@ -9,11 +9,10 @@ import { STATUSES } from "../../constants";
 import { IOnSubmit } from "pages/TasksRegistry/types";
 
 function useControl({ id, taskStatus }: { id: number; taskStatus?: string }) {
-  const tasks = useStore($tasks);
-  const categories = useStore($categories);
-  const userName = useStore($user);
+  const [tasks, categories, userName] = useUnit([$tasks, $categories, $user]);
 
   const refModal = useRef<any>(null);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const onSubmit: SubmitHandler<IOnSubmit> = (data) =>

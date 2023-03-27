@@ -30,19 +30,21 @@ function ModalHelpSections(props: IModalHelpSections) {
 
         <h2 className="font-bold self-center mb-3 text-3xl">Подсказки</h2>
 
-        <HelpSection header="Виды задач" paragraphs={TASKS_TYPES} />
+        <ul>
+          <HelpSection header="Виды задач" paragraphs={TASKS_TYPES} />
 
-        <HelpSection header="Создание Тасков" paragraphs={CREATE_EDIT_TASK} />
+          <HelpSection header="Создание Тасков" paragraphs={CREATE_EDIT_TASK} />
 
-        <HelpSection header="Создание/редактор Категорий" paragraphs={CREATE_EDIT_CATEGORY} />
+          <HelpSection header="Создание/редактор Категорий" paragraphs={CREATE_EDIT_CATEGORY} />
 
-        <HelpSection header="Реестр задач" paragraphs={TASKS_REGISTER} />
+          <HelpSection header="Реестр задач" paragraphs={TASKS_REGISTER} />
 
-        <HelpSection header="Просмотр карточки" paragraphs={VIEW_CARD} />
+          <HelpSection header="Просмотр карточки" paragraphs={VIEW_CARD} />
 
-        <HelpSection header="Фильтрация" paragraphs={FILTER} />
+          <HelpSection header="Фильтрация" paragraphs={FILTER} />
 
-        <HelpSection header="Статусная модель" paragraphs={STATUSES} />
+          <HelpSection header="Статусная модель" paragraphs={STATUSES} />
+        </ul>
       </section>
     </div>
   );

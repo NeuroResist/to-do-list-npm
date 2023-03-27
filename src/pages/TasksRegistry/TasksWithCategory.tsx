@@ -14,11 +14,10 @@ function TasksWithCategory(props: ITasksWithCategory) {
         const filteredTasks = filterTasks[registryType].filter(
           (task: ITask) => task.select.value === category.value,
         );
-
         if (!filteredTasks.length) {
           return (
             <li
-              key={category.value}
+              key={`category_${category.value}`}
               className="self-start mt-5 self-center text-3xl border-2 border-r-0 border-l-0 border-t-0 border-b-blue"
             >
               Для категории <OrangeText>{category.value}</OrangeText> нет
@@ -33,7 +32,7 @@ function TasksWithCategory(props: ITasksWithCategory) {
 
         return (
           <li
-            key={category.value}
+            key={`category_${category.value}`}
             className="flex flex-col items-center border-2 border-r-0 border-l-0 border-t-0 border-b-blue w-4/5 min-h-12 flex items-center py-5"
           >
             <OrangeText className="text-3xl mb-5">{category.value}</OrangeText>

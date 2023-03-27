@@ -92,9 +92,3 @@ export const filterTask = (props: IFilterTask): IFilteredTasksForSections => {
     withoutCategory: ConditionFilteredTasks("withoutCategory"),
   };
 };
-
-// Фильтрация Категорий по алфавиту
-export const filteredCategory = (categories: ICategory[]) =>
-  categories.sort((categoryPrev: ICategory, categoryNext: ICategory) =>
-    categoryPrev.value.localeCompare(categoryNext.value),
-  );

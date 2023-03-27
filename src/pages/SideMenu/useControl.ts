@@ -1,17 +1,18 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useStore } from "effector-react";
+import { useUnit } from "effector-react";
 
 import { $categories, $tasks } from "store";
 
 import { checkOutsideClick, filterTask } from "helpers";
 
 function UseControl() {
-  const tasks = useStore($tasks);
-  const categories = useStore($categories);
+  const [categories, tasks] = useUnit([$categories, $tasks]);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Фильтрация Тасков по 4 категориям для отрисовки в реестре
   const filterTasks = useMemo(() => filterTask({ tasks, categories }), [tasks, categories]);
+
   const refModal = useRef<any>(null);
 
   // При открытой модалке нельзя скроллить страницу

@@ -25,4 +25,6 @@ export interface IUseControl {
   isModalOpen?: boolean;
   /** @param setIsModalOpen - Функция для изменения состояния модалки, boolean */
   setIsModalOpen?: (isHide: boolean) => void;
+  /** @param onSubmit - Функция срабатываемая при отправке формы */
+  onSubmit: any;
 }

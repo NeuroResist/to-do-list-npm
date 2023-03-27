@@ -3,8 +3,6 @@ import { createEvent, createStore } from "effector";
 import dayjs from "dayjs";
 import { isEmpty } from "lodash";
 
-import { filteredCategory } from "./helpers";
-
 import { MY_PROFILE, OPTIONS, TASKS } from "./MOCK";
 
 import {
@@ -37,6 +35,11 @@ const changedTaskStatus = ({ isToDelete, isDeleted, calendar }: IChangedTaskStat
   return undefined;
 };
 
+const filteredCategory = (categories: ICategory[]) =>
+  categories.sort((categoryPrev: ICategory, categoryNext: ICategory) =>
+    categoryPrev.value.localeCompare(categoryNext.value),
+  );
+
 export const $categories = createStore(filteredCategory(OPTIONS))
   .on(createCategoryFx, (categories, value: string) => [
     ...categories,
@@ -57,21 +60,17 @@ export const $categories = createStore(filteredCategory(OPTIONS))
 
 // ТАСКИ
 export const $tasks = createStore(TASKS)
-  .on(addTaskFx, (tasks, { id, data }: IAddTaskFx) => [
-    ...tasks,
-    {
-      id: id,
-      name: data.name,
-      description: data.description,
-      calendar: data.calendar,
-      select: data.select,
-      userName: data.userName,
-      taskStatus: data.taskStatus,
-      createDate: data.createDate,
-      updateDate: data.updateDate,
-      isDeleted: false,
-    },
-  ])
+  .on(addTaskFx, (tasks, { id, data }: IAddTaskFx) => {
+    console.log(data);
+    return [
+      ...tasks,
+      {
+        ...data,
+        id: id,
+        isDeleted: false,
+      },
+    ];
+  })
   .on(
     changeTaskFx,
     (tasks, { id, description, name, calendar, select, isToDelete, isDeleted }: IChangeTaskFx) =>

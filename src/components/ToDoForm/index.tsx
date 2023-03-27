@@ -12,7 +12,7 @@ import useControl from "./useControl";
 
 import { IToDoForm } from "./interface";
 import { ICategory } from "interface";
-import { IOnSubmit } from "pages/TasksRegistry/types";
+import { IOnSubmit as IOnToDoFormSubmit } from "pages/TasksRegistry/types";
 
 // Форма для создания новой Таски / Изменения уже существующей Таски
 function ToDoForm(props: IToDoForm) {
@@ -22,26 +22,26 @@ function ToDoForm(props: IToDoForm) {
     refClearValue,
     notify,
     userName,
-    reset,
     register,
-    clearErrors,
     handleSubmit,
     control,
+    onToDoFormSubmit,
     isValid,
     errors,
   } = useControl({
     isModalOpen,
     setIsModalOpen,
     refModal,
+    onSubmit,
   });
 
   return (
     <form
       ref={refModal}
       id="modal"
-      className={clsx("border-2 border-black border-2 bg-background", className)}
-      onSubmit={handleSubmit((data: IOnSubmit) => {
-        onSubmit({
+      className={clsx("border-2 border-black bg-background", className)}
+      onSubmit={handleSubmit((data: IOnToDoFormSubmit) => {
+        onToDoFormSubmit({
           ...data,
           createDate: dayjs().format("DD.MM.YYYY, HH:mm [по Мск]"),
           updateDate: undefined,
@@ -49,10 +49,6 @@ function ToDoForm(props: IToDoForm) {
           taskStatus:
             data.calendar && dayjs().isBefore(dayjs(data.calendar)) ? "В работе" : "Просрочено",
         });
-
-        !isModalOpen && refClearValue?.current?.clearValue(); // Ресет категории при отправке формы
-        clearErrors();
-        reset();
       })}
     >
       <ToastContainer />
@@ -119,16 +115,16 @@ function ToDoForm(props: IToDoForm) {
         </p>
       )}
 
-      <input
+      <button
         onClick={notify}
         disabled={!isValid}
-        type="submit"
-        value={isModalOpen ? "Изменить" : "Создать"}
         className={clsx("border-t-2 w-full", {
           "bg-red": !isValid,
           "bg-green cursor-pointer": isValid,
         })}
-      />
+      >
+        {isModalOpen ? "Изменить" : "Создать"}
+      </button>
     </form>
   );
 }

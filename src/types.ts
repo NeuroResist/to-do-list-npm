@@ -1,1 +1,1 @@
-export type registryType = "task" | "taskReminder" | "delete" | "withoutCategory";
+export type RegistryType = "task" | "taskReminder" | "delete" | "withoutCategory";

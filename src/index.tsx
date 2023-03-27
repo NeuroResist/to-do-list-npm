@@ -11,7 +11,7 @@ import { ProSidebarProvider } from "react-pro-sidebar";
 
 import "./assets/styles/index.css";
 
-import NotFound from "./pages/NotFound";
+import NotFound from "./pages/SideMenu/ErrorPage";
 import SideMenu from "./pages/SideMenu";
 import CreateCategories from "./pages/CreateCategories";
 import TasksRegistry from "./pages/TasksRegistry";

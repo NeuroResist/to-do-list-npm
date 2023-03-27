@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function ErrorPage() {
+function ErrorPage() {
   const text = "text-red font-bold text-xl";
 
   return (
@@ -37,3 +37,5 @@ export default function ErrorPage() {
     </div>
   );
 }
+
+export default ErrorPage;

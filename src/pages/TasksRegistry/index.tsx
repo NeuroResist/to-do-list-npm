@@ -7,9 +7,9 @@ import Filter from "components/Filter";
 
 import useControl from "./useControl";
 
-import { registryType } from "types";
+import { RegistryType } from "types";
 
-function TasksRegistry({ registryType }: { registryType: registryType }) {
+function TasksRegistry({ registryType }: { registryType: RegistryType }) {
   const { categories, filterTasks, navigate, isModalOpen, setIsModalOpen, refModal } = useControl();
   const [filteredTasks, setFilteredTasks] = useState(filterTasks);
 

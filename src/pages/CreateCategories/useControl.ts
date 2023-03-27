@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useStore } from "effector-react";
+import { useUnit } from "effector-react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
@@ -9,8 +9,10 @@ import { toastTasks } from "helpers";
 import { ICategory } from "interface";
 
 function useControl() {
-  const categories = useStore($categories);
+  const categories = useUnit($categories);
+
   const [changingCategory, setChangingCategory] = useState("");
+
   const {
     register,
     handleSubmit,

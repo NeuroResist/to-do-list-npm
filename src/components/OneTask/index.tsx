@@ -47,7 +47,7 @@ function OneTask(props: IOneTask) {
       <p className="text-center decoration-2 underline">{name}</p>
       <p className="min-h-[100px] break-all">{description}</p>
       <div className="flex justify-between">
-        <p>{select.value + "📋"}</p>
+        <p>{`${select.value} 📋`}</p>
         <p>
           <time>{calendar && dayjs(calendar).format("DD.MM.YYYY 🕗")}</time>
         </p>

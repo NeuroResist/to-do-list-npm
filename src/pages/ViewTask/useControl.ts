@@ -1,15 +1,17 @@
 import { useMemo } from "react";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";
-import { useStore } from "effector-react";
+import { useUnit } from "effector-react";
 
 import { $tasks } from "store";
 
 import { ITask } from "interface";
 
 function useControl() {
-  const tasks = useStore($tasks);
+  const tasks = useUnit($tasks);
+
   const { id } = useParams();
+
   const navigate = useNavigate();
 
   const currentTask = useMemo(

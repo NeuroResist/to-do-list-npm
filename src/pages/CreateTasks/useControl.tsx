@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useStore } from "effector-react";
+import { useUnit } from "effector-react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { $categories, $tasks, addTaskFx } from "store";
@@ -8,8 +8,8 @@ import { IOnSubmit } from "../TasksRegistry/types";
 
 function useControl() {
   const { reset } = useForm();
-  const tasks = useStore($tasks);
-  const categories = useStore($categories);
+
+  const [categories, tasks] = useUnit([$categories, $tasks]);
 
   let id = useMemo(() => tasks.length, [tasks.length]);
 

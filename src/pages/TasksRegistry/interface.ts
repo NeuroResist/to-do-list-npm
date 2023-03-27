@@ -1,5 +1,5 @@
 import { ICategory, ITask } from "interface";
-import { registryType } from "types";
+import { RegistryType } from "types";
 
 export interface IFilteredTasksForSections {
   /** @param taskReminder - Массив Напоминаний */
@@ -16,7 +16,7 @@ export interface ITasksWithoutCategory {
   /** @param filterTasks - Отфильтрованные Таски */
   filterTasks: IFilteredTasksForSections;
   /** @param registryType - Один из 4х видов карточки */
-  registryType: registryType;
+  registryType: RegistryType;
   /** @param filter - Условия для фильтрации по 3м параметрам */
   filter?: any;
 }
